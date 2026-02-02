@@ -1,0 +1,64 @@
+---
+interface Props {
+  title?: string;
+  text?: string;
+  btnText?: string;
+  href?: string;
+}
+
+const { 
+  title = "Ready to Prioritize Your Child's Health?", 
+  text = "Book an appointment with Dr. Sanjay Swamy today for expert pediatric care.",
+  btnText = "Book Appointment",
+  href = "/appointment"
+} = Astro.props;
+---
+
+<section class="cta-section">
+  <div class="container cta-content">
+    <h2>{title}</h2>
+    <p>{text}</p>
+    <a href={href} class="btn btn-secondary">{btnText}</a>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+    border-radius: var(--radius-md);
+    margin: 4rem 0;
+  }
+
+  .cta-content h2 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--color-primary);
+    padding: 1rem 2rem;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+</style>

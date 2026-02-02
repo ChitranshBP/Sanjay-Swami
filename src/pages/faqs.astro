@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+
+const faqs = [
+  { question: "How do I book an appointment?", answer: "You can book an appointment by calling us, WhatsApping, or using the online form on our Contact page." },
+  { question: "What are your consultation hours?", answer: "We are open Monday to Saturday, 10:00 AM to 1:00 PM. We are closed on Sundays." },
+  { question: "Do you accept insurance?", answer: "We provide receipts for reimbursement, but direct cashless insurance depends on your provider. Please check with our front desk." },
+  { question: "Is parking available at the clinic?", answer: "Yes, we have ample parking space for patients visiting our clinic." },
+  { question: "Do you offer online consultations?", answer: "Yes, video consultations are available for follow-ups and minor queries." },
+  { question: "What should I bring for the first visit?", answer: "Please bring your child's previous medical records, vaccination card, and any current prescriptions." },
+];
+---
+
+<Layout 
+  title="Frequently Asked Questions" 
+  description="Answers to common questions about appointments, clinic hours, and pediatric services."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>Frequently Asked Questions</h1>
+      <p>Got questions? We have answers.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container content">
+      <div class="faq-list">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <CTA title="Still have questions?" text="Contact us directly and we'll be happy to assist you." btnText="Contact Us" href="/contact" />
+  </div>
+
+</Layout>
+
+<style>
+  .page-header { background-color: var(--color-primary); color: white; padding: 3rem 0; text-align: center; }
+  .content { max-width: 800px; margin: 0 auto; }
+  .faq-list { display: grid; gap: 1.5rem; }
+  .faq-item { background: white; padding: 2rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); border: 1px solid #f0f0f0; }
+  .faq-item h3 { color: var(--color-primary-dark); margin-bottom: 1rem; }
+</style>

@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+
+export function getStaticPaths() {
+  const posts = [
+    {
+      slug: "newborn-care-guide",
+      title: "Newborn Care: The First 30 Days",
+      date: "October 15, 2023",
+      category: "Newborn Care",
+      content: `
+        <p>Bringing a newborn home is exciting but can also be overwhelming. Here are the essentials you need to know.</p>
+        <h3>Feeding</h3>
+        <p>Breastfeeding is recommended exclusively for the first 6 months...</p>
+        <h3>Sleep</h3>
+        <p>Newborns sleep 16-18 hours a day...</p>
+      `
+    },
+    {
+      slug: "childhood-fever-guide",
+      title: "Understanding Childhood Fever",
+      date: "September 28, 2023",
+      category: "Common Illnesses",
+      content: `
+        <p>Fever is the body's natural defense against infection. It's not a disease itself.</p>
+        <h3>When to see a doctor?</h3>
+        <p>If your baby is under 3 months and has a fever of 100.4°F or higher...</p>
+      `
+    },
+    {
+      slug: "nutrition-for-picky-eaters",
+      title: "Nutrition Tips for Picky Eaters",
+      date: "August 10, 2023",
+      category: "Nutrition",
+      content: `
+        <p>Picky eating is a normal phase of development for many toddlers.</p>
+        <h3>Tips</h3>
+        <p>Offer a variety of foods, even if they reject them initially...</p>
+      `
+    }
+  ];
+
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<Layout 
+  title={post.title} 
+  description={`Read about ${post.title} by Dr. Sanjay Swamy.`}
+>
+  <div class="post-header">
+    <div class="container">
+      <span class="category">{post.category}</span>
+      <h1>{post.title}</h1>
+      <p class="date">Published on {post.date} by Dr. Sanjay Swamy</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container content" set:html={post.content}></div>
+  </section>
+
+  <div class="container">
+    <hr />
+    <div class="share-section">
+      <p>Share this article:</p>
+      <!-- Social share buttons placeholder -->
+      <button class="btn btn-outline btn-sm">Facebook</button>
+      <button class="btn btn-outline btn-sm">WhatsApp</button>
+    </div>
+    <CTA title="Need medical advice?" text="Book a consultation if you have specific concerns about your child's health." />
+  </div>
+
+</Layout>
+
+<style>
+  .post-header { background-color: #F8F9FA; padding: 3rem 0; text-align: center; }
+  .category { background: var(--color-primary); color: white; padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+  .date { color: var(--color-text-light); margin-top: 1rem; }
+  .content { max-width: 700px; margin: 0 auto; font-size: 1.125rem; line-height: 1.8; }
+  
+  /* Global styles for content html */
+  .content :global(h3) { margin-top: 2rem; margin-bottom: 1rem; color: var(--color-primary-dark); }
+  .content :global(p) { margin-bottom: 1.5rem; }
+
+  .share-section { margin: 2rem 0; text-align: center; }
+  .share-section p { margin-bottom: 1rem; font-weight: 600; }
+  .btn-sm { padding: 0.25rem 0.75rem; margin: 0 0.25rem; }
+</style>

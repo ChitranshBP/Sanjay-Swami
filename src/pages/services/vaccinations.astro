@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+
+const faqs = [
+  { question: "Is the vaccination schedule safe?", answer: "Yes, we strictly follow the IAP (Indian Academy of Pediatrics) schedule which is scientifically proven safe and effective." },
+  { question: "What if my child misses a dose?", answer: "Don't worry. Contact us immediately, and we will plan a catch-up schedule for your child." },
+];
+---
+
+<Layout 
+  title="Vaccinations & Immunizations" 
+  description="Complete vaccination services for children in Bangalore. Safe, timely, and painless immunizations."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>Vaccinations & Immunizations</h1>
+      <p>Protecting your child against preventable diseases.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container content">
+      <h2>Importance of Immunization</h2>
+      <p>Vaccines are the most effective way to protect your child from serious diseases. We provide a comprehensive range of vaccinations, ensuring your child stays healthy and safe.</p>
+      
+      <h3>Key Vaccines Offered:</h3>
+      <ul class="benefits-list">
+        <li>BCG, Hepatitis B, Polio (Birth)</li>
+        <li>DTP, Hib, Rotavirus (6, 10, 14 Weeks)</li>
+        <li>Measles, Mumps, Rubella (NMR)</li>
+        <li>Typhoid, Chickenpox, Hepatitis A</li>
+        <li>Influenza (Annual Flu Shot)</li>
+        <li>HPV (Cervical Cancer Vaccine)</li>
+      </ul>
+
+      <h3>Our Vaccination Protocol</h3>
+      <p>We maintain cold chain integrity for all vaccines and ensure a sterile, comfortable environment to minimize pain and anxiety for your child.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <CTA />
+  </div>
+
+</Layout>
+
+<style>
+  .page-header { background-color: var(--color-primary); color: white; padding: 3rem 0; text-align: center; }
+  .content { max-width: 800px; margin: 0 auto; }
+  h2 { color: var(--color-primary-dark); margin-bottom: 1.5rem; }
+  h3 { margin-top: 2rem; margin-bottom: 1rem; }
+  .benefits-list { list-style: none; margin-bottom: 2rem; }
+  .benefits-list li { padding: 0.5rem 0; border-bottom: 1px solid #eee; display: flex; align-items: center; }
+  .benefits-list li::before { content: "✓"; color: var(--color-success); margin-right: 0.75rem; font-weight: bold; }
+  .bg-light { background-color: var(--color-background); }
+  .faq-list { max-width: 800px; margin: 0 auto; display: grid; gap: 1.5rem; }
+  .faq-item { background: white; padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
+  .faq-item h3 { font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem; color: var(--color-primary-dark); }
+</style>

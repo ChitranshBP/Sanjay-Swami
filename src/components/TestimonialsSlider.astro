@@ -1,0 +1,296 @@
+---
+const testimonials = [
+  {
+    name: "Priya Sharma",
+    date: "2 months ago",
+    rating: 5,
+    text: "Dr. Sanjay Swamy is incredibly patient and knowledgeable. He takes the time to explain everything and calms our anxieties. Practical advice that really works.",
+    initial: "P"
+  },
+  {
+    name: "Rahul Mehta",
+    date: "1 month ago",
+    rating: 5,
+    text: "We visited for our newborn's vaccinations. The experience was smooth, and Dr. Swamy handled our baby with such care. Highly recommended!",
+    initial: "R"
+  },
+  {
+    name: "Anita Desai",
+    date: "3 weeks ago",
+    rating: 5,
+    text: "My son had a persistent cough, and Dr. Swamy's diagnosis was spot on. He doesn't prescribe unnecessary medicines, which I really appreciate.",
+    initial: "A"
+  },
+  {
+    name: "Vikram Singh",
+    date: "5 months ago",
+    rating: 5,
+    text: "Best pediatrician in the area. Very professional and friendly staff. The clinic is clean and child-friendly.",
+    initial: "V"
+  }
+];
+---
+
+<div class="google-reviews-container">
+  <div class="google-header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" width="24" height="24" />
+    <div class="rating-info">
+      <span class="score">4.9</span>
+      <span class="stars">⭐⭐⭐⭐⭐</span>
+      <span class="count">based on 120+ reviews</span>
+    </div>
+  </div>
+
+  <div class="slider-container">
+    <button class="nav-btn prev" aria-label="Previous review">❮</button>
+    <div class="testimonials-slider" id="reviews-slider">
+      <div class="slider-track">
+        {testimonials.map(testimonial => (
+          <div class="testimonial-card">
+            <div class="card-header">
+              <div class="avatar">{testimonial.initial}</div>
+              <div class="user-info">
+                <strong>{testimonial.name}</strong>
+                <div class="meta">
+                  <span class="stars">⭐⭐⭐⭐⭐</span>
+                  <span class="date">{testimonial.date}</span>
+                </div>
+              </div>
+              <div class="google-icon">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" width="16" height="16" />
+              </div>
+            </div>
+            <p class="text">{testimonial.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <button class="nav-btn next" aria-label="Next review">❯</button>
+  </div>
+</div>
+
+<script>
+  const slider = document.getElementById('reviews-slider');
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+  let autoSlideInterval;
+
+  const scrollAmount = 320; // Card width + gap
+
+  const scrollNext = () => {
+    if (slider) {
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+      if (slider.scrollLeft >= maxScroll - 10) {
+        slider.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
+  const scrollPrev = () => {
+    if (slider) {
+      if (slider.scrollLeft <= 10) {
+        slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
+      } else {
+        slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
+  // Event Listeners
+  if (nextBtn) nextBtn.addEventListener('click', () => {
+    stopAutoSlide();
+    scrollNext();
+    startAutoSlide();
+  });
+
+  if (prevBtn) prevBtn.addEventListener('click', () => {
+    stopAutoSlide();
+    scrollPrev();
+    startAutoSlide();
+  });
+
+  // Auto Slide
+  const startAutoSlide = () => {
+    autoSlideInterval = setInterval(scrollNext, 4000);
+  };
+
+  const stopAutoSlide = () => {
+    clearInterval(autoSlideInterval);
+  };
+
+  // Pause on hover
+  if (slider) {
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+    // Start initially
+    startAutoSlide();
+  }
+</script>
+
+<style>
+  .slider-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-btn {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #555;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 10;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-btn:hover {
+    background: #f8f9fa;
+    color: #000;
+  }
+  
+  .nav-btn.prev { margin-right: -20px; }
+  .nav-btn.next { margin-left: -20px; }
+
+  @media (max-width: 768px) {
+    .nav-btn { display: none; } /* Hide buttons on mobile, swipe is better */
+    .nav-btn.prev { margin-right: 0; }
+    .nav-btn.next { margin-left: 0; }
+  }
+
+  .google-reviews-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 100%;
+  }
+
+  /* ... keep existing styles below ... */
+  .google-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .rating-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #5f6368;
+  }
+
+  .score {
+    font-weight: bold;
+    color: #202124;
+  }
+
+  .testimonials-slider {
+    width: 100%;
+    overflow-x: auto;
+    padding: 1rem 0 2rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .testimonials-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slider-track {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    width: max-content;
+  }
+
+  .testimonial-card {
+    scroll-snap-align: center;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    width: 300px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .card-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #7b1fa2; /* Random generic color */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .user-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-info strong {
+    font-size: 0.95rem;
+    color: #202124;
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    color: #5f6368;
+  }
+
+  .stars {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .google-icon {
+     opacity: 0.6;
+  }
+
+  .text {
+    font-size: 0.9rem;
+    color: #202124;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 768px) {
+    .testimonial-card {
+      width: 350px;
+    }
+  }
+</style>

@@ -1,0 +1,147 @@
+---
+---
+<header class="header">
+  <div class="container header-container">
+    <a href="/" class="logo">
+      Dr. Sanjay Swamy
+      <span class="logo-sub">Pediatrician</span>
+    </a>
+
+    <nav class="nav-desktop">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="/appointment" class="btn btn-primary btn-sm">Book Appointment</a>
+    </nav>
+
+    <button class="mobile-menu-toggle" aria-label="Toggle Menu" id="menuToggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <nav class="nav-mobile" id="mobileNav">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/services">Services</a>
+    <a href="/blog">Blog</a>
+    <a href="/contact">Contact</a>
+    <a href="/appointment" class="btn btn-primary">Book Appointment</a>
+  </nav>
+</header>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+
+  if (menuToggle && mobileNav) {
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+    });
+  }
+</script>
+
+<style>
+  .header {
+    background-color: white;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .logo-sub {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-text-light);
+  }
+
+  .nav-desktop {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-desktop a:not(.btn) {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .nav-desktop a:not(.btn):hover {
+    color: var(--color-primary);
+  }
+
+  .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  /* Mobile Menu */
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: all 0.3s ease;
+  }
+
+  .nav-mobile {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-150%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+  }
+
+  .nav-mobile.active {
+    transform: translateY(0);
+  }
+
+  @media (min-width: 768px) {
+    .nav-desktop {
+      display: flex;
+    }
+    .mobile-menu-toggle {
+      display: none;
+    }
+    .nav-mobile {
+      display: none;
+    }
+  }
+</style>

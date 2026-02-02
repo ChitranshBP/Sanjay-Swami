@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CTA from '../../components/CTA.astro';
+
+const services = [
+  { 
+    title: "General Pediatrics", 
+    description: "Routine checkups, growth monitoring, and treatment of common childhood illnesses.", 
+    href: "/services/general-pediatrics", 
+    icon: "🧸" 
+  },
+  { 
+    title: "Neonatal Care (NICU)", 
+    description: "Specialized intensive care for premature and sick newborns.", 
+    href: "/services/nicu", 
+    icon: "👶" 
+  },
+  { 
+    title: "Pediatric Intensive Care (PICU)", 
+    description: "Advanced life support and monitoring for critically ill children.", 
+    href: "/services/picu", 
+    icon: "🏥" 
+  },
+  { 
+    title: "Vaccinations & Immunizations", 
+    description: "Complete immunization schedule as per IAP guidelines.", 
+    href: "/services/vaccinations", 
+    icon: "💉" 
+  }
+];
+---
+
+<Layout 
+  title="Our Services" 
+  description="Comprehensive pediatric services including General Pediatrics, NICU, PICU, and Vaccinations."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>Our Services</h1>
+      <p>Comprehensive healthcare for your child's every need.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="services-grid">
+        {services.map(service => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <CTA />
+  </div>
+
+</Layout>
+
+<style>
+  .page-header {
+    background-color: var(--color-primary-dark);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+</style>

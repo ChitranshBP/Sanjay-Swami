@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+
+const faqs = [
+  { question: "What conditions are treated in NICU?", answer: "Prematurity, respiratory distress, infections, jaundice, and other critical complications." },
+  { question: "Can parents visit the NICU?", answer: "Yes, we encourage parental bonding and kangaroo care as per our unit's protocols." },
+];
+---
+
+<Layout 
+  title="Neonatal Care (NICU)" 
+  description="Advanced Level 3 NICU care for premature and critically ill newborns in Bangalore."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>Neonatal Intensive Care (NICU)</h1>
+      <p>Specialized care for our tiniest patients.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container content">
+      <h2>Advanced Newborn Care</h2>
+      <p>Our NICU is equipped with state-of-the-art technology to provide life-saving care for premature babies and newborns with medical complications. Led by Dr. Sanjay Swamy, our team ensures constant monitoring and specialized treatment.</p>
+      
+      <h3>Our Capabilities:</h3>
+      <ul class="benefits-list">
+        <li>Care for Extreme Preterm Babies</li>
+        <li>Respiratory Support (Ventilation/CPAP)</li>
+        <li>Phototherapy for Jaundice</li>
+        <li>Nutritional Support for Low Birth Weight</li>
+        <li>24/7 Monitoring</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <CTA />
+  </div>
+
+</Layout>
+
+<style>
+  .page-header { background-color: var(--color-primary); color: white; padding: 3rem 0; text-align: center; }
+  .content { max-width: 800px; margin: 0 auto; }
+  h2 { color: var(--color-primary-dark); margin-bottom: 1.5rem; }
+  h3 { margin-top: 2rem; margin-bottom: 1rem; }
+  .benefits-list { list-style: none; margin-bottom: 2rem; }
+  .benefits-list li { padding: 0.5rem 0; border-bottom: 1px solid #eee; display: flex; align-items: center; }
+  .benefits-list li::before { content: "✓"; color: var(--color-success); margin-right: 0.75rem; font-weight: bold; }
+  .bg-light { background-color: var(--color-background); }
+  .faq-list { max-width: 800px; margin: 0 auto; display: grid; gap: 1.5rem; }
+  .faq-item { background: white; padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
+  .faq-item h3 { font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem; color: var(--color-primary-dark); }
+</style>

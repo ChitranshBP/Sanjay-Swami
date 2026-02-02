@@ -1,0 +1,118 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+
+const faqs = [
+  { question: "How often should I bring my child for a checkup?", answer: "We recommend regular wellness visits as per the IAP schedule, typically at 1, 2, 4, 6, 9, 12, 15, and 18 months, then annually." },
+  { question: "Do you treat adolescents?", answer: "Yes, we provide care for children from birth up to 18 years of age." },
+];
+---
+
+<Layout 
+  title="General Pediatrics" 
+  description="Comprehensive general pediatric care including wellness exams, sick visits, and development monitoring in Bangalore."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>General Pediatrics</h1>
+      <p>Your partner in raising a healthy and happy child.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container content">
+      <h2>Comprehensive Child Care</h2>
+      <p>From routine checkups to treating common illnesses, our general pediatrics service covers all aspects of your child's health. We believe in early detection and preventive care to ensure optimal growth and development.</p>
+      
+      <h3>Our Services Include:</h3>
+      <ul class="benefits-list">
+        <li>Routine Wellness Exams</li>
+        <li>Growth & Development Monitoring</li>
+        <li>Nutritional Counseling</li>
+        <li>Treatment of Acute Illnesses (Fever, Cough, Cold)</li>
+        <li>Management of Chronic Conditions (Asthma, Allergies)</li>
+      </ul>
+
+      <h3>Why Choose Us?</h3>
+      <p>Our approach is child-friendly and parent-focused. We take the time to answer all your questions and concerns, making sure you feel confident in your child's care plan.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <CTA />
+  </div>
+
+</Layout>
+
+<style>
+  .page-header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h2 { color: var(--color-primary-dark); margin-bottom: 1.5rem; }
+  h3 { margin-top: 2rem; margin-bottom: 1rem; }
+  
+  .benefits-list {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .benefits-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+  }
+
+  .benefits-list li::before {
+    content: "✓";
+    color: var(--color-success);
+    margin-right: 0.75rem;
+    font-weight: bold;
+  }
+
+  .bg-light { background-color: var(--color-background); }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .faq-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .faq-item h3 {
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary-dark);
+  }
+</style>

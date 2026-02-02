@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+
+const testimonials = [
+  { name: "Priya Sharma", age: "Mother of 2-year old", text: "Dr. Sanjay Swamy is incredibly patient and knowledgeable. He takes the time to explain everything and calms our anxieties." },
+  { name: "Rahul Mehta", age: "Father of newborn", text: "We visited for our newborn's vaccinations. The experience was smooth, and Dr. Swamy handled our baby with such care." },
+  { name: "Anita Desai", age: "Mother of 5-year old", text: "My son had a persistent cough, and Dr. Swamy's diagnosis was spot on. He doesn't prescribe unnecessary medicines." },
+  { name: "Vikram Singh", age: "Father of 8-year old", text: "Best pediatrician in Bangalore! Highly professional and approachable." },
+  { name: "Sneha Reddy", age: "Mother of twins", text: "Handling twins is hard, but Dr. Swamy made our scheduled visits so easy. The staff is also very supportive." },
+];
+---
+
+<Layout 
+  title="Patient Testimonials" 
+  description="Read what parents have to say about their experience with Dr. Sanjay Swamy."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>What Parents Say</h1>
+      <p>Your trust is our greatest achievement.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="testimonials-grid">
+        {testimonials.map(t => (
+          <div class="testimonial-card">
+            <div class="quote-icon">❝</div>
+            <p>{t.text}</p>
+            <div class="author">
+              <strong>{t.name}</strong>
+              <span>{t.age}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <CTA title="Join Our Happy Family" text="Book an appointment today and experience the difference." />
+  </div>
+
+</Layout>
+
+<style>
+  .page-header { background-color: var(--color-primary-dark); color: white; padding: 3rem 0; text-align: center; }
+  
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quote-icon { font-size: 3rem; color: var(--color-primary); margin-bottom: 0.5rem; opacity: 0.3; line-height: 1; }
+  .author { margin-top: auto; padding-top: 1rem; border-top: 1px solid #eee; }
+  .author strong { display: block; color: var(--color-primary-dark); }
+  .author span { font-size: 0.875rem; color: var(--color-text-light); }
+</style>

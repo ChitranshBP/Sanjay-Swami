@@ -1,11 +1,1259 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import TestimonialsSlider from '../components/TestimonialsSlider.astro';
+import CTA from '../components/CTA.astro';
+import doctorImage from '../assets/doctor/sanjay-swami-lecture-new.jpg';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const services = [
+  { title: "General Pediatrics", description: "Comprehensive care for your child's health and development from birth to adolescence.", href: "/services/general-pediatrics", image: "/images/services/general-pediatrics.jpg" },
+  { title: "Neonatal Care (NICU)", description: "Specialized care for newborns requiring intensive medical attention.", href: "/services/nicu", image: "/images/services/nicu.jpg" },
+  { title: "Pediatric Intensive Care", description: "Advanced critical care for children with severe illnesses or injuries.", href: "/services/picu", image: "/images/services/picu.jpg" },
+  { title: "Vaccinations", description: "Safe and timely immunizations to protect your child from preventable diseases.", href: "/services/vaccinations", image: "/images/services/vaccinations.jpg" }
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Home"
+  description="Dr. Sanjay D Swamy - Chief Paediatric Intensivist at Cloud Nine Hospital, Jayanagar, Bangalore. 18 years specialist experience in PICU and critical care."
+>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <p class="hero-subtitle">- CHIEF PAEDIATRIC INTENSIVIST</p>
+        <h1>A dedicated doctor <br>you can trust</h1>
+        <p class="hero-intro">Expert pediatric intensive care with 18 years of specialist experience, advanced critical care techniques, and international training - all dedicated to your child's health and wellbeing.</p>
+        <div class="hero-btns">
+          <a href="/appointment" class="btn btn-hero-primary">Book Appointment</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src={doctorImage.src} alt="Dr. Sanjay Swamy" width="500" height="650">
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="why-choose-section">
+    <div class="container">
+      <div class="why-choose-grid">
+        <div class="why-choose-card">
+          <div class="why-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M2 12h20"/>
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+          </div>
+          <div class="why-content">
+            <h3>Expert Intensive Care</h3>
+            <p>18+ years of specialized experience in Paediatric Intensive Care with UK training and NHS Transport Team expertise.</p>
+          </div>
+        </div>
+
+        <div class="why-choose-card">
+          <div class="why-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <div class="why-content">
+            <h3>Personalized Approach</h3>
+            <p>Individualized treatment plans tailored to each child's unique medical needs with compassionate family-centered care.</p>
+          </div>
+        </div>
+
+        <div class="why-choose-card">
+          <div class="why-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <div class="why-content">
+            <h3>Advanced Technology</h3>
+            <p>State-of-the-art PICU facilities with latest medical equipment and evidence-based international treatment protocols.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Section (Previously Removed, placeholder for spacing if needed) --\u003e
+  
+  <!-- Services Section -->
+  <section class="section services-section">
+    <div class="container">
+      <div class="services-header">
+        <p class="services-overline">COMPREHENSIVE PEDIATRIC CARE</p>
+        <h2 class="services-title">Specialized <span class="services-highlight">Healthcare Services</span> for Children</h2>
+        <p class="services-subtitle">Expert medical care tailored to your child's unique needs, from routine checkups to specialized intensive care treatment.</p>
+      </div>
+      
+      <div class="services-new-grid">
+        <div class="service-item-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>General Pediatrics</h3>
+          <p>Comprehensive care for your child's health and development from birth to adolescence, including wellness checkups and preventive care.</p>
+          <a href="/services/general-pediatrics" class="service-link">Read more →</a>
+        </div>
+
+        <div class="service-item-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Pediatric Intensive Care</h3>
+          <p>Advanced critical care for children with severe illnesses or injuries, utilizing state-of-the-art PICU facilities and international protocols.</p>
+          <a href="/services/picu" class="service-link">Read more →</a>
+        </div>
+
+        <div class="service-item-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>Neonatal Care (NICU)</h3>
+          <p>Specialized care for newborns requiring intensive medical attention, with expertise in treating premature babies and critical neonatal conditions.</p>
+          <a href="/services/nicu" class="service-link">Read more →</a>
+        </div>
+
+        <div class="service-item-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          </div>
+          <h3>Vaccinations</h3>
+          <p>Safe and timely immunizations to protect your child from preventable diseases, following the latest IAP vaccination schedule recommendations.</p>
+          <a href="/services/vaccinations" class="service-link">Read more →</a>
+        </div>
+
+        <div class="service-item-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5Z"/><path d="m9 11 3 3L22 4"/></svg>
+          </div>
+          <h3>Emergency Care</h3>
+          <p>24/7 emergency pediatric care for urgent medical situations, ensuring immediate attention and expert treatment when your child needs it most.</p>
+          <a href="/services/emergency" class="service-link">Read more →</a>
+        </div>
+
+        <div class="service-cta-card">
+          <h3>Schedule a consultation appointment today</h3>
+          <p>Expert pediatric care is just a call away. Book your appointment and give your child the healthcare they deserve.</p>
+          <a href="/appointment" class="btn btn-cta">Book an Appointment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+
+
+  <!-- About Doctor Section -->
+  <section class="section about-doctor-section">
+    <div class="container">
+      <div class="about-doctor-grid">
+        <div class="about-doctor-image-wrapper">
+          <div class="about-image-frame"></div>
+          <div class="about-doctor-image">
+            <img src={doctorImage.src} alt="Dr. Sanjay D Swamy" width="500" height="600">
+          </div>
+        </div>
+        <div class="about-doctor-content">
+          <p class="about-overline">ABOUT DR. SWAMY</p>
+          <h2 class="about-title">Professional <span class="about-highlight">Summary</span></h2>
+          <p class="about-desc">
+            Dr. Sanjay D Swamy is the Chief Paediatric Intensivist at Cloud Nine Hospital, Jayanagar, Bangalore. With 18 years of specialist experience in Paediatric Intensive Care, advanced critical care techniques, and international training. Specialized in treating critically ill neonates and children through dedicated fellowship training with extensive hands-on experience in complex paediatric procedures.
+          </p>
+          
+          <div class="about-stats">
+            <div class="stat-box">
+              <div class="stat-number">18</div>
+              <div class="stat-label">Years of Specialist Experience</div>
+              <div class="stat-desc">Extensive expertise in PICU and critical care has positively impacted thousands of children and families.</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">7</div>
+              <div class="stat-label">Leading Institutions</div>
+              <div class="stat-desc">Trained and worked across prestigious hospitals in India and UK including Birmingham Children's Hospital.</div>
+            </div>
+          </div>
+          
+          <div class="about-actions">
+            <a href="/appointment" class="btn btn-primary">Book an Appointment</a>
+            <a href="/about" class="btn btn-outline">More About Me</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-header">
+        <div class="testimonials-title-block">
+          <p class="testimonials-overline">TESTIMONIALS</p>
+          <h2 class="testimonials-main-title">What our great patients say <br>about <span class="testimonials-highlight">Dr. Sanjay D Swamy</span></h2>
+        </div>
+        <div class="testimonials-statement">
+          <p>Committed to maintaining the highest standards in pediatric intensive care. Professional certifications reflect years of training, continued education, and dedication to providing safe, evidence-based treatment.</p>
+        </div>
+      </div>
+
+      <div class="testimonials-slider-wrapper">
+        <button class="testimonial-nav testimonial-nav-prev" aria-label="Previous testimonials">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="testimonial-nav testimonial-nav-next" aria-label="Next testimonials">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+        <div class="testimonials-cards-grid" id="testimonialsSlider">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            ⭐ ⭐ ⭐ ⭐ ⭐
+          </div>
+          <p class="testimonial-quote">"Exceptional care and expertise"</p>
+          <p class="testimonial-text">Dr. Swamy's expertise in pediatric intensive care gave us confidence during our child's critical condition. His compassionate approach and clear communication made a difficult time more manageable.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">P</div>
+            <span class="author-name">Priya K.</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            ⭐ ⭐ ⭐ ⭐ ⭐
+          </div>
+          <p class="testimonial-quote">"Highly skilled and caring"</p>
+          <p class="testimonial-text">We are grateful for Dr. Swamy's dedication and expertise. His international training and experience truly show in the quality of care he provides. Our baby received the best possible treatment.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">R</div>
+            <span class="author-name">Rajesh M.</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            ⭐ ⭐ ⭐ ⭐ ⭐
+          </div>
+          <p class="testimonial-quote">"Outstanding pediatric specialist"</p>
+          <p class="testimonial-text">Dr. Swamy's years of experience in PICU made all the difference for our son. He took time to explain everything clearly and ensured we were comfortable with every decision.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <span class="author-name">Sneha R.</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            ⭐ ⭐ ⭐ ⭐ ⭐
+          </div>
+          <p class="testimonial-quote">"Trusted and professional"</p>
+          <p class="testimonial-text">The level of care and attention our daughter received was exceptional. Dr. Swamy's UK training and expertise in critical care gave us peace of mind during a stressful time.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <span class="author-name">Arun S.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <div class="cta-content">
+        <p class="cta-overline">BOOK AN APPOINTMENT</p>
+        <h2 class="cta-title">Schedule a consultation appointment today</h2>
+        <p class="cta-description">Expert pediatric intensive care is just a call away. Get personalized treatment plans and compassionate care for your child's health needs.</p>
+        <a href="/appointment" class="btn btn-cta-primary">Book an Appointment</a>
+      </div>
+      <div class="cta-image">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop" alt="Doctor consultation" width="800" height="600">
+      </div>
+    </div>
+  </section>
+
+
 </Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('testimonialsSlider');
+    const prevBtn = document.querySelector('.testimonial-nav-prev');
+    const nextBtn = document.querySelector('.testimonial-nav-next');
+
+    if (slider && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        const scrollAmount = slider.clientWidth * 0.8;
+        slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        const scrollAmount = slider.clientWidth * 0.8;
+        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+    }
+  });
+</script>
+
+<style>
+  .hero {
+    padding: 4rem 0;
+    background-color: #0A5EB0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative background circles */
+  .hero::before,
+  .hero::after {
+    content: '';
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero::before {
+    width: 500px;
+    height: 500px;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hero::after {
+    width: 600px;
+    height: 600px;
+    right: -150px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-subtitle {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    font-weight: 500;
+  }
+
+  .hero-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    line-height: 1.2;
+    font-weight: 400;
+    font-family: "Playfair Display", Georgia, serif;
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 2.5rem;
+    max-width: 550px;
+    line-height: 1.7;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .btn-hero-primary {
+    background-color: #0A97B0;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .btn-hero-primary:hover {
+    background-color: #0A5EB0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-image img {
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    max-height: 650px;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .bg-light {
+    background-color: #f8f9fa;
+  }
+
+  /* Why Choose Us Section */
+  .why-choose-section {
+    background: #E3F2FD;
+    padding: 2.5rem 0;
+  }
+
+  .why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .why-choose-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .why-choose-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+
+  .why-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0A5EB0;
+  }
+
+  .why-content h3 {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .why-content p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 968px) {
+    .why-choose-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+
+  /* Services Section */
+  .services-section {
+    background: #E3F2FD;
+    padding: 3rem 0;
+  }
+
+  .services-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3.5rem;
+  }
+
+  .services-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0A97B0;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .services-title {
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .services-highlight {
+    color: #0A97B0;
+  }
+
+  .services-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .services-new-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-item-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+
+  .service-icon {
+    width: 70px;
+    height: 70px;
+    background: #0A5EB0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+  }
+
+  .service-item-card h3 {
+    font-size: 1.3rem;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .service-item-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .service-link {
+    color: #0A5EB0;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+
+  .service-link:hover {
+    color: #023830;
+  }
+
+  .service-cta-card {
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-cta-card::before,
+  .service-cta-card::after {
+    content: '';
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+  }
+
+  .service-cta-card::before {
+    width: 300px;
+    height: 300px;
+    bottom: -150px;
+    right: -100px;
+  }
+
+  .service-cta-card::after {
+    width: 400px;
+    height: 400px;
+    bottom: -200px;
+    right: -150px;
+  }
+
+  .service-cta-card h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+  }
+
+  .service-cta-card p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-cta {
+    background: white;
+    color: #0A5EB0;
+    padding: 0.9rem 2rem;
+    font-weight: 600;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-cta:hover {
+    background: #dcb386; /* This color was not specified for change, keeping original hover effect */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  @media (max-width: 768px) {
+    .services-new-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .services-title {
+      font-size: 2rem;
+    }
+  }
+
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  /* Testimonials Section */
+  .testimonials-section {
+    background: #E3F2FD;
+    padding: 3rem 0;
+  }
+
+  .testimonials-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    align-items: start;
+  }
+
+  .testimonials-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .testimonials-main-title {
+    font-size: 2.5rem;
+    color: var(--color-text);
+    line-height: 1.3;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .testimonials-highlight {
+    color: #0A97B0;
+  }
+
+  .testimonials-statement {
+    padding-top: 2rem;
+  }
+
+  .testimonials-statement p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .testimonials-slider-wrapper {
+    position: relative;
+  }
+
+  .testimonial-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    color: #0A97B0;
+  }
+
+  .testimonial-nav:hover {
+    background: #0A97B0;
+    color: white;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+
+  .testimonial-nav-prev {
+    left: -24px;
+  }
+
+  .testimonial-nav-next {
+    right: -24px;
+  }
+
+  .testimonials-cards-grid {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .testimonials-cards-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  .testimonial-card {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 300px;
+    flex: 0 0 calc(33.333% - 1rem);
+    scroll-snap-align: start;
+  }
+
+  .testimonial-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: #0A97B0;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+
+  .testimonial-stars {
+    font-size: 1rem;
+    color: #0A97B0;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonial-quote {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .testimonial-text {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #0A97B0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .author-name {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  @media (max-width: 1200px) {
+    .testimonial-card {
+      flex: 0 0 calc(50% - 0.75rem);
+      min-width: 280px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-header {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .testimonials-main-title {
+      font-size: 2rem;
+    }
+
+    .testimonial-card {
+      flex: 0 0 calc(100% - 1rem);
+      min-width: 260px;
+    }
+
+    .testimonial-nav {
+      width: 40px;
+      height: 40px;
+    }
+
+    .testimonial-nav-prev {
+      left: -20px;
+    }
+
+    .testimonial-nav-next {
+      right: -20px;
+    }
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: #0A5EB0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before,
+  .cta-section::after {
+    content: '';
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cta-section::before {
+    width: 400px;
+    height: 400px;
+    left: -100px;
+    bottom: -100px;
+  }
+
+  .cta-section::after {
+    width: 300px;
+    height: 300px;
+    left: -50px;
+    bottom: -50px;
+  }
+
+  .cta-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-content {
+    padding: 3rem 2rem 3rem 4rem;
+    color: white;
+    max-width: 700px;
+    margin-left: auto;
+  }
+
+  .cta-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    font-weight: 600;
+    font-family: "Playfair Display", Georgia, serif;
+  }
+
+  .cta-description {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 500px;
+  }
+
+  .btn-cta-primary {
+    background-color: #0A97B0;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .btn-cta-primary:hover {
+    background-color: #0A97B0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .cta-image {
+    height: 100%;
+    max-height: 450px;
+    overflow: hidden;
+  }
+
+  .cta-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 968px) {
+    .cta-container {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-content {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+    }
+
+    .cta-description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-image {
+      height: 400px;
+    }
+  }
+
+  .mt-4 { margin-top: 2rem; }
+  .text-center { text-align: center; }
+
+  @media (min-width: 768px) {
+    .hero-content {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero {
+      text-align: center;
+      padding: 4rem 0;
+    }
+    
+    .hero-content {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+
+    .hero-subtitle {
+      text-align: center;
+    }
+
+    .hero-intro {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-btns {
+      justify-content: center;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero::before,
+    .hero::after {
+      display: none;
+    }
+  }
+
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: var(--color-accent);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .feature-card h3 {
+    margin-bottom: 1rem;
+    color: var(--color-primary-dark);
+  }
+
+  .feature-card p {
+    color: var(--color-text-light);
+  }
+  
+  /* About Doctor Section */
+  .about-doctor-section {
+    background: #f8f9fa;
+  }
+
+  .about-doctor-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-doctor-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about-image-frame {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #E5B686, #d9a876);
+    border-radius: var(--radius-md);
+    z-index: 0;
+  }
+
+  .about-doctor-image {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-doctor-image img {
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-doctor-content {
+    max-width: 600px;
+  }
+
+  .about-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #E5B686;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .about-highlight {
+    color: #E5B686;
+  }
+
+  .about-desc {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1;
+  }
+
+  .stat-number::after {
+    content: '+';
+    margin-left: 2px;
+  }
+
+  .stat-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+  }
+
+  .about-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 768px) {
+    .about-doctor-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .about-doctor-grid {
+      gap: 2rem;
+    }
+
+    .about-image-frame {
+      top: -15px;
+      left: -15px;
+    }
+
+    .about-doctor-content {
+      max-width: 100%;
+    }
+
+    .about-title {
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .about-overline {
+      text-align: center;
+    }
+
+    .about-desc {
+      text-align: center;
+    }
+
+    .about-actions {
+      justify-content: center;
+    }
+
+    .about-doctor-image-wrapper {
+      justify-content: center;
+    }
+  }
+</style>

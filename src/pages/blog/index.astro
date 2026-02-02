@@ -1,0 +1,68 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+
+// Mock Data (In a real app, this might come from Markdown/CMS)
+const posts = [
+  {
+    title: "Newborn Care: The First 30 Days",
+    excerpt: "A complete guide for new parents on feeding, sleeping, and caring for your newborn baby.",
+    date: "October 15, 2023",
+    image: "https://placehold.co/400x250?text=Newborn+Care",
+    slug: "newborn-care-guide",
+    category: "Newborn Care",
+    content: "Content..."
+  },
+  {
+    title: "Understanding Childhood Fever",
+    excerpt: "When to worry, when to treat at home, and red flags you shouldn't ignore.",
+    date: "September 28, 2023",
+    image: "https://placehold.co/400x250?text=Fever+Guide",
+    slug: "childhood-fever-guide",
+    category: "Common Illnesses",
+    content: "Content..."
+  },
+  {
+    title: "Nutrition Tips for Picky Eaters",
+    excerpt: "Practical strategies to ensure your toddler gets the nutrition they need without the mealtime battles.",
+    date: "August 10, 2023",
+    image: "https://placehold.co/400x250?text=Nutrition",
+    slug: "nutrition-for-picky-eaters",
+    category: "Nutrition",
+    content: "Content..."
+  }
+];
+---
+
+<Layout 
+  title="Parenting Blog" 
+  description="Expert advice and tips on child health, parenting, and nutrition from Dr. Sanjay Swamy."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>Parenting & Health Blog</h1>
+      <p>Expert insights for your child's well-being.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="blog-grid">
+        {posts.map(post => (
+          <BlogCard {...post} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-header { background-color: var(--color-primary); color: white; padding: 3rem 0; text-align: center; }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+</style>

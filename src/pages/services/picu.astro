@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+
+const faqs = [
+  { question: "When is PICU admission needed?", answer: "PICU admission is required for severe infections, respiratory failure, trauma, or post-operative monitoring." },
+  { question: "Is the PICU staffed 24/7?", answer: "Yes, our PICU is staffed round-the-clock by critical care specialists and trained nurses." },
+];
+---
+
+<Layout 
+  title="Pediatric Intensive Care (PICU)" 
+  description="Critical care services for children with severe illnesses or injuries in Bangalore."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>Pediatric Intensive Care (PICU)</h1>
+      <p>Expert critical care for when your child needs it most.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container content">
+      <h2>Critical Care Excellence</h2>
+      <p>The Pediatric Intensive Care Unit (PICU) provides the highest level of medical care for children who are critically ill or injured. Our unit is designed to provide close observation and advanced life support therapies.</p>
+      
+      <h3>We Handle Emergencies Like:</h3>
+      <ul class="benefits-list">
+        <li>Severe Asthma Attacks</li>
+        <li>Serious Infections (Sepsis, Meningitis)</li>
+        <li>Trauma and Accidents</li>
+        <li>Post-Surgical Recovery</li>
+        <li>Diabetic Ketoacidosis</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <CTA />
+  </div>
+
+</Layout>
+
+<style>
+  .page-header { background-color: var(--color-primary); color: white; padding: 3rem 0; text-align: center; }
+  .content { max-width: 800px; margin: 0 auto; }
+  h2 { color: var(--color-primary-dark); margin-bottom: 1.5rem; }
+  h3 { margin-top: 2rem; margin-bottom: 1rem; }
+  .benefits-list { list-style: none; margin-bottom: 2rem; }
+  .benefits-list li { padding: 0.5rem 0; border-bottom: 1px solid #eee; display: flex; align-items: center; }
+  .benefits-list li::before { content: "✓"; color: var(--color-success); margin-right: 0.75rem; font-weight: bold; }
+  .bg-light { background-color: var(--color-background); }
+  .faq-list { max-width: 800px; margin: 0 auto; display: grid; gap: 1.5rem; }
+  .faq-item { background: white; padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
+  .faq-item h3 { font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem; color: var(--color-primary-dark); }
+</style>
