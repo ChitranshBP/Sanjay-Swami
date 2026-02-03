@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
 import doctorLectureImage from '../assets/doctor/sanjay-swami-lecture-new.jpg';
+import heroBgTexture from '../assets/backgrounds/hero-texture.png';
 ---
 
 <Layout
@@ -9,14 +10,11 @@ import doctorLectureImage from '../assets/doctor/sanjay-swami-lecture-new.jpg';
   description="Dr. Sanjay D Swamy - Chief Paediatric Intensivist at Cloud Nine Hospital, Bangalore. 18 years specialist experience, UK-trained with expertise in PICU, ECMO, and critical care."
 >
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero" style={`background-image: linear-gradient(rgba(10, 94, 176, 0.92), rgba(10, 94, 176, 0.88)), url('${heroBgTexture.src}'); background-position: center; background-size: cover;`}>
     <div class="container">
       <div class="hero-grid">
-        <div class="hero-image">
-          <img src={doctorLectureImage.src} alt="Dr. Sanjay D Swamy">
-        </div>
         <div class="hero-content">
-          <p class="overline">Chief Paediatric Intensivist</p>
+          <p class="overline">CHIEF PAEDIATRIC INTENSIVIST</p>
           <h1>Dr. Sanjay D Swamy</h1>
           <p class="credentials">DNB (Paediatrics) | FPCC (IAP) | FPIC (UK)</p>
           <p class="intro">With 18 years of specialist experience, Dr. Swamy is one of India's leading experts in Paediatric Intensive Care, currently serving at Cloud Nine Hospital, Jayanagar, Bangalore.</p>
@@ -35,202 +33,293 @@ import doctorLectureImage from '../assets/doctor/sanjay-swami-lecture-new.jpg';
             </div>
           </div>
           <div class="hero-actions">
-            <a href="/contact" class="btn btn-primary">Book Consultation</a>
-            <a href="/services" class="btn btn-outline">View Services</a>
+            <a href="/appointment" class="btn btn-hero-primary">Book Consultation</a>
+            <a href="/services" class="btn btn-hero-outline">View Services</a>
           </div>
+        </div>
+        <div class="hero-image">
+          <div class="image-frame"></div>
+          <img src={doctorLectureImage.src} alt="Dr. Sanjay D Swamy">
         </div>
       </div>
     </div>
   </section>
 
   <!-- Qualifications -->
-  <section class="section">
+  <section class="section qualifications-section">
     <div class="container">
-      <h2 class="section-title">Qualifications</h2>
+      <div class="section-header">
+        <div class="section-title-block">
+          <p class="section-overline">CREDENTIALS</p>
+          <h2 class="section-title">Professional <span class="highlight">Qualifications</span></h2>
+        </div>
+        <div class="section-subtitle-block">
+          <p class="section-subtitle">Internationally recognized certifications and advanced training in pediatric intensive care medicine.</p>
+        </div>
+      </div>
       <div class="qualifications-grid">
         <div class="qual-card">
           <div class="qual-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           </div>
           <h3>DNB (Paediatrics)</h3>
-          <p>Diplomate of National Board</p>
+          <p>Diplomate of National Board - Comprehensive postgraduate qualification in pediatric medicine</p>
         </div>
         <div class="qual-card">
           <div class="qual-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
           </div>
           <h3>FPCC (IAP)</h3>
-          <p>Fellowship in Paediatric Critical Care</p>
+          <p>Fellowship in Paediatric Critical Care from Indian Academy of Pediatrics</p>
         </div>
         <div class="qual-card">
-          <div class="qual-icon uk">
+          <div class="qual-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
           </div>
           <h3>FPIC (UK)</h3>
-          <p>Fellowship in Paediatric Intensive Care, United Kingdom</p>
+          <p>Fellowship in Paediatric Intensive Care from United Kingdom</p>
         </div>
         <div class="qual-card">
           <div class="qual-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
           </div>
           <h3>Advanced PICU Training</h3>
-          <p>Birmingham Children's Hospital, UK</p>
+          <p>Birmingham Children's Hospital, United Kingdom - World-class critical care training</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Expertise -->
-  <section class="section section-muted">
+  <section class="section expertise-section">
     <div class="container">
-      <h2 class="section-title">Areas of Expertise</h2>
-      <p class="section-desc">Extensively trained in treating critically ill neonates and children with complex conditions</p>
+      <div class="section-header">
+        <div class="section-title-block">
+          <p class="section-overline">SPECIALIZATIONS</p>
+          <h2 class="section-title">Areas of <span class="highlight">Expertise</span></h2>
+        </div>
+        <div class="section-subtitle-block">
+          <p class="section-subtitle">Extensively trained in treating critically ill neonates and children with complex medical conditions.</p>
+        </div>
+      </div>
       <div class="expertise-grid">
-        <div class="expertise-item">
+        <div class="expertise-card">
           <div class="expertise-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4.97 0 9-2.24 9-5v-2.5"/><path d="M12 22c-4.97 0-9-2.24-9-5v-2.5"/><ellipse cx="12" cy="8" rx="9" ry="5"/><path d="M12 3v4"/><path d="M12 17v5"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4.97 0 9-2.24 9-5v-2.5"/><path d="M12 22c-4.97 0-9-2.24-9-5v-2.5"/><ellipse cx="12" cy="8" rx="9" ry="5"/><path d="M12 3v4"/><path d="M12 17v5"/></svg>
           </div>
-          <span>Advanced ARDS Ventilation</span>
+          <h3>Advanced ARDS Ventilation</h3>
+          <p>Expert management of acute respiratory distress syndrome with advanced ventilation techniques.</p>
         </div>
-        <div class="expertise-item">
+        <div class="expertise-card">
           <div class="expertise-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
           </div>
-          <span>Post-operative Transplantation Care</span>
+          <h3>Post-operative Transplant Care</h3>
+          <p>Specialized care for pediatric patients following organ transplantation procedures.</p>
         </div>
-        <div class="expertise-item">
+        <div class="expertise-card">
           <div class="expertise-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           </div>
-          <span>Cardiac Surgical Post-operative Care</span>
+          <h3>Cardiac Surgical Care</h3>
+          <p>Post-operative management of pediatric cardiac surgery patients with complex conditions.</p>
         </div>
-        <div class="expertise-item">
+        <div class="expertise-card">
           <div class="expertise-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"/><path d="M12 6v6l4 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"/><path d="M12 6v6l4 2"/></svg>
           </div>
-          <span>ECMO Support</span>
+          <h3>ECMO Support</h3>
+          <p>Extracorporeal membrane oxygenation for critical life support in severe cases.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Experience -->
-  <section class="section">
+  <!-- Professional Journey -->
+  <section class="section journey-section">
     <div class="container">
-      <h2 class="section-title">Professional Journey</h2>
+      <div class="section-header centered">
+        <p class="section-overline">CAREER PATH</p>
+        <h2 class="section-title">Professional <span class="highlight">Journey</span></h2>
+        <p class="section-subtitle centered-subtitle">A distinguished career spanning prestigious institutions across India and the United Kingdom.</p>
+      </div>
       <div class="timeline">
         <div class="timeline-item current">
-          <div class="timeline-dot"></div>
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+          </div>
           <div class="timeline-content">
             <span class="timeline-badge">Current</span>
             <h3>Cloud Nine Hospital, Jayanagar</h3>
-            <p>Chief Paediatric Intensivist</p>
+            <p class="timeline-role">Chief Paediatric Intensivist</p>
+            <p class="timeline-desc">Leading the PICU department with state-of-the-art facilities and comprehensive critical care services.</p>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
+        <div class="timeline-item uk">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+          </div>
           <div class="timeline-content">
-            <div class="timeline-flag">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
-              <span>UK</span>
-            </div>
+            <span class="timeline-flag">UK</span>
             <h3>Royal Victoria Infirmary, Newcastle</h3>
-            <p>Locum Consultant Paediatric Intensivist</p>
+            <p class="timeline-role">Locum Consultant Paediatric Intensivist</p>
           </div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+          </div>
           <div class="timeline-content">
             <h3>Narayana Institute of Cardiac Sciences</h3>
-            <p>Consultant</p>
+            <p class="timeline-role">Consultant</p>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
+        <div class="timeline-item uk">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+          </div>
           <div class="timeline-content">
-            <div class="timeline-flag">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
-              <span>UK</span>
-            </div>
+            <span class="timeline-flag">UK</span>
             <h3>Birmingham Children's Hospital</h3>
-            <p>Clinical Fellow - PICU and Retrieval Service</p>
+            <p class="timeline-role">Clinical Fellow - PICU and Retrieval Service</p>
           </div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+          </div>
           <div class="timeline-content">
             <h3>St John's Medical Teaching Hospital</h3>
-            <p>Specialist</p>
+            <p class="timeline-role">Specialist</p>
           </div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+          </div>
           <div class="timeline-content">
             <h3>Manipal Hospital, Bangalore</h3>
-            <p>Clinical Fellow</p>
+            <p class="timeline-role">Clinical Fellow</p>
           </div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+          </div>
           <div class="timeline-content">
             <h3>Christian Medical College, Vellore</h3>
-            <p>Senior House Officer</p>
+            <p class="timeline-role">Senior House Officer</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- NHS Experience -->
-  <section class="section section-muted">
+  <!-- International Training -->
+  <section class="section training-section">
     <div class="container">
-      <h2 class="section-title">International Training</h2>
-      <p class="section-desc">Experience with NHS Paediatric Transport Teams in the UK</p>
-      <div class="nhs-grid">
-        <div class="nhs-card">
-          <div class="nhs-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h3m5 0H5m14-6h3l3 5v5h-5m-8 0H5"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
-          </div>
-          <h3>KIDS</h3>
-          <p>Birmingham Transport Team</p>
-          <span class="nhs-tag">NHS UK</span>
+      <div class="section-header">
+        <div class="section-title-block">
+          <p class="section-overline">NHS EXPERIENCE</p>
+          <h2 class="section-title">International <span class="highlight">Training</span></h2>
         </div>
-        <div class="nhs-card">
-          <div class="nhs-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h3m5 0H5m14-6h3l3 5v5h-5m-8 0H5"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+        <div class="section-subtitle-block">
+          <p class="section-subtitle">Hands-on experience with NHS Paediatric Transport Teams in the United Kingdom.</p>
+        </div>
+      </div>
+      <div class="training-grid">
+        <div class="training-card">
+          <div class="training-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h3m5 0H5m14-6h3l3 5v5h-5m-8 0H5"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
           </div>
-          <h3>NECTAR</h3>
-          <p>Newcastle Transport Team</p>
-          <span class="nhs-tag">NHS UK</span>
+          <div class="training-content">
+            <span class="training-tag">NHS UK</span>
+            <h3>KIDS</h3>
+            <p>Birmingham Transport Team - Specialized in critical care transport of pediatric patients across the region.</p>
+          </div>
+        </div>
+        <div class="training-card">
+          <div class="training-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h3m5 0H5m14-6h3l3 5v5h-5m-8 0H5"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          </div>
+          <div class="training-content">
+            <span class="training-tag">NHS UK</span>
+            <h3>NECTAR</h3>
+            <p>Newcastle Transport Team - Experience with neonatal and pediatric emergency transport services.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Quote -->
-  <section class="section section-quote">
+  <section class="quote-section">
     <div class="container">
-      <div class="quote-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M11.192 15.757c0-.88-.23-1.618-.69-2.217-.326-.412-.768-.683-1.327-.812-.55-.128-1.07-.137-1.54-.028-.16-.95.1-1.956.76-3.022.66-1.065 1.515-1.867 2.558-2.403L9.373 5c-.8.396-1.56.898-2.26 1.505-.71.607-1.34 1.305-1.9 2.094s-.98 1.68-1.25 2.69-.346 2.04-.217 3.1c.168 1.4.62 2.52 1.356 3.35.735.84 1.652 1.26 2.748 1.26.965 0 1.766-.29 2.4-.878.628-.576.94-1.365.94-2.368l.002.003zm9.124 0c0-.88-.23-1.618-.69-2.217-.326-.42-.768-.695-1.327-.825-.55-.13-1.07-.14-1.54-.03-.16-.94.09-1.95.75-3.02.66-1.06 1.514-1.86 2.557-2.4L18.49 5c-.8.396-1.555.898-2.26 1.505-.708.607-1.34 1.305-1.894 2.094-.556.79-.97 1.68-1.24 2.69-.273 1-.345 2.04-.217 3.1.168 1.4.62 2.52 1.356 3.35.735.84 1.652 1.26 2.748 1.26.965 0 1.766-.29 2.4-.878.628-.576.94-1.365.94-2.368l.002.003z"/></svg>
+      <div class="quote-content">
+        <div class="quote-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M11.192 15.757c0-.88-.23-1.618-.69-2.217-.326-.412-.768-.683-1.327-.812-.55-.128-1.07-.137-1.54-.028-.16-.95.1-1.956.76-3.022.66-1.065 1.515-1.867 2.558-2.403L9.373 5c-.8.396-1.56.898-2.26 1.505-.71.607-1.34 1.305-1.9 2.094s-.98 1.68-1.25 2.69-.346 2.04-.217 3.1c.168 1.4.62 2.52 1.356 3.35.735.84 1.652 1.26 2.748 1.26.965 0 1.766-.29 2.4-.878.628-.576.94-1.365.94-2.368l.002.003zm9.124 0c0-.88-.23-1.618-.69-2.217-.326-.42-.768-.695-1.327-.825-.55-.13-1.07-.14-1.54-.03-.16-.94.09-1.95.75-3.02.66-1.06 1.514-1.86 2.557-2.4L18.49 5c-.8.396-1.555.898-2.26 1.505-.708.607-1.34 1.305-1.894 2.094-.556.79-.97 1.68-1.24 2.69-.273 1-.345 2.04-.217 3.1.168 1.4.62 2.52 1.356 3.35.735.84 1.652 1.26 2.748 1.26.965 0 1.766-.29 2.4-.878.628-.576.94-1.365.94-2.368l.002.003z"/></svg>
+        </div>
+        <blockquote>
+          Every critically ill child deserves the highest standard of care. My training across world-class institutions in India and the UK enables me to provide evidence-based, compassionate critical care to the most vulnerable young patients.
+        </blockquote>
+        <cite>— Dr. Sanjay D Swamy</cite>
       </div>
-      <blockquote>
-        Every critically ill child deserves the highest standard of care. My training across world-class institutions in India and the UK enables me to provide evidence-based, compassionate critical care to the most vulnerable young patients.
-      </blockquote>
-      <cite>— Dr. Sanjay D Swamy</cite>
     </div>
   </section>
 
-  <div class="container">
-    <CTA title="Book a Consultation" text="Visit our clinic for a reassuring and professional pediatric experience." />
-  </div>
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <div class="cta-content">
+        <p class="cta-overline">BOOK AN APPOINTMENT</p>
+        <h2 class="cta-title">Schedule a consultation today</h2>
+        <p class="cta-description">Get expert pediatric care from one of India's leading intensivists. Book your appointment for a reassuring and professional experience.</p>
+        <a href="/appointment" class="btn btn-cta-primary">Book an Appointment</a>
+      </div>
+    </div>
+  </section>
 
 </Layout>
 
 <style>
-  /* Hero */
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Hero Section */
   .hero {
-    padding: 4rem 0 5rem;
-    background: #fff;
+    padding: 8rem 0 5rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before,
+  .hero::after {
+    content: '';
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero::before {
+    width: 500px;
+    height: 500px;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hero::after {
+    width: 600px;
+    height: 600px;
+    right: -150px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .hero-grid {
@@ -238,59 +327,51 @@ import doctorLectureImage from '../assets/doctor/sanjay-swami-lecture-new.jpg';
     grid-template-columns: 1fr;
     gap: 3rem;
     align-items: center;
-  }
-
-  .hero-image img {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-    margin: 0 auto;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    position: relative;
+    z-index: 1;
   }
 
   .hero-content {
-    max-width: 560px;
+    max-width: 600px;
   }
 
   .overline {
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--color-primary);
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.9);
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .hero-content h1 {
-    font-size: 2.5rem;
-    color: #111827;
-    margin-bottom: 0.5rem;
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 0.75rem;
     font-weight: 700;
     line-height: 1.2;
   }
 
   .credentials {
-    font-size: 0.95rem;
-    color: #6b7280;
-    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 1.5rem;
   }
 
   .intro {
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: #374151;
-    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 2rem;
   }
 
   .hero-stats {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     margin-bottom: 2rem;
-    padding: 1.25rem 0;
-    border-top: 1px solid #e5e7eb;
-    border-bottom: 1px solid #e5e7eb;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
   }
 
   .stat {
@@ -299,14 +380,14 @@ import doctorLectureImage from '../assets/doctor/sanjay-swami-lecture-new.jpg';
   }
 
   .stat-num {
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 700;
-    color: var(--color-primary);
+    color: white;
   }
 
   .stat-label {
     font-size: 0.8rem;
-    color: #6b7280;
+    color: rgba(255,255,255,0.7);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
@@ -317,139 +398,258 @@ import doctorLectureImage from '../assets/doctor/sanjay-swami-lecture-new.jpg';
     flex-wrap: wrap;
   }
 
-  /* Sections */
+  .btn-hero-primary {
+    background-color: #0A97B0;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .btn-hero-primary:hover {
+    background-color: #088a9f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .btn-hero-outline {
+    border: 2px solid rgba(255,255,255,0.5);
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+
+  .btn-hero-outline:hover {
+    border-color: white;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .hero-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-frame {
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    background: #0A97B0;
+    border-radius: 12px;
+    z-index: 0;
+  }
+
+  .hero-image img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  /* Section Styles */
   .section {
     padding: 5rem 0;
   }
 
-  .section-muted {
-    background: #f8fafc;
+  .qualifications-section {
+    background: white;
+  }
+
+  .expertise-section {
+    background: #E3F2FD;
+  }
+
+  .journey-section {
+    background: white;
+  }
+
+  .training-section {
+    background: #E3F2FD;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    align-items: start;
+  }
+
+  .section-header.centered {
+    display: block;
+    text-align: center;
+  }
+
+  .section-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0A97B0;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
   }
 
   .section-title {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 1rem;
-    text-align: center;
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.3;
+    font-weight: 600;
   }
 
-  .section-desc {
-    text-align: center;
-    color: #6b7280;
-    margin-bottom: 2.5rem;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
+  .highlight {
+    color: #0A97B0;
   }
 
-  /* Qualifications */
+  .section-subtitle-block {
+    padding-top: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .centered-subtitle {
+    max-width: 600px;
+    margin: 1rem auto 0;
+  }
+
+  /* Qualifications Grid */
   .qualifications-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
-    max-width: 1000px;
-    margin: 2.5rem auto 0;
   }
 
   .qual-card {
     background: #f8fafc;
-    padding: 1.75rem;
-    border-radius: 10px;
+    padding: 2rem;
+    border-radius: 12px;
     text-align: center;
     border: 1px solid #e5e7eb;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
   }
 
   .qual-card:hover {
-    border-color: var(--color-primary);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-color: #0A5EB0;
+    box-shadow: 0 8px 24px rgba(10, 94, 176, 0.1);
+    transform: translateY(-5px);
   }
 
   .qual-icon {
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
     background: white;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
-    color: var(--color-primary);
+    margin: 0 auto 1.25rem;
+    color: #0A5EB0;
     border: 1px solid #e5e7eb;
   }
 
   .qual-card h3 {
-    font-size: 1.05rem;
-    color: #111827;
-    margin-bottom: 0.35rem;
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin: 0 0 0.5rem 0;
     font-weight: 600;
   }
 
   .qual-card p {
-    font-size: 0.875rem;
-    color: #6b7280;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
     line-height: 1.5;
+    margin: 0;
   }
 
-  /* Expertise */
+  /* Expertise Grid */
   .expertise-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1rem;
-    max-width: 800px;
-    margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 
-  .expertise-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
+  .expertise-card {
     background: white;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
+    padding: 2rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .expertise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
   }
 
   .expertise-icon {
-    width: 44px;
-    height: 44px;
-    background: #f0fdf4;
-    border-radius: 10px;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #16a34a;
+    color: white;
     flex-shrink: 0;
   }
 
-  .expertise-item span {
-    font-size: 0.95rem;
-    color: #374151;
-    font-weight: 500;
+  .expertise-card h3 {
+    font-size: 1.15rem;
+    color: var(--color-text);
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+  }
+
+  .expertise-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
   }
 
   /* Timeline */
   .timeline {
-    max-width: 600px;
-    margin: 2.5rem auto 0;
+    max-width: 700px;
+    margin: 3rem auto 0;
     position: relative;
   }
 
   .timeline::before {
     content: '';
     position: absolute;
-    left: 8px;
-    top: 8px;
-    bottom: 8px;
+    left: 20px;
+    top: 0;
+    bottom: 0;
     width: 2px;
-    background: #e5e7eb;
+    background: linear-gradient(to bottom, #0A5EB0 0%, #0A97B0 100%);
   }
 
   .timeline-item {
     display: flex;
-    gap: 1.5rem;
-    padding-bottom: 1.75rem;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
     position: relative;
   }
 
@@ -457,171 +657,324 @@ import doctorLectureImage from '../assets/doctor/sanjay-swami-lecture-new.jpg';
     padding-bottom: 0;
   }
 
-  .timeline-dot {
-    width: 18px;
-    height: 18px;
-    background: white;
-    border: 3px solid #d1d5db;
-    border-radius: 50%;
-    flex-shrink: 0;
+  .timeline-marker {
+    position: relative;
     z-index: 1;
   }
 
+  .timeline-dot {
+    width: 42px;
+    height: 42px;
+    background: white;
+    border: 3px solid #d1d5db;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .timeline-item.current .timeline-dot {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    background: #0A5EB0;
+    border-color: #0A5EB0;
+    box-shadow: 0 0 0 6px rgba(10, 94, 176, 0.15);
+  }
+
+  .timeline-item.uk .timeline-dot {
+    border-color: #0A97B0;
   }
 
   .timeline-content {
     flex: 1;
-    padding-top: 0;
+    padding-top: 0.5rem;
   }
 
   .timeline-badge {
     display: inline-block;
-    background: var(--color-primary);
+    background: #0A5EB0;
     color: white;
     font-size: 0.7rem;
     font-weight: 600;
-    padding: 0.2rem 0.6rem;
+    padding: 0.3rem 0.75rem;
     border-radius: 4px;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
   .timeline-flag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.75rem;
-    color: #6b7280;
-    margin-bottom: 0.25rem;
-  }
-
-  .timeline-flag svg {
-    color: #3b82f6;
+    display: inline-block;
+    background: #E3F2FD;
+    color: #0A5EB0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .timeline-content h3 {
-    font-size: 1rem;
-    color: #111827;
-    margin-bottom: 0.2rem;
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin: 0 0 0.25rem 0;
     font-weight: 600;
   }
 
-  .timeline-content p {
-    font-size: 0.9rem;
-    color: #6b7280;
+  .timeline-role {
+    font-size: 0.95rem;
+    color: #0A97B0;
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
   }
 
-  /* NHS Cards */
-  .nhs-grid {
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .timeline-content p {
+    margin: 0;
+  }
+
+  /* Training Grid */
+  .training-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
   }
 
-  .nhs-card {
+  .training-card {
     background: white;
     padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    border: 1px solid #e5e7eb;
-    position: relative;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
   }
 
-  .nhs-icon {
-    width: 64px;
-    height: 64px;
-    background: #eff6ff;
+  .training-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  }
+
+  .training-icon {
+    width: 80px;
+    height: 80px;
+    background: #E3F2FD;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
-    color: #2563eb;
+    color: #0A5EB0;
+    flex-shrink: 0;
   }
 
-  .nhs-card h3 {
-    font-size: 1.25rem;
-    color: #111827;
-    margin-bottom: 0.25rem;
-    font-weight: 700;
-  }
-
-  .nhs-card p {
-    font-size: 0.9rem;
-    color: #6b7280;
-  }
-
-  .nhs-tag {
+  .training-tag {
     display: inline-block;
-    margin-top: 0.75rem;
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #2563eb;
-    background: #eff6ff;
+    color: #0A5EB0;
+    background: #E3F2FD;
     padding: 0.25rem 0.75rem;
     border-radius: 4px;
+    margin-bottom: 0.5rem;
   }
 
-  /* Quote */
-  .section-quote {
-    background: #0f172a;
+  .training-content h3 {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+  }
+
+  .training-content p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Quote Section */
+  .quote-section {
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
     padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-section::before,
+  .quote-section::after {
+    content: '';
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .quote-section::before {
+    width: 400px;
+    height: 400px;
+    left: -150px;
+    top: -150px;
+  }
+
+  .quote-section::after {
+    width: 300px;
+    height: 300px;
+    right: -100px;
+    bottom: -100px;
+  }
+
+  .quote-content {
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
 
   .quote-icon {
-    color: var(--color-primary);
+    color: rgba(255,255,255,0.3);
     margin-bottom: 1.5rem;
-    opacity: 0.8;
   }
 
-  .section-quote blockquote {
-    font-size: 1.25rem;
-    color: #f1f5f9;
+  .quote-section blockquote {
+    font-size: 1.35rem;
+    color: white;
     line-height: 1.8;
-    max-width: 720px;
+    max-width: 800px;
     margin: 0 auto 1.5rem;
     font-style: italic;
   }
 
-  .section-quote cite {
-    color: #94a3b8;
+  .quote-section cite {
+    color: rgba(255,255,255,0.8);
     font-style: normal;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 500;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: #0A5EB0;
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before,
+  .cta-section::after {
+    content: '';
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cta-section::before {
+    width: 400px;
+    height: 400px;
+    right: -100px;
+    bottom: -100px;
+  }
+
+  .cta-section::after {
+    width: 300px;
+    height: 300px;
+    right: -50px;
+    bottom: -50px;
+  }
+
+  .cta-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 2rem;
+  }
+
+  .cta-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .cta-description {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .btn-cta-primary {
+    background-color: #0A97B0;
+    color: white;
+    padding: 1rem 2.5rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .btn-cta-primary:hover {
+    background-color: #088a9f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
 
   /* Responsive */
   @media (min-width: 768px) {
     .hero-grid {
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 1fr 1fr;
     }
 
     .hero-content h1 {
-      font-size: 2.75rem;
-    }
-
-    .hero-image img {
-      margin: 0;
+      font-size: 3.5rem;
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1024px) {
+    .qualifications-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
     .hero {
+      padding: 6rem 0 4rem;
       text-align: center;
+    }
+
+    .hero-grid {
+      gap: 2.5rem;
     }
 
     .hero-content {
       margin: 0 auto;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
     }
 
     .hero-stats {
@@ -632,8 +985,64 @@ import doctorLectureImage from '../assets/doctor/sanjay-swami-lecture-new.jpg';
       justify-content: center;
     }
 
-    .section-quote blockquote {
-      font-size: 1.1rem;
+    .hero-image {
+      order: -1;
+    }
+
+    .image-frame {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .hero::before,
+    .hero::after {
+      display: none;
+    }
+
+    .section-header {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .section-subtitle-block {
+      padding-top: 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .qualifications-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .expertise-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .training-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .quote-section blockquote {
+      font-size: 1.15rem;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+    }
+
+    .timeline::before {
+      left: 12px;
+    }
+
+    .timeline-dot {
+      width: 26px;
+      height: 26px;
+    }
+
+    .timeline-item {
+      gap: 1.25rem;
     }
   }
 </style>

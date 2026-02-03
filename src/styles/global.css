@@ -71,7 +71,13 @@ a:hover {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-sm);
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
 }
 
 .btn {
