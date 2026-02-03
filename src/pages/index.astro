@@ -16,6 +16,7 @@ import award4 from '../assets/awards/sanjay-award-4.jpeg';
 import award5 from '../assets/awards/sanjay-swami-5.jpeg';
 import award6 from '../assets/awards/sanjay-swami-6.jpeg';
 import heroBgTexture from '../assets/backgrounds/hero-texture.png';
+import ctaImage from '../assets/cta/consultation.png';
 
 const services = [
   { title: "General Pediatrics", description: "Comprehensive care for your child's health and development from birth to adolescence.", href: "/services/general-pediatrics", image: generalPediatricsImg.src },
@@ -31,7 +32,7 @@ const services = [
 >
   
   <!-- Hero Section -->
-  <section class="hero" style={`background-image: linear-gradient(rgba(10, 94, 176, 0.5), rgba(10, 94, 176, 0.45)), url('${heroBgTexture.src}'); background-position: center; background-size: cover; background-repeat: no-repeat;`}>
+  <section class="hero" style={`background-image: linear-gradient(rgba(10, 94, 176, 0.3), rgba(10, 94, 176, 0.25)), url('${heroBgTexture.src}'); background-position: center; background-size: cover; background-repeat: no-repeat;`}>
     <div class="container hero-content">
       <div class="hero-text">
         <p class="hero-subtitle">- CHIEF PAEDIATRIC INTENSIVIST</p>
@@ -108,60 +109,60 @@ const services = [
       </div>
       
       <div class="services-new-grid">
-        <div class="service-item-card">
-          <div class="service-image">
-            <img src={generalPediatricsImg.src} alt="General Pediatrics">
-          </div>
-          <div class="service-content">
+        <a href="/services/general-pediatrics" class="service-item-card">
+          <img src={generalPediatricsImg.src} alt="General Pediatrics">
+          <div class="service-overlay">
             <h3>General Pediatrics</h3>
-            <p>Comprehensive care for your child's health and development from birth to adolescence, including wellness checkups and preventive care.</p>
-            <a href="/services/general-pediatrics" class="service-link">Read more →</a>
+            <div class="service-hover-content">
+              <p>Comprehensive care for your child's health and development from birth to adolescence, including wellness checkups and preventive care.</p>
+              <span class="service-link">Read more →</span>
+            </div>
           </div>
-        </div>
+        </a>
 
-        <div class="service-item-card">
-          <div class="service-image">
-            <img src={picuImg.src} alt="Pediatric Intensive Care">
-          </div>
-          <div class="service-content">
+        <a href="/services/picu" class="service-item-card">
+          <img src={picuImg.src} alt="Pediatric Intensive Care">
+          <div class="service-overlay">
             <h3>Pediatric Intensive Care</h3>
-            <p>Advanced critical care for children with severe illnesses or injuries, utilizing state-of-the-art PICU facilities and international protocols.</p>
-            <a href="/services/picu" class="service-link">Read more →</a>
+            <div class="service-hover-content">
+              <p>Advanced critical care for children with severe illnesses or injuries, utilizing state-of-the-art PICU facilities and international protocols.</p>
+              <span class="service-link">Read more →</span>
+            </div>
           </div>
-        </div>
+        </a>
 
-        <div class="service-item-card">
-          <div class="service-image">
-            <img src={nicuImg.src} alt="Neonatal Care">
-          </div>
-          <div class="service-content">
+        <a href="/services/nicu" class="service-item-card">
+          <img src={nicuImg.src} alt="Neonatal Care">
+          <div class="service-overlay">
             <h3>Neonatal Care (NICU)</h3>
-            <p>Specialized care for newborns requiring intensive medical attention, with expertise in treating premature babies and critical neonatal conditions.</p>
-            <a href="/services/nicu" class="service-link">Read more →</a>
+            <div class="service-hover-content">
+              <p>Specialized care for newborns requiring intensive medical attention, with expertise in treating premature babies and critical neonatal conditions.</p>
+              <span class="service-link">Read more →</span>
+            </div>
           </div>
-        </div>
+        </a>
 
-        <div class="service-item-card">
-          <div class="service-image">
-            <img src={vaccinationsImg.src} alt="Vaccinations">
-          </div>
-          <div class="service-content">
+        <a href="/services/vaccinations" class="service-item-card">
+          <img src={vaccinationsImg.src} alt="Vaccinations">
+          <div class="service-overlay">
             <h3>Vaccinations</h3>
-            <p>Safe and timely immunizations to protect your child from preventable diseases, following the latest IAP vaccination schedule recommendations.</p>
-            <a href="/services/vaccinations" class="service-link">Read more →</a>
+            <div class="service-hover-content">
+              <p>Safe and timely immunizations to protect your child from preventable diseases, following the latest IAP vaccination schedule recommendations.</p>
+              <span class="service-link">Read more →</span>
+            </div>
           </div>
-        </div>
+        </a>
 
-        <div class="service-item-card">
-          <div class="service-image">
-            <img src={emergencyImg.src} alt="Emergency Care">
-          </div>
-          <div class="service-content">
+        <a href="/services/emergency" class="service-item-card">
+          <img src={emergencyImg.src} alt="Emergency Care">
+          <div class="service-overlay">
             <h3>Emergency Care</h3>
-            <p>24/7 emergency pediatric care for urgent medical situations, ensuring immediate attention and expert treatment when your child needs it most.</p>
-            <a href="/services/emergency" class="service-link">Read more →</a>
+            <div class="service-hover-content">
+              <p>24/7 emergency pediatric care for urgent medical situations, ensuring immediate attention and expert treatment when your child needs it most.</p>
+              <span class="service-link">Read more →</span>
+            </div>
           </div>
-        </div>
+        </a>
 
         <div class="service-cta-card">
           <h3>Schedule a consultation appointment today</h3>
@@ -351,7 +352,7 @@ const services = [
         <a href="/appointment" class="btn btn-cta-primary">Book an Appointment</a>
       </div>
       <div class="cta-image">
-        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop" alt="Doctor consultation" width="800" height="600">
+        <img src={ctaImage.src} alt="Doctor consultation" width="800" height="600">
       </div>
     </div>
   </section>
@@ -454,7 +455,7 @@ const services = [
     color: white;
     line-height: 1.2;
     font-weight: 400;
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: var(--font-sans);
   }
 
   .hero-intro {
@@ -619,69 +620,93 @@ const services = [
 
   .services-new-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
 
   .service-item-card {
-    background: white;
+    position: relative;
     border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 320px;
+    display: block;
+    text-decoration: none;
   }
 
-  .service-item-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-  }
-
-  .service-image {
-    height: 230px;
-    overflow: hidden;
-  }
-
-  .service-image img {
+  .service-item-card > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.5s ease;
   }
 
-  .service-item-card:hover .service-image img {
-    transform: scale(1.05);
+  .service-item-card:hover > img {
+    transform: scale(1.1);
   }
 
-  .service-content {
+  .service-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    transition: background 0.4s ease;
+  }
+
+  .service-item-card:hover .service-overlay {
+    background: linear-gradient(to top, rgba(10, 94, 176, 0.9) 0%, rgba(10, 94, 176, 0.7) 60%, rgba(10, 94, 176, 0.3) 100%);
   }
 
   .service-item-card h3 {
-    font-size: 1.25rem;
-    color: var(--color-text);
-    margin-bottom: 0.75rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    color: white;
+    margin: 0;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+  }
+
+  .service-item-card:hover h3 {
+    transform: translateY(-10px);
+  }
+
+  .service-hover-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+    margin-top: 0;
+  }
+
+  .service-item-card:hover .service-hover-content {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 0.75rem;
   }
 
   .service-item-card p {
     font-size: 0.9rem;
-    color: var(--color-text-light);
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem 0;
   }
 
   .service-link {
-    color: #0A5EB0;
+    color: white;
     font-weight: 600;
-    text-decoration: none;
     font-size: 0.9rem;
-    transition: color 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
+    transition: gap 0.3s ease;
   }
 
-  .service-link:hover {
-    color: #0A97B0;
+  .service-item-card:hover .service-link {
+    gap: 0.5rem;
   }
 
   .service-cta-card {
@@ -753,6 +778,12 @@ const services = [
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
 
+  @media (max-width: 1024px) {
+    .services-new-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 768px) {
     .services-header {
       grid-template-columns: 1fr;
@@ -767,8 +798,22 @@ const services = [
       grid-template-columns: 1fr;
     }
 
+    .service-item-card {
+      height: 280px;
+    }
+
     .services-title {
       font-size: 2rem;
+    }
+
+    .service-hover-content {
+      max-height: none;
+      opacity: 1;
+      margin-top: 0.75rem;
+    }
+
+    .service-item-card h3 {
+      transform: translateY(0);
     }
   }
 
@@ -1244,7 +1289,7 @@ const services = [
     margin-bottom: 1.5rem;
     line-height: 1.3;
     font-weight: 600;
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: var(--font-sans);
   }
 
   .cta-description {
@@ -1423,7 +1468,7 @@ const services = [
     left: 30px;
     width: 85%;
     height: 100%;
-    background: #0A5EB0;
+    background: var(--color-primary);
     border-radius: var(--radius-md);
     z-index: 0;
   }
