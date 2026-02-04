@@ -3,6 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
 import doctorLectureImage from '../assets/doctor/sanjay-swami-lecture-new.jpg';
 import heroBgTexture from '../assets/backgrounds/hero-texture.png';
+import ardsImage from '../assets/about/ards-ventilation.png';
+import transplantImage from '../assets/about/transplant-care.png';
+import cardiacImage from '../assets/about/cardiac-care.png';
+import ecmoImage from '../assets/about/ecmo-support.png';
 ---
 
 <Layout
@@ -102,38 +106,86 @@ import heroBgTexture from '../assets/backgrounds/hero-texture.png';
           <p class="section-subtitle">Extensively trained in treating critically ill neonates and children with complex medical conditions.</p>
         </div>
       </div>
-      <div class="expertise-grid">
-        <div class="expertise-card">
-          <div class="expertise-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4.97 0 9-2.24 9-5v-2.5"/><path d="M12 22c-4.97 0-9-2.24-9-5v-2.5"/><ellipse cx="12" cy="8" rx="9" ry="5"/><path d="M12 3v4"/><path d="M12 17v5"/></svg>
+      <div class="expertise-container">
+        <!-- Left Column: Accordion List -->
+        <div class="expertise-list">
+          <div class="accordion-item active" data-index="0">
+            <span class="acc-number">01</span>
+            <div class="acc-text">
+              <h3>Advanced ARDS Ventilation</h3>
+              <div class="acc-description-wrapper">
+                <p class="acc-description">Expert management of acute respiratory distress syndrome with advanced ventilation techniques.</p>
+              </div>
+            </div>
           </div>
-          <h3>Advanced ARDS Ventilation</h3>
-          <p>Expert management of acute respiratory distress syndrome with advanced ventilation techniques.</p>
+          <div class="accordion-item" data-index="1">
+            <span class="acc-number">02</span>
+            <div class="acc-text">
+              <h3>Post-operative Transplant Care</h3>
+              <div class="acc-description-wrapper">
+                <p class="acc-description">Specialized care for pediatric patients following organ transplantation procedures.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item" data-index="2">
+            <span class="acc-number">03</span>
+            <div class="acc-text">
+              <h3>Cardiac Surgical Care</h3>
+              <div class="acc-description-wrapper">
+                <p class="acc-description">Post-operative management of pediatric cardiac surgery patients with complex conditions.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item" data-index="3">
+            <span class="acc-number">04</span>
+            <div class="acc-text">
+              <h3>ECMO Support</h3>
+              <div class="acc-description-wrapper">
+                <p class="acc-description">Extracorporeal membrane oxygenation for critical life support in severe cases.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="expertise-card">
-          <div class="expertise-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+
+        <!-- Right Column: Image Gallery -->
+        <div class="expertise-gallery">
+          <div class="gallery-item active">
+            <img src={ardsImage.src} alt="Advanced ARDS Ventilation" />
           </div>
-          <h3>Post-operative Transplant Care</h3>
-          <p>Specialized care for pediatric patients following organ transplantation procedures.</p>
-        </div>
-        <div class="expertise-card">
-          <div class="expertise-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <div class="gallery-item">
+            <img src={transplantImage.src} alt="Post-operative Transplant Care" />
           </div>
-          <h3>Cardiac Surgical Care</h3>
-          <p>Post-operative management of pediatric cardiac surgery patients with complex conditions.</p>
-        </div>
-        <div class="expertise-card">
-          <div class="expertise-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"/><path d="M12 6v6l4 2"/></svg>
+          <div class="gallery-item">
+            <img src={cardiacImage.src} alt="Cardiac Surgical Care" />
           </div>
-          <h3>ECMO Support</h3>
-          <p>Extracorporeal membrane oxygenation for critical life support in severe cases.</p>
+          <div class="gallery-item">
+            <img src={ecmoImage.src} alt="ECMO Support" />
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.accordion-item');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      
+      items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          // Remove active class from all items
+          items.forEach(i => i.classList.remove('active'));
+          galleryItems.forEach(img => img.classList.remove('active'));
+          
+          // Add active class to clicked item and corresponding image
+          item.classList.add('active');
+          if (galleryItems[index]) {
+            galleryItems[index].classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
 
   <!-- Professional Journey -->
   <section class="section journey-section">
@@ -580,53 +632,132 @@ import heroBgTexture from '../assets/backgrounds/hero-texture.png';
     margin: 0;
   }
 
-  /* Expertise Grid */
-  .expertise-grid {
+  .expertise-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
   }
 
-  .expertise-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
+  /* Accordion List */
+  .expertise-list {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .accordion-item {
+    display: flex;
     gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
 
-  .expertise-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  .accordion-item:first-child {
+    padding-top: 0;
   }
 
-  .expertise-icon {
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    flex-shrink: 0;
+  .accordion-item:last-child {
+    border-bottom: none;
   }
 
-  .expertise-card h3 {
-    font-size: 1.15rem;
-    color: var(--color-text);
-    margin: 0 0 0.5rem 0;
+  .acc-number {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #94a3b8; /* Muted color for inactive */
+    transition: color 0.3s ease;
+  }
+
+  .accordion-item.active .acc-number {
+    color: #0A97B0; /* Active color */
+    font-size: 1.5rem;
+  }
+
+  .acc-text {
+    flex: 1;
+  }
+
+  .acc-text h3 {
+    font-size: 1.25rem;
     font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+    transition: color 0.3s ease;
   }
 
-  .expertise-card p {
-    font-size: 0.9rem;
+  .accordion-item.active .acc-text h3 {
+    color: #0A5EB0;
+    margin-bottom: 0.5rem;
+  }
+
+  .acc-description-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .accordion-item.active .acc-description-wrapper {
+    max-height: 100px; /* Adjust based on content */
+  }
+
+  .acc-description {
+    font-size: 1rem;
     color: var(--color-text-light);
     line-height: 1.6;
     margin: 0;
+    padding-top: 0.25rem;
+  }
+
+  /* Gallery Grid */
+  .expertise-gallery {
+    position: relative;
+    height: 400px; /* Fixed height for the overlap container */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .gallery-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .gallery-item.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 6s ease; /* Slow zoom effect */
+  }
+
+  .gallery-item.active img {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 968px) {
+    .expertise-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .expertise-gallery {
+      order: -1; 
+      height: 300px; /* Smaller height on mobile */
+    }
   }
 
   /* Timeline */

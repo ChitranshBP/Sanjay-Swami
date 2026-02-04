@@ -1,118 +1,2245 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import CTA from '../../components/CTA.astro';
+import heroBgTexture from '../../assets/backgrounds/hero-texture.png';
+import heroBgImage from '../../assets/backgrounds/background-sanjay.jpeg';
+import generalPediatricsImg from '../../assets/services/general-pediatrics.png';
+import wellChildImg from '../../assets/services/well-child-visit.png';
+import growthImg from '../../assets/services/growth-monitoring.png';
+import developmentImg from '../../assets/services/developmental-screening.png';
+import nutritionImg from '../../assets/services/nutrition-counseling.png';
+import acuteIllnessImg from '../../assets/services/acute-illness.png';
+import chronicDiseaseImg from '../../assets/services/chronic-disease.png';
+import award1 from '../../assets/awards/sanjay-award-1.jpeg';
+import award2 from '../../assets/awards/sanjay-award-2.jpeg';
+import award3 from '../../assets/awards/sanja-award-2.jpeg';
+import award4 from '../../assets/awards/sanjay-award-4.jpeg';
+import award5 from '../../assets/awards/sanjay-swami-5.jpeg';
+import award6 from '../../assets/awards/sanjay-swami-6.jpeg';
+import AppointmentForm from '../../components/AppointmentForm.astro';
+
+// SEO-optimized service data
+const services = [
+  {
+    image: wellChildImg.src,
+    title: "Well-Child Visits & Wellness Exams",
+    description: "Comprehensive preventive health assessments following IAP (Indian Academy of Pediatrics) guidelines to monitor your child's growth, development, and overall wellbeing at every stage."
+  },
+  {
+    image: growthImg.src,
+    title: "Growth & Development Monitoring",
+    description: "Track your child's physical and cognitive development including height, weight, head circumference, and developmental milestones against standard growth charts."
+  },
+  {
+    image: developmentImg.src,
+    title: "Developmental Screening",
+    description: "Early detection and assessment of developmental delays in cognitive, motor, language, and social-emotional areas to ensure timely intervention when needed."
+  },
+  {
+    image: nutritionImg.src,
+    title: "Nutrition & Diet Counseling",
+    description: "Personalized dietary guidance to support healthy eating habits, address feeding issues, manage childhood obesity, and ensure optimal nutrition for growing children."
+  },
+  {
+    image: acuteIllnessImg.src,
+    title: "Acute Illness Care",
+    description: "Expert diagnosis and treatment for common childhood illnesses including fever, cough, cold, ear infections, throat infections, stomach ailments, and skin conditions."
+  },
+  {
+    image: chronicDiseaseImg.src,
+    title: "Chronic Disease Management",
+    description: "Ongoing care and comprehensive management for asthma, allergies, eczema, recurrent infections, and other chronic pediatric conditions with personalized treatment plans."
+  }
+];
+
+const ageGroups = [
+  {
+    age: "Newborn",
+    range: "0-28 days",
+    description: "Initial health screening, feeding support, jaundice monitoring, and newborn care guidance for new parents.",
+    color: "#0A5EB0"
+  },
+  {
+    age: "Infant",
+    range: "1-12 months",
+    description: "Growth monitoring, vaccination schedules, milestone tracking, feeding transitions, and early development assessment.",
+    color: "#0A97B0"
+  },
+  {
+    age: "Toddler",
+    range: "1-3 years",
+    description: "Speech development, behavioral guidance, nutrition counseling, potty training support, and social skill development.",
+    color: "#0A5EB0"
+  },
+  {
+    age: "Preschool",
+    range: "3-5 years",
+    description: "School readiness assessment, vision/hearing screening, immunization updates, and addressing common childhood concerns.",
+    color: "#0A97B0"
+  },
+  {
+    age: "School Age",
+    range: "6-12 years",
+    description: "Academic performance concerns, sports fitness, puberty preparation, mental health awareness, and chronic condition management.",
+    color: "#0A5EB0"
+  },
+  {
+    age: "Adolescent",
+    range: "13-18 years",
+    description: "Teen health issues, growth spurts, emotional wellbeing, lifestyle counseling, and transition to adult healthcare.",
+    color: "#0A97B0"
+  }
+];
+
+const conditions = [
+  "Fever & Infections",
+  "Cold, Cough & Flu",
+  "Ear Infections (Otitis Media)",
+  "Throat Infections & Tonsillitis",
+  "Asthma & Wheezing",
+  "Allergies & Eczema",
+  "Diarrhea & Vomiting",
+  "Constipation",
+  "Urinary Tract Infections",
+  "Skin Rashes & Infections",
+  "Growth Disorders",
+  "Nutritional Deficiencies",
+  "Behavioral Issues",
+  "Sleep Problems",
+  "ADHD Screening",
+  "Developmental Delays"
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Book Appointment",
+    description: "Schedule a convenient time slot online or call our clinic. Same-day appointments available for sick visits."
+  },
+  {
+    step: "02",
+    title: "Initial Assessment",
+    description: "Comprehensive evaluation of your child's health history, current concerns, growth measurements, and vital signs."
+  },
+  {
+    step: "03",
+    title: "Detailed Examination",
+    description: "Thorough physical examination and age-appropriate developmental screening by our experienced pediatrician."
+  },
+  {
+    step: "04",
+    title: "Diagnosis & Treatment",
+    description: "Clear explanation of findings, personalized treatment plan, prescriptions if needed, and follow-up guidance."
+  }
+];
 
 const faqs = [
-  { question: "How often should I bring my child for a checkup?", answer: "We recommend regular wellness visits as per the IAP schedule, typically at 1, 2, 4, 6, 9, 12, 15, and 18 months, then annually." },
-  { question: "Do you treat adolescents?", answer: "Yes, we provide care for children from birth up to 18 years of age." },
+  {
+    question: "How often should I bring my child for a wellness checkup?",
+    answer: "We recommend wellness visits as per the IAP schedule: At birth, then at 2, 4, 6, 9, 12, 15, and 18 months for infants. After that, annual checkups are recommended for children above 2 years. Children with specific health concerns may need more frequent visits."
+  },
+  {
+    question: "What age group does Dr. Sanjay Swamy treat?",
+    answer: "We provide comprehensive pediatric care for children from birth (including newborns) through 18 years of age. This includes infants, toddlers, preschoolers, school-age children, and adolescents."
+  },
+  {
+    question: "What should I bring to my child's first appointment?",
+    answer: "Please bring previous medical records, vaccination history, birth certificate, list of current medications, insurance documents, and any specific questions or concerns you'd like to discuss. For newborns, bring hospital discharge summary."
+  },
+  {
+    question: "Do you offer same-day sick visits for children?",
+    answer: "Yes, we understand children can fall ill unexpectedly. We prioritize same-day appointments for sick children with fever, infections, or other acute conditions. Call our clinic early for same-day availability."
+  },
+  {
+    question: "What vaccinations do you provide?",
+    answer: "We provide all vaccinations as per the IAP immunization schedule including BCG, Hepatitis B, DTP, Polio, Hib, PCV, Rotavirus, MMR, Varicella, Typhoid, Hepatitis A, and annual flu vaccines. We also offer optional vaccines like HPV."
+  },
+  {
+    question: "How do I know if my child's growth is normal?",
+    answer: "During every visit, we measure height, weight, and head circumference (for infants) and plot them on standardized growth charts. We compare with previous measurements to ensure consistent growth. Any concerns are discussed and investigated promptly."
+  }
+];
+
+const benefits = [
+  "18+ years of pediatric expertise",
+  "UK-trained specialist",
+  "Child-friendly environment",
+  "Evidence-based treatment",
+  "Same-day sick visits",
+  "Comprehensive care 0-18 years"
 ];
 ---
 
-<Layout 
-  title="General Pediatrics" 
-  description="Comprehensive general pediatric care including wellness exams, sick visits, and development monitoring in Bangalore."
+<Layout
+  title="General Pediatrics in Bangalore | Child Specialist - Dr. Sanjay D Swamy"
+  description="Expert general pediatric care in Bangalore by Dr. Sanjay D Swamy. Comprehensive child healthcare including wellness exams, vaccinations, growth monitoring, sick visits for children 0-18 years. Book appointment today."
 >
-  <div class="page-header">
+  <!-- Hero Section -->
+  <section class="hero" style={`background-image: linear-gradient(rgba(10, 94, 176, 0.3), rgba(10, 94, 176, 0.25)), url('${heroBgImage.src}'); background-position: center; background-size: cover;`}>
     <div class="container">
-      <h1>General Pediatrics</h1>
-      <p>Your partner in raising a healthy and happy child.</p>
-    </div>
-  </div>
-
-  <section class="section">
-    <div class="container content">
-      <h2>Comprehensive Child Care</h2>
-      <p>From routine checkups to treating common illnesses, our general pediatrics service covers all aspects of your child's health. We believe in early detection and preventive care to ensure optimal growth and development.</p>
-      
-      <h3>Our Services Include:</h3>
-      <ul class="benefits-list">
-        <li>Routine Wellness Exams</li>
-        <li>Growth & Development Monitoring</li>
-        <li>Nutritional Counseling</li>
-        <li>Treatment of Acute Illnesses (Fever, Cough, Cold)</li>
-        <li>Management of Chronic Conditions (Asthma, Allergies)</li>
-      </ul>
-
-      <h3>Why Choose Us?</h3>
-      <p>Our approach is child-friendly and parent-focused. We take the time to answer all your questions and concerns, making sure you feel confident in your child's care plan.</p>
+      <div class="hero-grid">
+        <div class="hero-content">
+          <p class="overline">COMPREHENSIVE CHILD HEALTHCARE</p>
+          <h1>General <span style="color: white;" class="">Pediatrics</span></h1>
+          <p class="hero-desc">Expert pediatric care for your child from birth through adolescence. With 18+ years of experience and UK training, Dr. Sanjay D Swamy provides compassionate, evidence-based healthcare in a child-friendly environment.</p>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-num">18+</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">0-18</span>
+              <span class="stat-label">Years Age Group</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">IAP</span>
+              <span class="stat-label">Guidelines Followed</span>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a href="/appointment" class="btn btn-hero-primary">Book Appointment</a>
+            <a href="tel:+919999999999" class="btn btn-hero-outline">Call Now</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="image-frame"></div>
+          <img src={generalPediatricsImg.src} alt="General Pediatrics - Child Healthcare in Bangalore" loading="eager">
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section bg-light">
+  <!-- Quick Stats Section -->
+  <section class="quick-stats-section">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-list">
-        {faqs.map(faq => (
-          <div class="faq-item">
-            <h3>{faq.question}</h3>
-            <p>{faq.answer}</p>
+      <div class="quick-stats-grid">
+        <div class="quick-stat-card">
+          <div class="stat-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="stat-content">
+            <h3>Comprehensive Care</h3>
+            <p>Complete child healthcare from newborn to 18 years</p>
+          </div>
+        </div>
+        <div class="quick-stat-card">
+          <div class="stat-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="stat-content">
+            <h3>Same-Day Visits</h3>
+            <p>Priority appointments for sick children</p>
+          </div>
+        </div>
+        <div class="quick-stat-card">
+          <div class="stat-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="stat-content">
+            <h3>IAP Guidelines</h3>
+            <p>Following latest pediatric care protocols</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Service Section -->
+  <section class="section about-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-block">
+          <p class="section-overline">ABOUT THE SERVICE</p>
+          <h2 class="section-title">Your Partner in Your <span class="highlight">Child's Health Journey</span></h2>
+        </div>
+        <div class="section-subtitle-block">
+          <p class="section-subtitle">General pediatrics covers all aspects of child healthcare, from preventive care and routine checkups to diagnosing and treating common childhood illnesses. Our goal is to ensure your child grows healthy and happy.</p>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>At our clinic, every child receives personalized care tailored to their unique needs. Dr. Sanjay D Swamy combines his 18+ years of pediatric expertise with international training from the UK to provide the highest standard of care.</p>
+          <p>We believe in building lasting relationships with families, guiding parents through every stage of their child's development. From the first newborn visit to adolescent health counseling, we're committed to being your trusted healthcare partner.</p>
+          <p>Our child-friendly environment is designed to make visits comfortable and stress-free. We take time to listen to parents' concerns, explain conditions clearly, and ensure you leave with confidence in your child's care plan.</p>
+        </div>
+        <div class="benefits-card">
+          <h3>Why Parents Choose Us</h3>
+          <ul class="benefits-list">
+            {benefits.map(benefit => (
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid Section -->
+  <section class="section services-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-block">
+          <p class="section-overline">OUR SERVICES</p>
+          <h2 class="section-title">Comprehensive Pediatric <span class="highlight">Services</span></h2>
+        </div>
+        <div class="section-subtitle-block">
+          <p class="section-subtitle">From routine wellness exams to managing complex conditions, we offer a full range of pediatric services to support your child's health at every stage.</p>
+        </div>
+      </div>
+      <div class="services-grid">
+        {services.map(service => (
+          <div class="service-card">
+            <div class="service-image">
+              <img src={service.image} alt={service.title} />
+            </div>
+            <div class="service-content">
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <CTA />
-  </div>
+  <!-- About Doctor Section from Home -->
+  <section class="section about-doctor-section">
+    <div class="container">
+      <div class="about-doctor-grid">
+        <div class="about-doctor-image-wrapper">
+          <div class="about-image-frame"></div>
+          <div class="about-doctor-image">
+            <img src={award2.src} alt="Dr. Sanjay D Swamy" width="500" height="600">
+          </div>
+        </div>
+        <div class="about-doctor-content">
+          <p class="about-overline">ABOUT DR. SWAMY</p>
+          <h2 class="about-title">Professional <span class="about-highlight">Summary</span></h2>
+          <p class="about-desc">
+            Dr. Sanjay D Swamy is the Chief Paediatric Intensivist at Cloud Nine Hospital, Jayanagar, Bangalore. With 18 years of specialist experience in Paediatric Intensive Care, advanced critical care techniques, and international training. Specialized in treating critically ill neonates and children through dedicated fellowship training with extensive hands-on experience in complex paediatric procedures.
+          </p>
+          
+          <div class="about-stats">
+            <div class="stat-box">
+              <div class="stat-number">18</div>
+              <div class="stat-label">Years of Specialist Experience</div>
+              <div class="stat-desc">Extensive expertise in PICU and critical care has positively impacted thousands of children and families.</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">7</div>
+              <div class="stat-label">Leading Institutions</div>
+              <div class="stat-desc">Trained and worked across prestigious hospitals in India and UK including Birmingham Children's Hospital.</div>
+            </div>
+          </div>
+          
+          <div class="about-actions">
+            <a href="/appointment" class="btn btn-primary">Book an Appointment</a>
+            <a href="/about" class="btn btn-outline">More About Me</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</Layout>
+  <!-- Age Groups Section -->
+  <section class="section age-section">
+    <div class="container">
+      <div class="section-header centered">
+        <p class="section-overline">AGE-APPROPRIATE CARE</p>
+        <h2 class="section-title">Specialized Care for <span class="highlight">Every Age</span></h2>
+        <p class="section-subtitle centered-subtitle">Children have different healthcare needs at different ages. We provide age-appropriate care tailored to each developmental stage.</p>
+      </div>
+      <div class="age-timeline">
+        <div class="timeline-line"></div>
+        {ageGroups.map((group, index) => (
+          <div class="age-timeline-item">
+            <div class="timeline-node" style={`background-color: ${group.color}`}>
+              <span class="node-number">{String(index + 1).padStart(2, '0')}</span>
+            </div>
+            <div class="age-content">
+              <div class="age-badge" style={`background-color: ${group.color}`}>
+                {group.range}
+              </div>
+              <h3>{group.age}</h3>
+              <p>{group.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Conditions Treated Section -->
+  <section class="section conditions-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-block">
+          <p class="section-overline">CONDITIONS WE TREAT</p>
+          <h2 class="section-title">Common Childhood <span class="highlight">Conditions</span></h2>
+        </div>
+        <div class="section-subtitle-block">
+          <p class="section-subtitle">Expert diagnosis and treatment for a wide range of pediatric conditions. If your child is experiencing any health concern, we're here to help.</p>
+        </div>
+      </div>
+      <div class="conditions-grid">
+        {conditions.map(condition => (
+          <div class="condition-tag">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>{condition}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <!-- <section class="section process-section">
+    <div class="container">
+      <div class="section-header centered">
+        <p class="section-overline">HOW IT WORKS</p>
+        <h2 class="section-title">Your Child's Visit <span class="highlight">Experience</span></h2>
+        <p class="section-subtitle centered-subtitle">We've designed our process to be simple, efficient, and stress-free for both children and parents.</p>
+      </div>
+      <div class="process-grid">
+        {process.map(item => (
+          <div class="process-card">
+            <div class="process-step">{item.step}</div>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-header">
+        <div class="testimonials-title-block">
+          <p class="testimonials-overline">TESTIMONIALS</p>
+          <h2 class="testimonials-main-title">What our great patients say <br>about <span class="testimonials-highlight">Dr. Sanjay D Swamy</span></h2>
+        </div>
+        <div class="testimonials-statement">
+          <p>Committed to maintaining the highest standards in pediatric intensive care. Professional certifications reflect years of training, continued education, and dedication to providing safe, evidence-based treatment.</p>
+        </div>
+      </div>
+
+      <div class="testimonials-slider-wrapper">
+        <button class="testimonial-nav testimonial-nav-prev" aria-label="Previous testimonials">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="testimonial-nav testimonial-nav-next" aria-label="Next testimonials">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+        <div class="testimonials-cards-grid" id="testimonialsSlider">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            ⭐ ⭐ ⭐ ⭐ ⭐
+          </div>
+          <p class="testimonial-quote">"Exceptional care and expertise"</p>
+          <p class="testimonial-text">Dr. Swamy's expertise in pediatric intensive care gave us confidence during our child's critical condition. His compassionate approach and clear communication made a difficult time more manageable.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">P</div>
+            <span class="author-name">Priya K.</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            ⭐ ⭐ ⭐ ⭐ ⭐
+          </div>
+          <p class="testimonial-quote">"Highly skilled and caring"</p>
+          <p class="testimonial-text">We are grateful for Dr. Swamy's dedication and expertise. His international training and experience truly show in the quality of care he provides. Our baby received the best possible treatment.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">R</div>
+            <span class="author-name">Rajesh M.</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            ⭐ ⭐ ⭐ ⭐ ⭐
+          </div>
+          <p class="testimonial-quote">"Outstanding pediatric specialist"</p>
+          <p class="testimonial-text">Dr. Swamy's years of experience in PICU made all the difference for our son. He took time to explain everything clearly and ensured we were comfortable with every decision.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <span class="author-name">Sneha R.</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            ⭐ ⭐ ⭐ ⭐ ⭐
+          </div>
+          <p class="testimonial-quote">"Trusted and professional"</p>
+          <p class="testimonial-text">The level of care and attention our daughter received was exceptional. Dr. Swamy's UK training and expertise in critical care gave us peace of mind during a stressful time.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <span class="author-name">Arun S.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq-section">
+    <div class="container">
+      <div class="faq-layout">
+        <div class="faq-content">
+          <p class="section-overline">FREQUENTLY ASKED QUESTIONS</p>
+          <h2 class="faq-title">Got Questions? We Have <span class="highlight">Answers</span></h2>
+          <div class="faq-accordion">
+            {faqs.map((faq, index) => (
+              <details class="faq-item">
+                <summary class="faq-question">
+                  <span>{faq.question}</span>
+                  <span class="faq-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </span>
+                </summary>
+                <div class="faq-answer">
+                  <p>{faq.answer}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+        <div class="faq-image">
+          <img src={generalPediatricsImg.src} alt="Pediatric Care Consultation" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+  <!-- Appointment Form Section -->
+  <section class="section appointment-section">
+    <div class="container">
+      <div class="appointment-grid">
+        <div class="appointment-info">
+          <p class="section-overline">BOOK APPOINTMENT</p>
+          <h2 class="section-title">Schedule Your <span class="title-highlight">Visit</span></h2>
+          <p class="section-desc">Fill out the form and our team will confirm your appointment slot via phone or WhatsApp.</p>
+
+          <!-- Contact Info -->
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="info-text">
+                <h4>Location</h4>
+                <p>Cloud Nine Hospital, Jayanagar, Bangalore - 560041</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="info-text">
+                <h4>Phone</h4>
+                <p><a href="tel:+919999999999">+91 99999 99999</a></p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="info-text">
+                <h4>Hours</h4>
+                <p>Mon-Sat: 10AM-1PM & 5PM-8:30PM</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.5896477543146!2d77.58131731482185!3d12.930177990880745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15b277a93807%3A0x88518f37b6c8e50d!2sCloud%20Nine%20Hospital%20-%20Jayanagar!5e0!3m2!1sen!2sin!4v1633000000000!5m2!1sen!2sin"
+              width="100%"
+              height="250"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              title="Cloud Nine Hospital Jayanagar Location">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="form-wrapper">
+          <AppointmentForm />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <p class="cta-overline">BOOK YOUR APPOINTMENT TODAY</p>
+        <h2 class="cta-title">Ready to give your child the best pediatric care?</h2>
+        <p class="cta-description">Schedule an appointment with Dr. Sanjay D Swamy for comprehensive, compassionate pediatric care. Same-day sick visits available.</p>
+        <div class="cta-buttons">
+          <a href="/appointment" class="btn btn-cta-primary">Book Appointment</a>
+          <a href="tel:+919999999999" class="btn btn-cta-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call: +91 99999 99999
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('testimonialsSlider');
+    const prevBtn = document.querySelector('.testimonial-nav-prev');
+    const nextBtn = document.querySelector('.testimonial-nav-next');
+
+    if (slider && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        const scrollAmount = slider.clientWidth * 0.8;
+        slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        const scrollAmount = slider.clientWidth * 0.8;
+        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+    }
+
+    // Awards Slider
+    const awardsSlider = document.getElementById('awardsSlider');
+    const awardsPrevBtn = document.querySelector('.awards-nav-prev');
+    const awardsNextBtn = document.querySelector('.awards-nav-next');
+
+    if (awardsSlider && awardsPrevBtn && awardsNextBtn) {
+      awardsPrevBtn.addEventListener('click', () => {
+        const scrollAmount = awardsSlider.clientWidth * 0.6;
+        awardsSlider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+
+      awardsNextBtn.addEventListener('click', () => {
+        const scrollAmount = awardsSlider.clientWidth * 0.6;
+        awardsSlider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+    }
+  });
+</script>
 
 <style>
-  .page-header {
-    background-color: var(--color-primary);
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 8rem 0 5rem;
     color: white;
-    padding: 3rem 0;
-    text-align: center;
+    position: relative;
+    overflow: hidden;
   }
 
-  .content {
-    max-width: 800px;
-    margin: 0 auto;
+  .hero::before,
+  .hero::after {
+    content: '';
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+    pointer-events: none;
   }
 
-  h2 { color: var(--color-primary-dark); margin-bottom: 1.5rem; }
-  h3 { margin-top: 2rem; margin-bottom: 1rem; }
-  
-  .benefits-list {
-    list-style: none;
-    margin-bottom: 2rem;
+  .hero::before {
+    width: 500px;
+    height: 500px;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
-  .benefits-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    align-items: center;
+  .hero::after {
+    width: 600px;
+    height: 600px;
+    right: -150px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
-  .benefits-list li::before {
-    content: "✓";
-    color: var(--color-success);
-    margin-right: 0.75rem;
-    font-weight: bold;
-  }
-
-  .bg-light { background-color: var(--color-background); }
-
-  .faq-list {
-    max-width: 800px;
-    margin: 0 auto;
+  .hero-grid {
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    max-width: 550px;
+  }
+
+  .overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0A97B0;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    color: #333;
+    margin: 0 0 1.5rem 0;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .hero h1 .highlight {
+    color: #7DD3FC;
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin: 0 0 2rem 0;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-num {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #333;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-hero-primary {
+    background-color: #0A97B0;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .btn-hero-primary:hover {
+    background-color: #088a9f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .btn-hero-outline {
+    border: 2px solid #0A97B0;
+    color: #0A97B0;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+
+  .btn-hero-outline:hover {
+    border-color: #0A97B0;
+    background: #0A97B0;
+    color: white;
+  }
+
+  .hero-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-frame {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    background: #0A97B0;
+    border-radius: 12px;
+    z-index: 0;
+  }
+
+  .hero-image img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  /* Quick Stats Section */
+  .quick-stats-section {
+    background: #E3F2FD;
+    padding: 2.5rem 0;
+    margin-top: -1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .quick-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
 
-  .faq-item {
+  .quick-stat-card {
     background: white;
     padding: 1.5rem;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-sm);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
   }
 
-  .faq-item h3 {
+  .quick-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  .stat-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .stat-content h3 {
+    font-size: 1rem;
+    color: #333;
+    margin: 0 0 0.25rem 0;
+    font-weight: 600;
+  }
+
+  .stat-content p {
+    font-size: 0.875rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Section Styles */
+  .section {
+    padding: 3rem 0;
+  }
+
+  .about-section {
+    background: white;
+  }
+
+  .services-section {
+    background: #E3F2FD;
+  }
+
+  .age-section {
+    background: white;
+  }
+
+  .conditions-section {
+    background: #E3F2FD;
+  }
+
+  .process-section {
+    background: white;
+  }
+
+  .faq-section {
+    background: #f8fafc;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 2rem;
+    align-items: start;
+  }
+
+  .section-header.centered {
+    display: block;
+    text-align: center;
+  }
+
+  .section-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0A97B0;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin: 0;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .highlight {
+    color: #0A97B0;
+  }
+
+  .section-subtitle-block {
+    padding-top: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .centered-subtitle {
+    max-width: 700px;
+    margin: 1rem auto 0;
+  }
+
+  /* About Section */
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    color: #666;
+    line-height: 1.8;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .about-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .benefits-card {
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    padding: 2.5rem;
+    border-radius: 12px;
+    color: white;
+    position: sticky;
+    top: 2rem;
+  }
+
+  .benefits-card h3 {
+    font-size: 1.5rem;
+    margin: 0 0 1.5rem 0;
+    color: white;
+  }
+
+  .benefits-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .benefits-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    font-size: 0.95rem;
+  }
+
+  .benefits-list li:last-child {
+    border-bottom: none;
+  }
+
+  .benefits-list li svg {
+    flex-shrink: 0;
+    color: #7DD3FC;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  }
+
+  .service-image {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+  }
+
+  .service-card:hover .service-image img {
+    transform: scale(1.05);
+  }
+
+  .service-content {
+    padding: 1rem;
+  }
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  }
+
+  .service-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+
+  .service-card h3 {
+    font-size: 1.15rem;
+    color: #333;
+    margin: 0 0 0.75rem 0;
+    font-weight: 600;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Age Timeline */
+  .age-timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    padding-top: 2rem;
+  }
+
+  .timeline-line {
+    position: absolute;
+    top: calc(2rem + 28px);
+    left: calc(8.33% + 28px);
+    right: calc(8.33% + 28px);
+    height: 3px;
+    background: linear-gradient(90deg, #0A5EB0 0%, #0A97B0 50%, #0A5EB0 100%);
+    z-index: 0;
+  }
+
+  .age-timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-node {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(10, 94, 176, 0.3);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+
+  .age-timeline-item:hover .timeline-node {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(10, 94, 176, 0.4);
+  }
+
+  .node-number {
+    font-size: 0.9rem;
+  }
+
+  .age-content {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    width: 100%;
+    position: relative;
+  }
+
+  .age-content::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: white;
+    transform: translateX(-50%) rotate(45deg);
+    box-shadow: -2px -2px 4px rgba(0,0,0,0.03);
+  }
+
+  .age-timeline-item:hover .age-content {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  }
+
+  .age-badge {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .age-content h3 {
+    font-size: 1.15rem;
+    color: #333;
+    margin: 0 0 0.75rem 0;
+    font-weight: 700;
+  }
+
+  .age-content p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Conditions Grid */
+  .conditions-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .condition-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+
+  .condition-tag:hover {
+    background: #0A5EB0;
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .condition-tag:hover svg {
+    color: #7DD3FC;
+  }
+
+  .condition-tag svg {
+    color: #0A97B0;
+    flex-shrink: 0;
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .process-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    position: relative;
+  }
+
+  .process-card::after {
+    content: '';
+    position: absolute;
+    top: 2.5rem;
+    right: -0.75rem;
+    width: 1.5rem;
+    height: 2px;
+    background: #0A97B0;
+  }
+
+  .process-card:last-child::after {
+    display: none;
+  }
+
+  .process-step {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #E3F2FD;
+    margin-bottom: 1rem;
+  }
+
+  .process-card h3 {
     font-size: 1.1rem;
-    margin-top: 0;
+    color: #333;
+    margin: 0 0 0.75rem 0;
+    font-weight: 600;
+  }
+
+  .process-card p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* FAQ Section */
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .faq-content {
+    padding-right: 1rem;
+  }
+
+  .faq-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin: 0 0 2.5rem 0;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question:hover {
+    color: #0A5EB0;
+  }
+
+  .faq-question span:first-child {
+    flex: 1;
+    padding-right: 1rem;
+  }
+
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0A97B0;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-item[open] .faq-question {
+    color: #0A5EB0;
+    font-weight: 600;
+  }
+
+  .faq-answer {
+    padding: 0 0 1.25rem 0;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .faq-answer p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .faq-image {
+    position: sticky;
+    top: 2rem;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  }
+
+  .faq-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before,
+  .cta-section::after {
+    content: '';
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cta-section::before {
+    width: 400px;
+    height: 400px;
+    left: -150px;
+    top: -150px;
+  }
+
+  .cta-section::after {
+    width: 300px;
+    height: 300px;
+    right: -100px;
+    bottom: -100px;
+  }
+
+  .cta-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    color: white;
+    margin: 0 0 1rem 0;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .cta-description {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.7;
+    margin: 0 0 2rem 0;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-cta-primary {
+    background-color: white;
+    color: #0A5EB0;
+    padding: 1rem 2.5rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .btn-cta-primary:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .btn-cta-secondary {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .btn-cta-secondary:hover {
+    background-color: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .age-timeline {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      row-gap: 3rem;
+    }
+
+    .timeline-line {
+      display: none;
+    }
+
+    .age-timeline-item {
+      position: relative;
+    }
+
+    .age-timeline-item::after {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(50% + 36px);
+      width: calc(100% - 36px);
+      height: 3px;
+      background: linear-gradient(90deg, #0A5EB0, #0A97B0);
+    }
+
+    .age-timeline-item:nth-child(3n + 1)::after,
+    .age-timeline-item:nth-child(4)::after {
+      display: block;
+    }
+
+    .age-timeline-item:nth-child(3n)::after,
+    .age-timeline-item:last-child::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .age-timeline {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      row-gap: 2.5rem;
+    }
+
+    .age-timeline-item::after {
+      display: none;
+    }
+
+    .age-timeline-item:nth-child(odd)::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 28px;
+      left: calc(50% + 36px);
+      width: calc(100% - 36px);
+      height: 3px;
+      background: linear-gradient(90deg, #0A5EB0, #0A97B0);
+    }
+
+    .age-timeline-item:last-child::after {
+      display: none;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-card::after {
+      display: none;
+    }
+
+    .quick-stats-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 6rem 0 4rem;
+      text-align: center;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .hero-content {
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-stats {
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .hero-actions {
+      justify-content: center;
+    }
+
+    .hero-image {
+      order: -1;
+    }
+
+    .image-frame {
+      right: 50%;
+      transform: translateX(50%);
+    }
+
+    .hero::before,
+    .hero::after {
+      display: none;
+    }
+
+    .quick-stats-section {
+      margin-top: 0;
+    }
+
+    .section-header {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .section-subtitle-block {
+      padding-top: 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+
+    .benefits-card {
+      position: static;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .age-timeline {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding-left: 2rem;
+    }
+
+    .age-timeline::before {
+      content: '';
+      position: absolute;
+      left: 2rem;
+      top: 2rem;
+      bottom: 2rem;
+      width: 3px;
+      background: linear-gradient(180deg, #0A5EB0 0%, #0A97B0 50%, #0A5EB0 100%);
+      transform: translateX(26px);
+    }
+
+    .age-timeline-item {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1rem 0;
+    }
+
+    .age-timeline-item::after {
+      display: none !important;
+    }
+
+    .timeline-node {
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+    }
+
+    .age-content {
+      margin-top: 0;
+      text-align: left;
+      flex: 1;
+    }
+
+    .age-content::before {
+      display: none;
+    }
+
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .faq-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .faq-content {
+      padding-right: 0;
+    }
+
+    .faq-title {
+      font-size: 2rem;
+    }
+
+    .faq-image {
+      position: static;
+      order: -1;
+      max-height: 350px;
+    }
+
+    .faq-image img {
+      height: 350px;
+      object-fit: cover;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  /* About Doctor Styles */
+  .about-doctor-section {
+    background: white;
+  }
+  .about-doctor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .about-doctor-image-wrapper {
+    position: relative;
+    padding: 1rem;
+  }
+  .about-image-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #0A97B0;
+    border-radius: 12px;
+    transform: translate(-15px, -15px);
+    z-index: 0;
+  }
+  .about-doctor-image {
+    position: relative;
+    z-index: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  }
+  .about-doctor-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .about-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0A97B0;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .about-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  .about-highlight {
+    color: #0A97B0;
+  }
+  .about-desc {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  .stat-box {
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    border-left: 4px solid #0A97B0;
+  }
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0A5EB0;
     margin-bottom: 0.5rem;
-    color: var(--color-primary-dark);
+  }
+  .stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .stat-desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.5;
+  }
+  .about-actions {
+    display: flex;
+    gap: 1rem;
+  }
+  .btn-primary {
+    background-color: #0A97B0;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .btn-primary:hover {
+    background-color: #088a9f;
+    transform: translateY(-2px);
+  }
+  .btn-outline {
+    border: 2px solid #0A97B0;
+    color: #0A97B0;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .btn-outline:hover {
+    background-color: #0A97B0;
+    color: white;
+  }
+
+  /* Awards Styles */
+  .awards-section {
+    background: #f8fafc;
+    padding: 3rem 0;
+    overflow: hidden;
+  }
+  .awards-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 2rem;
+    align-items: start;
+  }
+  .awards-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0A97B0;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .awards-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin: 0;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+  .awards-highlight {
+    color: #0A97B0;
+  }
+  .awards-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    padding-top: 2rem;
+    margin: 0;
+  }
+  .awards-slider-wrapper {
+    position: relative;
+    padding: 0 1rem;
+  }
+  .awards-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 2rem;
+    padding: 1rem 0.5rem 2rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .awards-slider::-webkit-scrollbar {
+    display: none;
+  }
+  .award-card {
+    flex: 0 0 300px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+  .award-card:hover {
+    transform: translateY(-5px);
+  }
+  .award-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+  .awards-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .awards-nav:hover {
+    background: #0A97B0;
+    color: white;
+    border-color: #0A97B0;
+  }
+  .awards-nav-prev {
+    left: -24px;
+  }
+  .awards-nav-next {
+    right: -24px;
+  }
+
+  /* Testimonials Styles */
+  .testimonials-section {
+    background: white;
+    padding: 4rem 0;
+  }
+  .testimonials-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 2rem;
+    align-items: center;
+  }
+  .testimonials-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0A97B0;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .testimonials-main-title {
+    font-size: 2.5rem;
+    color: #333;
+    line-height: 1.3;
+    margin: 0;
+    font-weight: 700;
+  }
+  .testimonials-highlight {
+    color: #0A97B0;
+  }
+  .testimonials-statement p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+  }
+  .testimonials-slider-wrapper {
+    position: relative;
+  }
+  .testimonials-cards-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 2rem;
+    padding: 1rem 0.5rem 2rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .testimonials-cards-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .testimonial-card {
+    flex: 0 0 350px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+  .testimonial-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transform: translateY(-5px);
+    border-color: #0A97B0;
+  }
+  .testimonial-stars {
+    color: #fbbf24;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  .testimonial-quote {
+    font-size: 1.25rem;
+    color: #0A5EB0;
+    font-family: serif;
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .testimonial-text {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    background: #0A97B0;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .author-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+  }
+  .testimonial-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .testimonial-nav:hover {
+    background: #0A97B0;
+    color: white;
+    border-color: #0A97B0;
+  }
+  .testimonial-nav-prev {
+    left: -24px;
+  }
+  .testimonial-nav-next {
+    right: -24px;
+  }
+
+  @media (max-width: 968px) {
+    .about-doctor-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .about-doctor-image-wrapper {
+      order: -1;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-card {
+      flex: 0 0 300px;
+    }
+    .awards-header,
+    .testimonials-header {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .awards-subtitle,
+    .testimonials-statement {
+      padding-top: 0;
+    }
+  }
+  /* Appointment Section */
+  .appointment-section {
+    background: white;
+    padding: 3rem 0;
+  }
+
+  .appointment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .title-highlight {
+    color: #0A97B0;
+  }
+
+  /* Contact Info List */
+  .contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+  }
+
+  .contact-info-item:hover {
+    border-color: #0A5EB0;
+    background: white;
+  }
+
+  .info-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .info-text h4 {
+    font-size: 0.85rem;
+    color: #0A97B0;
+    margin: 0 0 0.25rem 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .info-text p {
+    font-size: 0.95rem;
+    color: #333;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .info-text a {
+    color: #0A5EB0;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .info-text a:hover {
+    color: #0A97B0;
+  }
+
+  .form-wrapper {
+    position: sticky;
+    top: 2rem;
+  }
+
+  /* Map Container */
+  .map-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+  }
+
+  .map-container iframe {
+    display: block;
+  }
+
+  @media (max-width: 1024px) {
+    .appointment-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .form-wrapper {
+      position: static;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-info-item {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
   }
 </style>

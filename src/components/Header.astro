@@ -1,10 +1,12 @@
 ---
+import mainLogo from '../assets/logo/sanja-main-logo.png';
+import whiteLogo from '../assets/logo/sanjay-swami-logo-white-ok.png';
 ---
 <header class="header" id="mainHeader">
   <div class="container header-container">
     <a href="/" class="logo">
-      <span class="logo-name">Dr. Sanjay Swamy</span>
-      <span class="logo-sub">Chief Paediatric Intensivist</span>
+      <img src={whiteLogo.src} alt="Dr. Sanjay Swamy - Chief Paediatric Intensivist" class="logo-img logo-white" />
+      <img src={mainLogo.src} alt="Dr. Sanjay Swamy - Chief Paediatric Intensivist" class="logo-img logo-color" />
     </a>
 
     <nav class="nav-desktop">
@@ -90,33 +92,38 @@
 
   .logo {
     display: flex;
-    flex-direction: column;
-    line-height: 1.2;
+    align-items: center;
     text-decoration: none;
+    min-width: 280px;
+    position: relative;
+    height: 80px;
   }
 
-  .logo-name {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: white;
-    transition: color 0.3s ease;
+  .logo-img {
+    height: auto;
+    width: 280px;
+    max-height: 80px;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
   }
 
-  .logo-sub {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: color 0.3s ease;
+  .logo-white {
+    opacity: 1;
   }
 
-  .header.scrolled .logo-name {
-    color: #0A5EB0;
+  .logo-color {
+    opacity: 0;
   }
 
-  .header.scrolled .logo-sub {
-    color: #6b7280;
+  .header.scrolled .logo-white {
+    opacity: 0;
+  }
+
+  .header.scrolled .logo-color {
+    opacity: 1;
   }
 
   .nav-desktop {
@@ -280,12 +287,13 @@
       padding: 0 1rem;
     }
 
-    .logo-name {
-      font-size: 1.15rem;
+    .logo {
+      min-width: 180px;
     }
 
-    .logo-sub {
-      font-size: 0.65rem;
+    .logo-img {
+      height: auto;
+      width: 180px;
     }
   }
 </style>
