@@ -1026,53 +1026,33 @@ const benefits = [
 
   .service-card {
     background: white;
+    padding: 2rem;
     border-radius: 12px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
   }
 
   .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
   }
 
   .service-image {
     height: 200px;
-    width: 100%;
     overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
   }
 
   .service-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
     transition: transform 0.5s ease;
   }
 
   .service-card:hover .service-image img {
-    transform: scale(1.05);
-  }
-
-  .service-content {
-    padding: 1rem;
-  }
-    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-  }
-
-  .service-icon {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    color: white;
+    transform: scale(1.1);
   }
 
   .service-card h3 {

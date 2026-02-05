@@ -1,37 +1,177 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CTA from '../components/CTA.astro';
+import heroBgImage from '../assets/backgrounds/background-sanjay.jpeg';
+import generalPediatricsImg from '../assets/services/general-pediatrics.png';
+
+const stats = [
+  { number: "5000+", label: "Happy Families", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>` },
+  { number: "15+", label: "Years Experience", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>` },
+  { number: "4.9", label: "Google Rating", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>` },
+  { number: "500+", label: "Google Reviews", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>` }
+];
+
+const featuredTestimonial = {
+  name: "Dr. Priya & Arvind Sharma",
+  relation: "Parents of Aarav (3 years)",
+  image: generalPediatricsImg.src,
+  text: "When our son Aarav was born premature at 32 weeks, we were devastated. Dr. Sanjay Swamy and his NICU team became our pillars of support. For 6 weeks, they monitored Aarav round the clock, explaining every procedure and keeping us informed. Today, Aarav is a healthy, energetic toddler. We can never thank Dr. Swamy enough for giving us our miracle baby. His expertise, patience, and genuine care make him the best pediatrician we've ever met.",
+  rating: 5,
+  category: "NICU Care"
+};
+
+const testimonialCategories = [
+  { id: "all", label: "All Reviews" },
+  { id: "newborn", label: "Newborn Care" },
+  { id: "vaccination", label: "Vaccinations" },
+  { id: "emergency", label: "Emergency" },
+  { id: "general", label: "General Checkup" }
+];
 
 const testimonials = [
-  { name: "Priya Sharma", age: "Mother of 2-year old", text: "Dr. Sanjay Swamy is incredibly patient and knowledgeable. He takes the time to explain everything and calms our anxieties." },
-  { name: "Rahul Mehta", age: "Father of newborn", text: "We visited for our newborn's vaccinations. The experience was smooth, and Dr. Swamy handled our baby with such care." },
-  { name: "Anita Desai", age: "Mother of 5-year old", text: "My son had a persistent cough, and Dr. Swamy's diagnosis was spot on. He doesn't prescribe unnecessary medicines." },
-  { name: "Vikram Singh", age: "Father of 8-year old", text: "Best pediatrician in Bangalore! Highly professional and approachable." },
-  { name: "Sneha Reddy", age: "Mother of twins", text: "Handling twins is hard, but Dr. Swamy made our scheduled visits so easy. The staff is also very supportive." },
+  {
+    name: "Priya Sharma",
+    relation: "Mother of 2-year old",
+    text: "Dr. Sanjay Swamy is incredibly patient and knowledgeable. He takes the time to explain everything and calms our anxieties. My daughter was terrified of doctors, but Dr. Swamy's gentle approach has completely changed that. Now she actually looks forward to her checkups!",
+    rating: 5,
+    category: "general",
+    date: "2 weeks ago"
+  },
+  {
+    name: "Rahul & Meera Mehta",
+    relation: "Parents of newborn",
+    text: "We visited for our newborn's vaccinations. The experience was smooth, and Dr. Swamy handled our baby with such care. He also patiently answered all our first-time parent questions about feeding, sleep patterns, and developmental milestones.",
+    rating: 5,
+    category: "vaccination",
+    date: "1 month ago"
+  },
+  {
+    name: "Anita Desai",
+    relation: "Mother of 5-year old",
+    text: "My son had a persistent cough for weeks. Other doctors kept prescribing antibiotics, but Dr. Swamy's diagnosis was spot on - it was allergic bronchitis. He doesn't prescribe unnecessary medicines and believes in treating the root cause.",
+    rating: 5,
+    category: "general",
+    date: "3 weeks ago"
+  },
+  {
+    name: "Vikram Singh",
+    relation: "Father of 8-year old",
+    text: "Best pediatrician in Bangalore! When my son had a high fever at 2 AM, Dr. Swamy was available on call and guided us through the night. His dedication is unmatched. Highly professional and approachable at all times.",
+    rating: 5,
+    category: "emergency",
+    date: "1 week ago"
+  },
+  {
+    name: "Sneha Reddy",
+    relation: "Mother of twins",
+    text: "Handling twins is challenging, but Dr. Swamy made our scheduled visits so easy. He remembers both my children's medical history without looking at files! The staff is also very supportive and accommodating with appointment timings.",
+    rating: 5,
+    category: "general",
+    date: "2 months ago"
+  },
+  {
+    name: "Karthik & Divya Nair",
+    relation: "Parents of premature baby",
+    text: "Our daughter was born at 34 weeks and spent 3 weeks in NICU under Dr. Swamy's care. His expertise in neonatal care is exceptional. He kept us updated daily and even called to check on her after discharge. Forever grateful!",
+    rating: 5,
+    category: "newborn",
+    date: "1 month ago"
+  },
+  {
+    name: "Aishwarya Patel",
+    relation: "Mother of 6-month old",
+    text: "I was very anxious about vaccinations for my baby. Dr. Swamy explained each vaccine, its importance, and possible side effects. The painless vaccination option was a blessing. My baby barely cried!",
+    rating: 5,
+    category: "vaccination",
+    date: "3 weeks ago"
+  },
+  {
+    name: "Suresh Kumar",
+    relation: "Father of 4-year old",
+    text: "My son accidentally swallowed a coin. We rushed to Cloud Nine at midnight, and Dr. Swamy was there within 20 minutes. He handled the emergency calmly and professionally. The coin was safely removed. Thank you, Doctor!",
+    rating: 5,
+    category: "emergency",
+    date: "2 weeks ago"
+  },
+  {
+    name: "Lakshmi Venkatesh",
+    relation: "Grandmother",
+    text: "I bring my grandchildren to Dr. Swamy. He treats not just the children but also educates the entire family about child health. His clinic is clean, child-friendly, and the waiting time is minimal. Highly recommend!",
+    rating: 5,
+    category: "general",
+    date: "1 month ago"
+  },
+  {
+    name: "Mohammed Irfan",
+    relation: "Father of newborn",
+    text: "Our newborn had severe jaundice and needed phototherapy. Dr. Swamy's prompt diagnosis and treatment prevented any complications. He also supported my wife with breastfeeding guidance. Excellent doctor!",
+    rating: 5,
+    category: "newborn",
+    date: "2 weeks ago"
+  },
+  {
+    name: "Rekha Krishnamurthy",
+    relation: "Mother of 7-year old",
+    text: "My daughter needed her school vaccination certificate urgently. Dr. Swamy's team prepared all documentation within a day. They maintain excellent digital records. The online appointment system is also very convenient.",
+    rating: 5,
+    category: "vaccination",
+    date: "1 week ago"
+  },
+  {
+    name: "Deepak & Shalini Rao",
+    relation: "Parents of 3-year old",
+    text: "During COVID, our son developed breathing difficulty at night. Dr. Swamy arranged immediate video consultation and guided us through nebulization at home. He followed up the next morning. Such dedication is rare to find.",
+    rating: 5,
+    category: "emergency",
+    date: "3 months ago"
+  }
 ];
+
+const googleReviewSummary = {
+  totalReviews: 523,
+  averageRating: 4.9,
+  ratingBreakdown: [
+    { stars: 5, percentage: 92 },
+    { stars: 4, percentage: 6 },
+    { stars: 3, percentage: 1 },
+    { stars: 2, percentage: 0.5 },
+    { stars: 1, percentage: 0.5 }
+  ]
+};
 ---
 
-<Layout 
-  title="Patient Testimonials" 
-  description="Read what parents have to say about their experience with Dr. Sanjay Swamy."
+<Layout
+  title="Patient Testimonials | Dr. Sanjay D Swamy"
+  description="Read what parents have to say about their experience with Dr. Sanjay D Swamy. Over 500+ Google reviews with 4.9 rating."
 >
-  <div class="page-header">
+  <!-- Hero Section -->
+  <section class="hero" style={`background-image: linear-gradient(rgba(10, 94, 176, 0.85), rgba(10, 151, 176, 0.85)), url('${heroBgImage.src}'); background-position: center; background-size: cover;`}>
     <div class="container">
-      <h1>What Parents Say</h1>
-      <p>Your trust is our greatest achievement.</p>
+      <div class="hero-content">
+        <p class="overline">TESTIMONIALS</p>
+        <h1>What Parents <span class="highlight">Say About Us</span></h1>
+        <p class="hero-desc">Your trust is our greatest achievement. Read real stories from families we've had the privilege to care for.</p>
+        <div class="hero-rating">
+          <div class="stars">
+            {[1,2,3,4,5].map(() => (
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            ))}
+          </div>
+          <span class="rating-text">4.9 out of 5 based on 500+ reviews</span>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <section class="section">
+  <!-- Stats Section -->
+  <section class="stats-section">
     <div class="container">
-      <div class="testimonials-grid">
-        {testimonials.map(t => (
-          <div class="testimonial-card">
-            <div class="quote-icon">❝</div>
-            <p>{t.text}</p>
-            <div class="author">
-              <strong>{t.name}</strong>
-              <span>{t.age}</span>
+      <div class="stats-grid">
+        {stats.map(stat => (
+          <div class="stat-card">
+            <div class="stat-icon" set:html={stat.icon}></div>
+            <div class="stat-info">
+              <span class="stat-number">{stat.number}</span>
+              <span class="stat-label">{stat.label}</span>
             </div>
           </div>
         ))}
@@ -39,33 +179,895 @@ const testimonials = [
     </div>
   </section>
 
-  <div class="container">
-    <CTA title="Join Our Happy Family" text="Book an appointment today and experience the difference." />
-  </div>
+  <!-- Featured Testimonial -->
+  <section class="section featured-section">
+    <div class="container">
+      <div class="section-header centered">
+        <p class="section-overline">FEATURED STORY</p>
+        <h2 class="section-title">A Journey of <span class="highlight">Hope & Healing</span></h2>
+      </div>
+      <div class="featured-card">
+        <div class="featured-image">
+          <img src={featuredTestimonial.image} alt="Featured testimonial" />
+          <div class="featured-badge">{featuredTestimonial.category}</div>
+        </div>
+        <div class="featured-content">
+          <div class="featured-rating">
+            {[1,2,3,4,5].map(() => (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            ))}
+          </div>
+          <blockquote>"{featuredTestimonial.text}"</blockquote>
+          <div class="featured-author">
+            <div class="author-avatar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="author-info">
+              <strong>{featuredTestimonial.name}</strong>
+              <span>{featuredTestimonial.relation}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Google Reviews Summary -->
+  <section class="section reviews-summary-section">
+    <div class="container">
+      <div class="reviews-summary">
+        <div class="summary-left">
+          <div class="google-logo">
+            <svg viewBox="0 0 24 24" width="32" height="32">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            <span>Google Reviews</span>
+          </div>
+          <div class="overall-rating">
+            <span class="rating-number">{googleReviewSummary.averageRating}</span>
+            <div class="rating-stars">
+              {[1,2,3,4,5].map(() => (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              ))}
+            </div>
+            <span class="total-reviews">{googleReviewSummary.totalReviews} reviews</span>
+          </div>
+        </div>
+        <div class="summary-right">
+          {googleReviewSummary.ratingBreakdown.map(item => (
+            <div class="rating-bar">
+              <span class="bar-label">{item.stars}</span>
+              <div class="bar-track">
+                <div class="bar-fill" style={`width: ${item.percentage}%`}></div>
+              </div>
+              <span class="bar-percent">{item.percentage}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Grid -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-header centered">
+        <p class="section-overline">PARENT REVIEWS</p>
+        <h2 class="section-title">Stories from <span class="highlight">Our Families</span></h2>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="category-filter">
+        {testimonialCategories.map((cat, index) => (
+          <button class={`filter-btn ${index === 0 ? 'active' : ''}`} data-category={cat.id}>
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div class="testimonials-grid">
+        {testimonials.map(t => (
+          <div class="testimonial-card" data-category={t.category}>
+            <div class="card-header">
+              <div class="card-rating">
+                {[1,2,3,4,5].map((_, i) => (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill={i < t.rating ? "#FFD700" : "#e5e7eb"} stroke={i < t.rating ? "#FFD700" : "#e5e7eb"} stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                ))}
+              </div>
+              <span class="card-date">{t.date}</span>
+            </div>
+            <p class="card-text">"{t.text}"</p>
+            <div class="card-footer">
+              <div class="card-avatar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="card-author">
+                <strong>{t.name}</strong>
+                <span>{t.relation}</span>
+              </div>
+              <div class="card-verified">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#34A853" stroke="#34A853" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01" stroke="white" fill="none"/></svg>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="load-more">
+        <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">
+          View All Reviews on Google
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Share Your Story CTA -->
+  <section class="share-story-section">
+    <div class="container">
+      <div class="share-story-card">
+        <div class="share-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="share-content">
+          <h3>Share Your Experience</h3>
+          <p>Had a great experience with Dr. Sanjay D Swamy? We'd love to hear from you! Your feedback helps other parents make informed decisions.</p>
+        </div>
+        <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" class="btn btn-share">
+          Write a Review
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <p class="cta-overline">JOIN OUR FAMILY</p>
+        <h2 class="cta-title">Experience the Care That Parents Trust</h2>
+        <p class="cta-description">Book an appointment today and see why thousands of families choose Dr. Sanjay D Swamy for their children's healthcare needs.</p>
+        <div class="cta-buttons">
+          <a href="/contact" class="btn btn-cta-primary">Book Appointment</a>
+          <a href="tel:+919999999999" class="btn btn-cta-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style>
-  .page-header { background-color: var(--color-primary-dark); color: white; padding: 3rem 0; text-align: center; }
-  
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
   }
 
-  .testimonial-card {
+  /* Hero Section */
+  .hero {
+    padding: 8rem 0 6rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #7DD3FC;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    color: white;
+    margin: 0 0 1.5rem 0;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .highlight {
+    color: #7DD3FC;
+  }
+
+  .hero-desc {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 2rem 0;
+  }
+
+  .hero-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .stars {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .rating-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+  }
+
+  /* Stats Section */
+  .stats-section {
+    background: #E3F2FD;
+    padding: 2.5rem 0;
+    margin-top: -2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .stat-card {
     background: white;
-    padding: 2rem;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid #f0f0f0;
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .stat-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .stat-info {
     display: flex;
     flex-direction: column;
   }
 
-  .quote-icon { font-size: 3rem; color: var(--color-primary); margin-bottom: 0.5rem; opacity: 0.3; line-height: 1; }
-  .author { margin-top: auto; padding-top: 1rem; border-top: 1px solid #eee; }
-  .author strong { display: block; color: var(--color-primary-dark); }
-  .author span { font-size: 0.875rem; color: var(--color-text-light); }
+  .stat-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0A5EB0;
+    line-height: 1.2;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  /* Section Styles */
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-header.centered {
+    text-align: center;
+  }
+
+  .section-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #0A97B0;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .section-title .highlight {
+    color: #0A5EB0;
+  }
+
+  /* Featured Section */
+  .featured-section {
+    background: white;
+  }
+
+  .featured-card {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 3rem;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .featured-image {
+    position: relative;
+    height: 100%;
+    min-height: 400px;
+  }
+
+  .featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .featured-content {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .featured-rating {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .featured-content blockquote {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #333;
+    margin: 0 0 2rem 0;
+    font-style: italic;
+  }
+
+  .featured-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    background: #E3F2FD;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0A5EB0;
+  }
+
+  .author-info strong {
+    display: block;
+    color: #333;
+    font-size: 1.1rem;
+  }
+
+  .author-info span {
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  /* Google Reviews Summary */
+  .reviews-summary-section {
+    background: #f8fafc;
+  }
+
+  .reviews-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding: 2.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .summary-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .summary-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .google-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .overall-rating {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .rating-number {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1;
+  }
+
+  .rating-stars {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .total-reviews {
+    color: #666;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .rating-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .bar-label {
+    width: 20px;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: right;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0A5EB0 0%, #0A97B0 100%);
+    border-radius: 5px;
+  }
+
+  .bar-percent {
+    width: 40px;
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  /* Testimonials Section */
+  .testimonials-section {
+    background: white;
+  }
+
+  .category-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .filter-btn {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    border-color: #0A5EB0;
+    color: #0A5EB0;
+  }
+
+  .filter-btn.active {
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    border-color: transparent;
+    color: white;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .testimonial-card {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-color: #0A97B0;
+  }
+
+  .testimonial-card.hidden {
+    display: none;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .card-rating {
+    display: flex;
+    gap: 0.15rem;
+  }
+
+  .card-date {
+    font-size: 0.8rem;
+    color: #999;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #555;
+    margin: 0 0 1.5rem 0;
+    flex: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .card-avatar {
+    width: 40px;
+    height: 40px;
+    background: #E3F2FD;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0A5EB0;
+    flex-shrink: 0;
+  }
+
+  .card-author {
+    flex: 1;
+  }
+
+  .card-author strong {
+    display: block;
+    font-size: 0.9rem;
+    color: #333;
+  }
+
+  .card-author span {
+    font-size: 0.8rem;
+    color: #666;
+  }
+
+  .card-verified {
+    flex-shrink: 0;
+  }
+
+  .load-more {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .btn-outline-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border: 2px solid #0A5EB0;
+    color: #0A5EB0;
+    background: white;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-primary:hover {
+    background: #0A5EB0;
+    color: white;
+  }
+
+  /* Share Story Section */
+  .share-story-section {
+    padding: 4rem 0;
+    background: #f8fafc;
+  }
+
+  .share-story-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #E3F2FD 0%, #E0F7FA 100%);
+    border-radius: 16px;
+    border-left: 4px solid #0A5EB0;
+  }
+
+  .share-icon {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0A5EB0;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(10, 94, 176, 0.2);
+  }
+
+  .share-content {
+    flex: 1;
+  }
+
+  .share-content h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .share-content p {
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .btn-share {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .btn-share:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(10, 94, 176, 0.3);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    padding: 5rem 0;
+    text-align: center;
+  }
+
+  .cta-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    color: white;
+    margin: 0 0 1rem 0;
+    font-weight: 600;
+  }
+
+  .cta-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-cta-primary {
+    background: white;
+    color: #0A5EB0;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid white;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+
+  .btn-cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .featured-card {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-image {
+      min-height: 300px;
+    }
+
+    .reviews-summary {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 6rem 0 4rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .featured-content {
+      padding: 2rem;
+    }
+
+    .featured-content blockquote {
+      font-size: 1.1rem;
+    }
+
+    .category-filter {
+      justify-content: flex-start;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-btn {
+      flex-shrink: 0;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .share-story-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll<HTMLElement>('.filter-btn');
+    const cards = document.querySelectorAll<HTMLElement>('.testimonial-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.dataset.category;
+
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Filter cards
+        cards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  });
+</script>

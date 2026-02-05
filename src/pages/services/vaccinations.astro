@@ -5,13 +5,19 @@ import vaccinationsImg from '../../assets/services/vaccinations.png';
 import award2 from '../../assets/awards/sanjay-award-2.jpeg';
 import AppointmentForm from '../../components/AppointmentForm.astro';
 
+import acuteIllnessImg from '../../assets/services/acute-illness.png';
+import growthImg from '../../assets/services/growth-monitoring.png';
+import wellChildImg from '../../assets/services/well-child-visit.png';
+import generalPediatricsImg from '../../assets/services/general-pediatrics.png';
+import emergencyImg from '../../assets/services/emergency-care.png';
+
 const services = [
-  { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 2-5 5 9 9 5-5-9-9z"/><path d="m9.5 7-5 5 9 9 5-5-9-9z"/></svg>`, title: "Routine Immunizations", description: "Complete IAP-recommended vaccination schedule for infants, children, and adolescents from birth through 18 years." },
-  { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>`, title: "Catch-Up Vaccination", description: "Customized catch-up schedules for children who missed doses or are behind on their vaccination schedule." },
-  { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`, title: "Travel Vaccinations", description: "Pre-travel immunizations including Hepatitis A & B, Typhoid, Yellow Fever, and other destination-specific vaccines." },
-  { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`, title: "Annual Flu Shots", description: "Seasonal influenza vaccination for children 6 months and older to protect against flu complications." },
-  { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>`, title: "HPV Vaccination", description: "Human Papillomavirus vaccine for adolescents to prevent cervical cancer and other HPV-related diseases." },
-  { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`, title: "Painless Vaccinations", description: "Combination vaccines and pain management techniques to minimize discomfort and needle anxiety." }
+  { image: vaccinationsImg.src, title: "Routine Immunizations", description: "Complete IAP-recommended vaccination schedule for infants, children, and adolescents from birth through 18 years." },
+  { image: growthImg.src, title: "Catch-Up Vaccination", description: "Customized catch-up schedules for children who missed doses or are behind on their vaccination schedule." },
+  { image: emergencyImg.src, title: "Travel Vaccinations", description: "Pre-travel immunizations including Hepatitis A & B, Typhoid, Yellow Fever, and other destination-specific vaccines." },
+  { image: acuteIllnessImg.src, title: "Annual Flu Shots", description: "Seasonal influenza vaccination for children 6 months and older to protect against flu complications." },
+  { image: generalPediatricsImg.src, title: "HPV Vaccination", description: "Human Papillomavirus vaccine for adolescents to prevent cervical cancer and other HPV-related diseases." },
+  { image: wellChildImg.src, title: "Painless Vaccinations", description: "Combination vaccines and pain management techniques to minimize discomfort and needle anxiety." }
 ];
 
 const vaccineSchedule = [
@@ -95,7 +101,19 @@ const benefits = ["IAP-recommended schedule", "Painless vaccination options", "C
         <div class="section-title-block"><p class="section-overline">OUR SERVICES</p><h2 class="section-title">Comprehensive <span class="highlight">Vaccination Services</span></h2></div>
         <div class="section-subtitle-block"><p class="section-subtitle">From routine immunizations to travel vaccines, we provide complete vaccination care for children of all ages.</p></div>
       </div>
-      <div class="services-grid">{services.map(s => (<div class="service-card"><div class="service-icon" set:html={s.icon}></div><h3>{s.title}</h3><p>{s.description}</p></div>))}</div>
+      <div class="services-grid">
+        {services.map(s => (
+          <div class="service-card">
+            <div class="service-image">
+              <img src={s.image} alt={s.title} />
+            </div>
+            <div class="service-content">
+              <h3>{s.title}</h3>
+              <p>{s.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -236,7 +254,9 @@ const benefits = ["IAP-recommended schedule", "Painless vaccination options", "C
   .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .service-card { background: white; padding: 2rem; border-radius: 12px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
   .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
-  .service-icon { width: 64px; height: 64px; background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: white; }
+  .service-image { height: 200px; overflow: hidden; border-radius: 8px; margin-bottom: 1.5rem; }
+  .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .service-card:hover .service-image img { transform: scale(1.1); }
   .service-card h3 { font-size: 1.15rem; color: #333; margin: 0 0 0.75rem 0; font-weight: 600; }
   .service-card p { font-size: 0.9rem; color: #666; line-height: 1.6; margin: 0; }
   .schedule-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
