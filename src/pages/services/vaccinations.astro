@@ -1,74 +1,323 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import CTA from '../../components/CTA.astro';
+import heroBgImage from '../../assets/backgrounds/background-sanjay.jpeg';
+import vaccinationsImg from '../../assets/services/vaccinations.png';
+import award2 from '../../assets/awards/sanjay-award-2.jpeg';
+import AppointmentForm from '../../components/AppointmentForm.astro';
+
+const services = [
+  { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 2-5 5 9 9 5-5-9-9z"/><path d="m9.5 7-5 5 9 9 5-5-9-9z"/></svg>`, title: "Routine Immunizations", description: "Complete IAP-recommended vaccination schedule for infants, children, and adolescents from birth through 18 years." },
+  { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>`, title: "Catch-Up Vaccination", description: "Customized catch-up schedules for children who missed doses or are behind on their vaccination schedule." },
+  { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`, title: "Travel Vaccinations", description: "Pre-travel immunizations including Hepatitis A & B, Typhoid, Yellow Fever, and other destination-specific vaccines." },
+  { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`, title: "Annual Flu Shots", description: "Seasonal influenza vaccination for children 6 months and older to protect against flu complications." },
+  { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>`, title: "HPV Vaccination", description: "Human Papillomavirus vaccine for adolescents to prevent cervical cancer and other HPV-related diseases." },
+  { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`, title: "Painless Vaccinations", description: "Combination vaccines and pain management techniques to minimize discomfort and needle anxiety." }
+];
+
+const vaccineSchedule = [
+  { age: "Birth", vaccines: "BCG, Hepatitis B (1st dose), OPV Zero Dose", color: "#0A5EB0" },
+  { age: "6 Weeks", vaccines: "DTaP, IPV, Hib, Hepatitis B (2nd), PCV, Rotavirus", color: "#0A97B0" },
+  { age: "10 Weeks", vaccines: "DTaP, IPV, Hib, PCV, Rotavirus", color: "#0A5EB0" },
+  { age: "14 Weeks", vaccines: "DTaP, IPV, Hib, PCV, Rotavirus", color: "#0A97B0" },
+  { age: "6 Months", vaccines: "Hepatitis B (3rd dose), Influenza (annual)", color: "#0A5EB0" },
+  { age: "9 Months", vaccines: "MMR (1st dose), Typhoid Conjugate", color: "#0A97B0" },
+  { age: "12 Months", vaccines: "Hepatitis A (1st dose), PCV Booster", color: "#0A5EB0" },
+  { age: "15 Months", vaccines: "MMR (2nd dose), Varicella (1st dose)", color: "#0A97B0" }
+];
+
+const conditions = ["Diphtheria", "Tetanus", "Pertussis (Whooping Cough)", "Polio", "Hepatitis A & B", "Measles", "Mumps", "Rubella", "Chickenpox", "Rotavirus", "Pneumococcal Disease", "Haemophilus Influenzae", "Typhoid", "Influenza (Flu)", "Human Papillomavirus (HPV)", "Meningococcal Disease"];
 
 const faqs = [
-  { question: "Is the vaccination schedule safe?", answer: "Yes, we strictly follow the IAP (Indian Academy of Pediatrics) schedule which is scientifically proven safe and effective." },
-  { question: "What if my child misses a dose?", answer: "Don't worry. Contact us immediately, and we will plan a catch-up schedule for your child." },
+  { question: "Is the vaccination schedule safe?", answer: "Yes, we strictly follow the IAP (Indian Academy of Pediatrics) schedule which is scientifically proven safe and effective. Vaccines undergo rigorous testing before approval." },
+  { question: "What if my child misses a vaccine dose?", answer: "Don't worry! Contact us immediately and we'll create a personalized catch-up schedule for your child. It's never too late to get back on track." },
+  { question: "Are there any side effects?", answer: "Most side effects are mild and temporary - slight fever, soreness at injection site, or mild fussiness. Serious reactions are extremely rare. We monitor children after vaccination." },
+  { question: "Can my child get vaccinated if they have a cold?", answer: "Mild illnesses usually don't prevent vaccination. However, if your child has a high fever or severe illness, we may postpone. Our doctor will assess each case." },
+  { question: "Which optional vaccines do you recommend?", answer: "We recommend Influenza (annual), Varicella, Hepatitis A, Typhoid Conjugate, and HPV for adolescents. We discuss the benefits of each based on your child's needs." },
+  { question: "Do you maintain cold chain for vaccines?", answer: "Absolutely! We maintain strict cold chain protocols with temperature-monitored refrigerators. All vaccines are stored and handled according to manufacturer guidelines." }
 ];
+
+const benefits = ["IAP-recommended schedule", "Painless vaccination options", "Cold chain maintained", "Digital vaccination records", "Reminder system for doses", "Expert pediatric care"];
 ---
 
-<Layout 
-  title="Vaccinations & Immunizations" 
-  description="Complete vaccination services for children in Bangalore. Safe, timely, and painless immunizations."
->
-  <div class="page-header">
+<Layout title="Child Vaccinations & Immunizations in Bangalore | Dr. Sanjay D Swamy" description="Complete vaccination services for children in Bangalore. IAP-recommended immunization schedule, painless vaccinations, catch-up schedules. Expert pediatric vaccination by Dr. Sanjay D Swamy.">
+  <section class="hero" style={`background-image: linear-gradient(rgba(10, 94, 176, 0.3), rgba(10, 94, 176, 0.25)), url('${heroBgImage.src}'); background-position: center; background-size: cover;`}>
     <div class="container">
-      <h1>Vaccinations & Immunizations</h1>
-      <p>Protecting your child against preventable diseases.</p>
-    </div>
-  </div>
-
-  <section class="section">
-    <div class="container content">
-      <h2>Importance of Immunization</h2>
-      <p>Vaccines are the most effective way to protect your child from serious diseases. We provide a comprehensive range of vaccinations, ensuring your child stays healthy and safe.</p>
-      
-      <h3>Key Vaccines Offered:</h3>
-      <ul class="benefits-list">
-        <li>BCG, Hepatitis B, Polio (Birth)</li>
-        <li>DTP, Hib, Rotavirus (6, 10, 14 Weeks)</li>
-        <li>Measles, Mumps, Rubella (NMR)</li>
-        <li>Typhoid, Chickenpox, Hepatitis A</li>
-        <li>Influenza (Annual Flu Shot)</li>
-        <li>HPV (Cervical Cancer Vaccine)</li>
-      </ul>
-
-      <h3>Our Vaccination Protocol</h3>
-      <p>We maintain cold chain integrity for all vaccines and ensure a sterile, comfortable environment to minimize pain and anxiety for your child.</p>
-    </div>
-  </section>
-
-  <section class="section bg-light">
-    <div class="container">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-list">
-        {faqs.map(faq => (
-          <div class="faq-item">
-            <h3>{faq.question}</h3>
-            <p>{faq.answer}</p>
+      <div class="hero-grid">
+        <div class="hero-content">
+          <p class="overline">PROTECT YOUR CHILD</p>
+          <h1>Vaccinations & <span style="color: white;">Immunizations</span></h1>
+          <p class="hero-desc">Comprehensive vaccination services following IAP guidelines. Protect your child from preventable diseases with safe, timely immunizations in a child-friendly environment.</p>
+          <div class="hero-stats">
+            <div class="stat"><span class="stat-num">IAP</span><span class="stat-label">Guidelines Followed</span></div>
+            <div class="stat"><span class="stat-num">18+</span><span class="stat-label">Years Experience</span></div>
+            <div class="stat"><span class="stat-num">0-18</span><span class="stat-label">Years Age Group</span></div>
           </div>
-        ))}
+          <div class="hero-actions">
+            <a href="/appointment" class="btn btn-hero-primary">Book Vaccination</a>
+            <a href="tel:+919999999999" class="btn btn-hero-outline">Call Now</a>
+          </div>
+        </div>
+        <div class="hero-image"><div class="image-frame"></div><img src={vaccinationsImg.src} alt="Child Vaccinations in Bangalore" loading="eager"></div>
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <CTA />
-  </div>
+  <section class="quick-stats-section">
+    <div class="container">
+      <div class="quick-stats-grid">
+        <div class="quick-stat-card"><div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="stat-content"><h3>Safe Vaccines</h3><p>WHO & IAP approved vaccines only</p></div></div>
+        <div class="quick-stat-card"><div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg></div><div class="stat-content"><h3>Cold Chain Maintained</h3><p>Proper vaccine storage guaranteed</p></div></div>
+        <div class="quick-stat-card"><div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="stat-content"><h3>Dose Reminders</h3><p>Never miss a vaccination date</p></div></div>
+      </div>
+    </div>
+  </section>
 
-</Layout>
+  <section class="section about-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-block"><p class="section-overline">ABOUT VACCINATIONS</p><h2 class="section-title">Protecting Your Child <span class="highlight">From Day One</span></h2></div>
+        <div class="section-subtitle-block"><p class="section-subtitle">Vaccines are the most effective way to protect your child from serious diseases. We provide complete immunization services following the latest IAP guidelines.</p></div>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Immunization is one of the most important things you can do to protect your child's health. Vaccines have eliminated or significantly reduced many dangerous childhood diseases that were once common.</p>
+          <p>At our clinic, we follow the Indian Academy of Pediatrics (IAP) immunization schedule, using only WHO-approved vaccines stored under strict cold chain conditions. We also offer painless vaccination options to minimize discomfort.</p>
+          <p>Our digital record system ensures you receive timely reminders for upcoming doses, and we provide vaccination certificates for school and travel requirements.</p>
+        </div>
+        <div class="benefits-card"><h3>Why Vaccinate With Us</h3><ul class="benefits-list">{benefits.map(b => (<li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>{b}</span></li>))}</ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-block"><p class="section-overline">OUR SERVICES</p><h2 class="section-title">Comprehensive <span class="highlight">Vaccination Services</span></h2></div>
+        <div class="section-subtitle-block"><p class="section-subtitle">From routine immunizations to travel vaccines, we provide complete vaccination care for children of all ages.</p></div>
+      </div>
+      <div class="services-grid">{services.map(s => (<div class="service-card"><div class="service-icon" set:html={s.icon}></div><h3>{s.title}</h3><p>{s.description}</p></div>))}</div>
+    </div>
+  </section>
+
+  <section class="section schedule-section">
+    <div class="container">
+      <div class="section-header centered"><p class="section-overline">IAP VACCINATION SCHEDULE</p><h2 class="section-title">Recommended <span class="highlight">Immunization Timeline</span></h2><p class="section-subtitle centered-subtitle">Following the Indian Academy of Pediatrics guidelines for optimal protection.</p></div>
+      <div class="schedule-grid">{vaccineSchedule.map((item, index) => (<div class="schedule-card"><div class="schedule-number" style={`background-color: ${item.color}`}>{String(index + 1).padStart(2, '0')}</div><h3>{item.age}</h3><p>{item.vaccines}</p></div>))}</div>
+    </div>
+  </section>
+
+  <section class="section about-doctor-section">
+    <div class="container">
+      <div class="about-doctor-grid">
+        <div class="about-doctor-image-wrapper"><div class="about-image-frame"></div><div class="about-doctor-image"><img src={award2.src} alt="Dr. Sanjay D Swamy" width="500" height="600"></div></div>
+        <div class="about-doctor-content">
+          <p class="about-overline">YOUR CHILD'S PEDIATRICIAN</p>
+          <h2 class="about-title">Dr. Sanjay D <span class="about-highlight">Swamy</span></h2>
+          <p class="about-desc">With 18+ years of pediatric experience, Dr. Sanjay D Swamy ensures every child receives the right vaccines at the right time. His expertise and gentle approach make vaccination a stress-free experience.</p>
+          <div class="about-stats">
+            <div class="stat-box"><div class="stat-number">18+</div><div class="stat-label">Years Experience</div><div class="stat-desc">Expert pediatric care with focus on preventive health.</div></div>
+            <div class="stat-box"><div class="stat-number">UK</div><div class="stat-label">Advanced Training</div><div class="stat-desc">International training at Birmingham Children's Hospital.</div></div>
+          </div>
+          <div class="about-actions"><a href="/appointment" class="btn btn-primary">Book Vaccination</a><a href="/about" class="btn btn-outline">Full Profile</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section conditions-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-block"><p class="section-overline">DISEASES PREVENTED</p><h2 class="section-title">Vaccines Protect <span class="highlight">Against</span></h2></div>
+        <div class="section-subtitle-block"><p class="section-subtitle">Immunization prevents these serious and potentially life-threatening diseases.</p></div>
+      </div>
+      <div class="conditions-grid">{conditions.map(c => (<div class="condition-tag"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>{c}</span></div>))}</div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="faq-layout">
+        <div class="faq-content">
+          <p class="section-overline">FAQ</p>
+          <h2 class="faq-title">Vaccination <span class="highlight">Questions</span></h2>
+          <div class="faq-accordion">{faqs.map(f => (<details class="faq-item"><summary class="faq-question"><span>{f.question}</span><span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></summary><div class="faq-answer"><p>{f.answer}</p></div></details>))}</div>
+        </div>
+        <div class="faq-image"><img src={vaccinationsImg.src} alt="Child Vaccination" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section appointment-section">
+    <div class="container">
+      <div class="appointment-grid">
+        <div class="appointment-info">
+          <p class="section-overline">BOOK APPOINTMENT</p>
+          <h2 class="section-title">Schedule <span class="title-highlight">Vaccination</span></h2>
+          <p class="section-desc">Book your child's vaccination appointment today. We'll send reminders for upcoming doses.</p>
+          <div class="contact-info-list">
+            <div class="contact-info-item"><div class="info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="info-text"><h4>Location</h4><p>Cloud Nine Hospital, Jayanagar, Bangalore</p></div></div>
+            <div class="contact-info-item"><div class="info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="info-text"><h4>Phone</h4><p><a href="tel:+919999999999">+91 99999 99999</a></p></div></div>
+            <div class="contact-info-item"><div class="info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="info-text"><h4>Hours</h4><p>Mon-Sat: 10AM-1PM & 5PM-8:30PM</p></div></div>
+          </div>
+          <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.5896477543146!2d77.58131731482185!3d12.930177990880745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15b277a93807%3A0x88518f37b6c8e50d!2sCloud%20Nine%20Hospital%20-%20Jayanagar!5e0!3m2!1sen!2sin!4v1633000000000!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" title="Location"></iframe></div>
+        </div>
+        <div class="form-wrapper"><AppointmentForm /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <p class="cta-overline">PROTECT YOUR CHILD TODAY</p>
+        <h2 class="cta-title">Don't delay - vaccinate on time!</h2>
+        <p class="cta-description">Every dose counts in protecting your child from serious diseases. Book your vaccination appointment today.</p>
+        <div class="cta-buttons">
+          <a href="/appointment" class="btn btn-cta-primary">Book Vaccination</a>
+          <a href="tel:+919999999999" class="btn btn-cta-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call: +91 99999 99999</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
 <style>
-  .page-header { background-color: var(--color-primary); color: white; padding: 3rem 0; text-align: center; }
-  .content { max-width: 800px; margin: 0 auto; }
-  h2 { color: var(--color-primary-dark); margin-bottom: 1.5rem; }
-  h3 { margin-top: 2rem; margin-bottom: 1rem; }
-  .benefits-list { list-style: none; margin-bottom: 2rem; }
-  .benefits-list li { padding: 0.5rem 0; border-bottom: 1px solid #eee; display: flex; align-items: center; }
-  .benefits-list li::before { content: "✓"; color: var(--color-success); margin-right: 0.75rem; font-weight: bold; }
-  .bg-light { background-color: var(--color-background); }
-  .faq-list { max-width: 800px; margin: 0 auto; display: grid; gap: 1.5rem; }
-  .faq-item { background: white; padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
-  .faq-item h3 { font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem; color: var(--color-primary-dark); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  .hero { padding: 8rem 0 5rem; color: white; position: relative; overflow: hidden; }
+  .hero::before, .hero::after { content: ''; position: absolute; border: 1px solid rgba(255,255,255,0.08); border-radius: 50%; pointer-events: none; }
+  .hero::before { width: 500px; height: 500px; right: -100px; top: 50%; transform: translateY(-50%); }
+  .hero::after { width: 600px; height: 600px; right: -150px; top: 50%; transform: translateY(-50%); }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+  .hero-content { max-width: 550px; }
+  .overline { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.15em; color: #0A97B0; font-weight: 600; margin-bottom: 1rem; }
+  .hero h1 { font-size: 3.5rem; color: #333; margin: 0 0 1.5rem 0; font-weight: 700; line-height: 1.2; }
+  .hero-desc { font-size: 1.1rem; line-height: 1.7; color: #555; margin: 0 0 2rem 0; }
+  .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2rem; padding: 1.5rem 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+  .stat { display: flex; flex-direction: column; }
+  .stat-num { font-size: 1.75rem; font-weight: 700; color: #333; }
+  .stat-label { font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-hero-primary { background-color: #0A97B0; color: white; padding: 1rem 2rem; font-weight: 600; border-radius: 6px; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
+  .btn-hero-primary:hover { background-color: #088a9f; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  .btn-hero-outline { border: 2px solid #0A97B0; color: #0A97B0; padding: 1rem 2rem; font-weight: 600; border-radius: 6px; text-decoration: none; display: inline-block; transition: all 0.3s ease; background: transparent; }
+  .btn-hero-outline:hover { border-color: #0A97B0; background: #0A97B0; color: white; }
+  .hero-image { position: relative; display: flex; justify-content: center; }
+  .image-frame { position: absolute; top: -15px; right: -15px; width: 100%; max-width: 450px; height: 100%; background: #0A97B0; border-radius: 12px; z-index: 0; }
+  .hero-image img { position: relative; z-index: 1; width: 100%; max-width: 450px; height: auto; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+  .quick-stats-section { background: #E3F2FD; padding: 2.5rem 0; margin-top: -1rem; position: relative; z-index: 2; }
+  .quick-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .quick-stat-card { background: white; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; gap: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease; }
+  .quick-stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+  .stat-icon { width: 56px; height: 56px; background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; }
+  .stat-content h3 { font-size: 1rem; color: #333; margin: 0 0 0.25rem 0; font-weight: 600; }
+  .stat-content p { font-size: 0.875rem; color: #666; margin: 0; line-height: 1.4; }
+  .section { padding: 3rem 0; }
+  .about-section { background: white; }
+  .services-section { background: #E3F2FD; }
+  .schedule-section { background: white; }
+  .conditions-section { background: #E3F2FD; }
+  .faq-section { background: #f8fafc; }
+  .section-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 2rem; align-items: start; }
+  .section-header.centered { display: block; text-align: center; }
+  .section-overline { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.15em; color: #0A97B0; font-weight: 600; margin-bottom: 0.75rem; }
+  .section-title { font-size: 2.5rem; color: #333; margin: 0; line-height: 1.3; font-weight: 600; }
+  .highlight { color: #0A97B0; }
+  .section-subtitle-block { padding-top: 2rem; }
+  .section-subtitle { font-size: 1.05rem; color: #666; line-height: 1.6; margin: 0; }
+  .centered-subtitle { max-width: 700px; margin: 1rem auto 0; }
+  .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .about-text p { font-size: 1.05rem; color: #666; line-height: 1.8; margin: 0 0 1.5rem 0; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .benefits-card { background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%); padding: 2.5rem; border-radius: 12px; color: white; position: sticky; top: 2rem; }
+  .benefits-card h3 { font-size: 1.5rem; margin: 0 0 1.5rem 0; color: white; }
+  .benefits-list { list-style: none; margin: 0; padding: 0; }
+  .benefits-list li { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.15); font-size: 0.95rem; }
+  .benefits-list li:last-child { border-bottom: none; }
+  .benefits-list li svg { flex-shrink: 0; color: #7DD3FC; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .service-card { background: white; padding: 2rem; border-radius: 12px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+  .service-icon { width: 64px; height: 64px; background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: white; }
+  .service-card h3 { font-size: 1.15rem; color: #333; margin: 0 0 0.75rem 0; font-weight: 600; }
+  .service-card p { font-size: 0.9rem; color: #666; line-height: 1.6; margin: 0; }
+  .schedule-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .schedule-card { background: #f8fafc; padding: 2rem; border-radius: 12px; text-align: center; transition: all 0.3s ease; }
+  .schedule-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+  .schedule-number { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1rem; margin: 0 auto 1.25rem; }
+  .schedule-card h3 { font-size: 1.1rem; color: #333; margin: 0 0 0.75rem 0; font-weight: 600; }
+  .schedule-card p { font-size: 0.85rem; color: #666; line-height: 1.6; margin: 0; }
+  .conditions-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .condition-tag { display: flex; align-items: center; gap: 0.5rem; background: white; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.9rem; color: #333; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease; }
+  .condition-tag:hover { background: #0A5EB0; color: white; transform: translateY(-2px); }
+  .condition-tag:hover svg { color: #7DD3FC; }
+  .condition-tag svg { color: #0A97B0; flex-shrink: 0; }
+  .faq-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .faq-content { padding-right: 1rem; }
+  .faq-title { font-size: 2.5rem; color: #333; margin: 0 0 2.5rem 0; line-height: 1.2; font-weight: 700; }
+  .faq-accordion { display: flex; flex-direction: column; }
+  .faq-item { border-bottom: 1px solid #e5e7eb; }
+  .faq-item:first-child { border-top: 1px solid #e5e7eb; }
+  .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; cursor: pointer; list-style: none; font-size: 1rem; color: #333; font-weight: 500; transition: color 0.3s ease; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question:hover { color: #0A5EB0; }
+  .faq-question span:first-child { flex: 1; padding-right: 1rem; }
+  .faq-icon { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; color: #0A97B0; flex-shrink: 0; transition: transform 0.3s ease; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-item[open] .faq-question { color: #0A5EB0; font-weight: 600; }
+  .faq-answer { padding: 0 0 1.25rem 0; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+  .faq-answer p { font-size: 0.95rem; color: #666; line-height: 1.7; margin: 0; }
+  .faq-image { position: sticky; top: 2rem; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+  .faq-image img { width: 100%; height: auto; display: block; object-fit: cover; }
+  .cta-section { background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%); padding: 5rem 0; position: relative; overflow: hidden; }
+  .cta-section::before, .cta-section::after { content: ''; position: absolute; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; pointer-events: none; }
+  .cta-section::before { width: 400px; height: 400px; left: -150px; top: -150px; }
+  .cta-section::after { width: 300px; height: 300px; right: -100px; bottom: -100px; }
+  .cta-content { text-align: center; position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .cta-overline { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.8); font-weight: 600; margin-bottom: 1rem; }
+  .cta-title { font-size: 2.5rem; color: white; margin: 0 0 1rem 0; line-height: 1.3; font-weight: 600; }
+  .cta-description { font-size: 1.1rem; color: rgba(255,255,255,0.9); line-height: 1.7; margin: 0 0 2rem 0; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-cta-primary { background-color: white; color: #0A5EB0; padding: 1rem 2.5rem; font-weight: 600; border-radius: 6px; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
+  .btn-cta-primary:hover { background-color: #f0f0f0; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  .btn-cta-secondary { background-color: transparent; border: 2px solid white; color: white; padding: 1rem 2rem; font-weight: 600; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; }
+  .btn-cta-secondary:hover { background-color: rgba(255,255,255,0.1); transform: translateY(-2px); }
+  .about-doctor-section { background: white; }
+  .about-doctor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .about-doctor-image-wrapper { position: relative; padding: 1rem; }
+  .about-image-frame { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 2px solid #0A97B0; border-radius: 12px; transform: translate(-15px, -15px); z-index: 0; }
+  .about-doctor-image { position: relative; z-index: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+  .about-doctor-image img { width: 100%; height: auto; display: block; object-fit: cover; }
+  .about-overline { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.15em; color: #0A97B0; font-weight: 600; margin-bottom: 1rem; }
+  .about-title { font-size: 2.5rem; color: #333; margin: 0 0 1.5rem 0; line-height: 1.2; font-weight: 600; }
+  .about-highlight { color: #0A97B0; }
+  .about-desc { font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 2.5rem; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+  .stat-box { padding: 1.5rem; background: #f8fafc; border-radius: 12px; border-left: 4px solid #0A97B0; }
+  .stat-number { font-size: 2.5rem; font-weight: 700; color: #0A5EB0; margin-bottom: 0.5rem; }
+  .stat-label { font-size: 0.9rem; font-weight: 600; color: #333; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .stat-desc { font-size: 0.85rem; color: #666; line-height: 1.5; }
+  .about-actions { display: flex; gap: 1rem; }
+  .btn-primary { background-color: #0A97B0; color: white; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+  .btn-primary:hover { background-color: #088a9f; transform: translateY(-2px); }
+  .btn-outline { border: 2px solid #0A97B0; color: #0A97B0; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+  .btn-outline:hover { background-color: #0A97B0; color: white; }
+  .appointment-section { background: white; padding: 3rem 0; }
+  .appointment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .title-highlight { color: #0A97B0; }
+  .section-desc { font-size: 1.05rem; color: #666; line-height: 1.6; margin-bottom: 2rem; }
+  .contact-info-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+  .contact-info-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: #f8fafc; border-radius: 10px; border: 1px solid #e5e7eb; transition: all 0.3s ease; }
+  .contact-info-item:hover { border-color: #0A5EB0; background: white; }
+  .info-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; }
+  .info-text h4 { font-size: 0.85rem; color: #0A97B0; margin: 0 0 0.25rem 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  .info-text p { font-size: 0.95rem; color: #333; margin: 0; line-height: 1.4; }
+  .info-text a { color: #0A5EB0; text-decoration: none; font-weight: 500; }
+  .info-text a:hover { color: #0A97B0; }
+  .form-wrapper { position: sticky; top: 2rem; }
+  .map-container { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e5e7eb; }
+  .map-container iframe { display: block; }
+  @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } .schedule-grid { grid-template-columns: repeat(2, 1fr); } .quick-stats-grid { grid-template-columns: 1fr; gap: 1rem; } .appointment-grid { grid-template-columns: 1fr; gap: 3rem; } .form-wrapper { position: static; } }
+  @media (max-width: 968px) { .about-doctor-grid { grid-template-columns: 1fr; gap: 3rem; } .about-doctor-image-wrapper { order: -1; max-width: 500px; margin: 0 auto; } }
+  @media (max-width: 768px) { .hero { padding: 6rem 0 4rem; text-align: center; } .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; } .hero-content { margin: 0 auto; max-width: 100%; } .hero h1 { font-size: 2.5rem; } .hero-stats { justify-content: center; gap: 2rem; } .hero-actions { justify-content: center; } .hero-image { order: -1; } .image-frame { right: 50%; transform: translateX(50%); } .hero::before, .hero::after { display: none; } .quick-stats-section { margin-top: 0; } .section-header { grid-template-columns: 1fr; gap: 1.5rem; } .section-subtitle-block { padding-top: 0; } .section-title { font-size: 2rem; } .about-content { grid-template-columns: 1fr; } .benefits-card { position: static; } .services-grid { grid-template-columns: 1fr; } .schedule-grid { grid-template-columns: 1fr; } .faq-layout { grid-template-columns: 1fr; gap: 2.5rem; } .faq-content { padding-right: 0; } .faq-title { font-size: 2rem; } .faq-image { position: static; order: -1; max-height: 350px; } .faq-image img { height: 350px; object-fit: cover; } .cta-title { font-size: 2rem; } .cta-buttons { flex-direction: column; align-items: center; } .contact-info-item { flex-direction: column; align-items: center; text-align: center; } }
 </style>
+</Layout>

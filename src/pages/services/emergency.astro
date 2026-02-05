@@ -1,156 +1,156 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import heroBgImage from '../../assets/backgrounds/background-sanjay.jpeg';
-import picuImg from '../../assets/services/picu.png';
+import emergencyImg from '../../assets/services/emergency-care.png';
 import award2 from '../../assets/awards/sanjay-award-2.jpeg';
 import AppointmentForm from '../../components/AppointmentForm.astro';
 
 const services = [
   {
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
-    title: "24/7 Critical Care Monitoring",
-    description: "Round-the-clock intensive monitoring with advanced equipment and dedicated nursing staff for critically ill children requiring constant observation."
+    title: "24/7 Emergency Services",
+    description: "Round-the-clock pediatric emergency care with immediate triage and treatment for all childhood emergencies requiring urgent attention."
   },
   {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>`,
-    title: "Advanced Respiratory Support",
-    description: "State-of-the-art ventilator management including conventional and high-frequency oscillatory ventilation for respiratory failure and ARDS."
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    title: "Acute Illness Management",
+    description: "Rapid assessment and treatment of sudden onset illnesses including high fever, severe infections, and respiratory distress in children."
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>`,
+    title: "Trauma & Injury Care",
+    description: "Expert management of pediatric trauma including fractures, head injuries, burns, and accidental injuries with child-friendly approach."
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    title: "Poison Control",
+    description: "Immediate response to accidental poisoning and toxic ingestions with specialized pediatric toxicology protocols and rapid intervention."
   },
   {
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`,
-    title: "Hemodynamic Management",
-    description: "Expert management of shock, cardiac dysfunction, and circulatory support with advanced invasive and non-invasive monitoring techniques."
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>`,
-    title: "Sepsis & Infection Management",
-    description: "Rapid identification and aggressive treatment of severe infections and septic shock with evidence-based protocols and antimicrobial stewardship."
+    title: "Allergic Emergencies",
+    description: "Rapid treatment of severe allergic reactions, anaphylaxis, and acute asthma attacks with advanced life support capabilities."
   },
   {
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6"/><path d="M12 17v6"/><path d="m5.6 5.6 4.3 4.3"/><path d="m14.1 14.1 4.3 4.3"/><path d="M1 12h6"/><path d="M17 12h6"/><path d="m5.6 18.4 4.3-4.3"/><path d="m14.1 9.9 4.3-4.3"/></svg>`,
-    title: "Neurological Critical Care",
-    description: "Specialized care for children with severe neurological conditions including traumatic brain injury, status epilepticus, and encephalopathy."
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`,
-    title: "Post-Surgical ICU Care",
-    description: "Comprehensive post-operative care for children following major surgeries including cardiac, neurosurgical, and complex abdominal procedures."
+    title: "Seizure Management",
+    description: "Emergency care for convulsions and seizures with immediate stabilization, continuous monitoring, and comprehensive neurological assessment."
   }
 ];
 
 const capabilities = [
   {
-    title: "ECMO Support",
-    description: "Extracorporeal membrane oxygenation for life-threatening cardiac and respiratory failure.",
+    title: "Rapid Response Team",
+    description: "Dedicated pediatric emergency team trained in advanced life support available 24/7 for immediate intervention.",
     color: "#0A5EB0"
   },
   {
-    title: "Renal Replacement",
-    description: "Continuous renal replacement therapy (CRRT) and hemodialysis for acute kidney injury.",
+    title: "Advanced Diagnostics",
+    description: "On-site X-ray, ultrasound, and CT scan facilities for quick and accurate diagnosis in emergency situations.",
     color: "#0A97B0"
   },
   {
-    title: "Plasma Exchange",
-    description: "Therapeutic plasma exchange for autoimmune conditions and toxin removal.",
+    title: "Pediatric Resuscitation",
+    description: "Fully equipped resuscitation bay with age-appropriate equipment and medications for pediatric emergencies.",
     color: "#0A5EB0"
   },
   {
-    title: "Advanced Airway",
-    description: "Expert airway management including difficult intubations and tracheostomy care.",
+    title: "Short Stay Unit",
+    description: "Observation unit for children requiring monitoring after emergency treatment before safe discharge home.",
     color: "#0A97B0"
   }
 ];
 
 const conditions = [
-  "Respiratory Failure & ARDS",
-  "Septic Shock",
-  "Severe Pneumonia",
-  "Status Epilepticus",
-  "Traumatic Brain Injury",
-  "Cardiac Failure",
-  "Multi-organ Dysfunction",
-  "Severe Dengue",
-  "Acute Liver Failure",
-  "Diabetic Ketoacidosis",
-  "Poisoning & Overdose",
-  "Post-Surgical Complications",
-  "Severe Asthma",
-  "Meningitis & Encephalitis",
+  "High Fever & Febrile Seizures",
+  "Severe Respiratory Distress",
+  "Acute Asthma Attacks",
+  "Severe Allergic Reactions",
+  "Head Injuries",
+  "Fractures & Dislocations",
+  "Burns & Scalds",
+  "Accidental Poisoning",
   "Severe Dehydration",
-  "Burns & Trauma"
+  "Drowning Incidents",
+  "Foreign Body Ingestion",
+  "Severe Abdominal Pain",
+  "Convulsions & Seizures",
+  "Diabetic Emergencies",
+  "Animal Bites",
+  "Electric Shock"
 ];
 
 const faqs = [
   {
-    question: "When does a child need PICU admission?",
-    answer: "Children need PICU admission when they have life-threatening conditions requiring intensive monitoring and intervention. This includes severe breathing difficulty, shock, altered consciousness, multi-organ failure, post-major surgery, or any condition requiring mechanical ventilation or continuous medication infusions."
+    question: "When should I bring my child to the emergency room?",
+    answer: "Seek emergency care for difficulty breathing, high fever in infants under 3 months, severe allergic reactions, head injuries with loss of consciousness, seizures, severe bleeding, signs of dehydration, poisoning, or any condition where your child appears very ill or unresponsive."
   },
   {
-    question: "Can parents stay with their child in the PICU?",
-    answer: "Yes, we encourage family presence in the PICU as it benefits the child's recovery. Parents are allowed to visit during designated hours and can stay overnight in specific cases. Our team keeps families informed with regular updates and family meetings."
+    question: "What should I bring to the emergency room?",
+    answer: "Bring your child's health card, vaccination records, list of current medications, any relevant medical history, and if poisoning is suspected, bring the container or substance. Also bring comfort items like a favorite toy to help calm your child."
   },
   {
-    question: "What equipment is used in the PICU?",
-    answer: "Our PICU is equipped with advanced ventilators, cardiac monitors, infusion pumps, ECMO machines, dialysis equipment, and continuous monitoring systems. Each bed has dedicated monitors, and we use the latest technology for non-invasive monitoring."
+    question: "How is the emergency department different for children?",
+    answer: "Our pediatric emergency department is specifically designed for children with child-sized equipment, child-friendly environment, and staff specially trained in pediatric emergencies. We understand children's unique medical needs and emotional responses."
   },
   {
-    question: "How long do children typically stay in the PICU?",
-    answer: "PICU stay varies based on the condition and response to treatment. Some children may need just 24-48 hours for stabilization, while complex cases may require weeks. Our goal is to stabilize the child and transfer to regular care as soon as safely possible."
+    question: "What happens when we arrive at the emergency room?",
+    answer: "Upon arrival, a triage nurse will quickly assess your child's condition and assign a priority level. Critical cases are seen immediately. You'll then be taken to an examination room where the emergency pediatrician will evaluate and treat your child."
   },
   {
-    question: "What is Dr. Swamy's experience in PICU?",
-    answer: "Dr. Sanjay D Swamy is a Chief Paediatric Intensivist with 18+ years of specialist experience in PICU. He received advanced training at Birmingham Children's Hospital, UK, and has managed thousands of critically ill children."
+    question: "Can I stay with my child during treatment?",
+    answer: "Yes, parents are encouraged to stay with their child throughout most emergency procedures. Your presence provides comfort and helps medical staff gather important information. In rare cases during certain procedures, we may ask you to step out briefly."
   },
   {
-    question: "How do you manage pain in critically ill children?",
-    answer: "We use a multimodal approach to pain management with age-appropriate pain assessment tools. Our protocols include both pharmacological methods and non-pharmacological comfort measures, prioritizing comfort while minimizing side effects."
+    question: "What if my child needs to be admitted after emergency care?",
+    answer: "If your child requires admission, our emergency team will coordinate with the appropriate department (pediatric ward, PICU, or NICU) for seamless transfer. We ensure continuity of care and keep you informed throughout the process."
   }
 ];
 
 const benefits = [
-  "18+ years PICU expertise",
-  "UK-trained intensivist",
-  "24/7 specialist availability",
-  "Advanced ECMO capability",
-  "State-of-the-art equipment",
-  "Family-centered care approach"
+  "18+ years emergency expertise",
+  "UK-trained pediatric specialist",
+  "24/7 doctor availability",
+  "Advanced life support ready",
+  "Child-friendly environment",
+  "Rapid triage system"
 ];
 ---
 
 <Layout
-  title="Pediatric Intensive Care (PICU) in Bangalore | Dr. Sanjay D Swamy"
-  description="Expert Pediatric Intensive Care Unit (PICU) services in Bangalore by Dr. Sanjay D Swamy. 18+ years experience in critical care, ECMO, ventilator management. 24/7 intensive care for critically ill children."
+  title="Pediatric Emergency Care in Bangalore | Dr. Sanjay D Swamy"
+  description="24/7 Pediatric Emergency Care in Bangalore by Dr. Sanjay D Swamy. Expert emergency treatment for children - trauma, poisoning, seizures, respiratory distress. Immediate care when your child needs it most."
 >
   <!-- Hero Section -->
   <section class="hero" style={`background-image: linear-gradient(rgba(10, 94, 176, 0.3), rgba(10, 94, 176, 0.25)), url('${heroBgImage.src}'); background-position: center; background-size: cover;`}>
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
-          <p class="overline">CRITICAL CARE EXCELLENCE</p>
-          <h1>Pediatric <span style="color: white;">Intensive Care</span></h1>
-          <p class="hero-desc">Expert pediatric intensive care for critically ill children. With 18+ years of PICU experience and UK training from Birmingham Children's Hospital, Dr. Sanjay D Swamy provides world-class critical care with advanced life support capabilities.</p>
+          <p class="overline">24/7 EMERGENCY CARE</p>
+          <h1>Pediatric <span style="color: white;">Emergency Care</span></h1>
+          <p class="hero-desc">Expert pediatric emergency services for critically ill and injured children. With 18+ years of experience and UK training, Dr. Sanjay D Swamy provides immediate, life-saving care when your child needs it most.</p>
           <div class="hero-stats">
             <div class="stat">
-              <span class="stat-num">18+</span>
-              <span class="stat-label">Years PICU Experience</span>
-            </div>
-            <div class="stat">
               <span class="stat-num">24/7</span>
-              <span class="stat-label">Critical Care</span>
+              <span class="stat-label">Always Available</span>
             </div>
             <div class="stat">
-              <span class="stat-num">ECMO</span>
-              <span class="stat-label">Certified</span>
+              <span class="stat-num">&lt;5min</span>
+              <span class="stat-label">Response Time</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">10K+</span>
+              <span class="stat-label">Emergencies Handled</span>
             </div>
           </div>
           <div class="hero-actions">
-            <a href="/appointment" class="btn btn-hero-primary">Book Consultation</a>
-            <a href="tel:+919999999999" class="btn btn-hero-outline">Emergency: Call Now</a>
+            <a href="tel:+919999999999" class="btn btn-hero-primary">Emergency: Call Now</a>
+            <a href="#appointment" class="btn btn-hero-outline">Get Directions</a>
           </div>
         </div>
         <div class="hero-image">
           <div class="image-frame"></div>
-          <img src={picuImg.src} alt="Pediatric Intensive Care Unit - PICU in Bangalore" loading="eager">
+          <img src={emergencyImg.src} alt="Pediatric Emergency Care in Bangalore" loading="eager">
         </div>
       </div>
     </div>
@@ -165,8 +165,8 @@ const benefits = [
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           </div>
           <div class="stat-content">
-            <h3>24/7 Intensivist Care</h3>
-            <p>Round-the-clock specialist supervision</p>
+            <h3>Immediate Response</h3>
+            <p>Critical cases seen within minutes</p>
           </div>
         </div>
         <div class="quick-stat-card">
@@ -175,7 +175,7 @@ const benefits = [
           </div>
           <div class="stat-content">
             <h3>Advanced Life Support</h3>
-            <p>ECMO & ventilator expertise</p>
+            <p>Pediatric resuscitation expertise</p>
           </div>
         </div>
         <div class="quick-stat-card">
@@ -183,8 +183,8 @@ const benefits = [
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
           <div class="stat-content">
-            <h3>UK-Trained Expertise</h3>
-            <p>Birmingham Children's Hospital</p>
+            <h3>Specialist On-Call</h3>
+            <p>Pediatric intensivist available 24/7</p>
           </div>
         </div>
       </div>
@@ -196,21 +196,21 @@ const benefits = [
     <div class="container">
       <div class="section-header">
         <div class="section-title-block">
-          <p class="section-overline">ABOUT PICU</p>
-          <h2 class="section-title">Expert Care for <span class="highlight">Critically Ill Children</span></h2>
+          <p class="section-overline">ABOUT EMERGENCY CARE</p>
+          <h2 class="section-title">When Every <span class="highlight">Second Counts</span></h2>
         </div>
         <div class="section-subtitle-block">
-          <p class="section-subtitle">Our Pediatric Intensive Care Unit provides the highest level of medical care for children with life-threatening conditions. We combine advanced technology with compassionate, family-centered care.</p>
+          <p class="section-subtitle">Our pediatric emergency department is designed specifically for children, with specialized equipment, trained staff, and a child-friendly environment to provide the best possible care during emergencies.</p>
         </div>
       </div>
       <div class="about-content">
         <div class="about-text">
-          <p>The PICU at Cloud Nine Hospital is led by Dr. Sanjay D Swamy, a Chief Paediatric Intensivist with specialized training from Birmingham Children's Hospital, UK. Our unit is equipped to handle the most complex pediatric emergencies with state-of-the-art monitoring and life support systems.</p>
-          <p>We specialize in managing respiratory failure, septic shock, multi-organ dysfunction, and post-operative care for complex surgeries. Our team is trained in advanced techniques including ECMO for cases where conventional treatment is insufficient.</p>
-          <p>Understanding that a child's critical illness affects the entire family, we practice family-centered care with open communication, regular updates, and emotional support. Our goal is not just survival, but optimal recovery with minimal long-term complications.</p>
+          <p>Pediatric emergencies require specialized knowledge and equipment. Children are not small adults - they have unique physiological responses, different medication dosages, and special emotional needs during medical crises. Our emergency department is designed specifically for pediatric care.</p>
+          <p>Led by Dr. Sanjay D Swamy, a UK-trained pediatric intensivist with 18+ years of experience, our emergency team includes pediatric specialists, trained nurses, and support staff available around the clock. We use child-sized equipment, age-appropriate pain management, and create a calming environment.</p>
+          <p>Our rapid triage system ensures critical cases receive immediate attention. We coordinate seamlessly with PICU and NICU when intensive care is needed, providing continuity of care from emergency to recovery.</p>
         </div>
         <div class="benefits-card">
-          <h3>Why Choose Our PICU</h3>
+          <h3>Why Choose Our Emergency Care</h3>
           <ul class="benefits-list">
             {benefits.map(benefit => (
               <li>
@@ -230,10 +230,10 @@ const benefits = [
       <div class="section-header">
         <div class="section-title-block">
           <p class="section-overline">OUR CAPABILITIES</p>
-          <h2 class="section-title">Comprehensive Critical <span class="highlight">Care Services</span></h2>
+          <h2 class="section-title">Comprehensive Emergency <span class="highlight">Services</span></h2>
         </div>
         <div class="section-subtitle-block">
-          <p class="section-subtitle">Our PICU offers a full spectrum of intensive care services with advanced monitoring, life support, and specialized treatments for pediatric critical illness.</p>
+          <p class="section-subtitle">Our emergency department offers a full spectrum of pediatric emergency services with advanced monitoring, life support, and specialized treatments.</p>
         </div>
       </div>
       <div class="services-grid">
@@ -255,26 +255,26 @@ const benefits = [
         <div class="about-doctor-image-wrapper">
           <div class="about-image-frame"></div>
           <div class="about-doctor-image">
-            <img src={award2.src} alt="Dr. Sanjay D Swamy - PICU Specialist" width="500" height="600">
+            <img src={award2.src} alt="Dr. Sanjay D Swamy - Pediatric Emergency Specialist" width="500" height="600">
           </div>
         </div>
         <div class="about-doctor-content">
-          <p class="about-overline">YOUR CHILD'S INTENSIVIST</p>
+          <p class="about-overline">YOUR CHILD'S EMERGENCY SPECIALIST</p>
           <h2 class="about-title">Dr. Sanjay D <span class="about-highlight">Swamy</span></h2>
           <p class="about-desc">
-            As the Chief Paediatric Intensivist at Cloud Nine Hospital, Dr. Sanjay D Swamy brings 18+ years of dedicated PICU experience. His advanced training at Birmingham Children's Hospital, UK, equipped him with expertise in managing the most complex pediatric critical care cases.
+            As the Chief Paediatric Intensivist at Cloud Nine Hospital, Dr. Sanjay D Swamy brings 18+ years of experience in managing pediatric emergencies. His advanced training at Birmingham Children's Hospital, UK, equipped him with expertise in handling the most critical pediatric cases.
           </p>
 
           <div class="about-stats">
             <div class="stat-box">
               <div class="stat-number">18+</div>
-              <div class="stat-label">Years in PICU</div>
-              <div class="stat-desc">Dedicated career in pediatric intensive care with thousands of critically ill children treated.</div>
+              <div class="stat-label">Years Experience</div>
+              <div class="stat-desc">Dedicated career in pediatric emergency and intensive care with thousands of lives saved.</div>
             </div>
             <div class="stat-box">
               <div class="stat-number">UK</div>
               <div class="stat-label">Advanced Training</div>
-              <div class="stat-desc">Fellowship at Birmingham Children's Hospital with world-class critical care practices.</div>
+              <div class="stat-desc">Fellowship at Birmingham Children's Hospital with world-class emergency care practices.</div>
             </div>
           </div>
 
@@ -292,8 +292,8 @@ const benefits = [
     <div class="container">
       <div class="section-header centered">
         <p class="section-overline">ADVANCED CAPABILITIES</p>
-        <h2 class="section-title">Specialized <span class="highlight">Treatments</span></h2>
-        <p class="section-subtitle centered-subtitle">Our PICU is equipped with advanced life support technologies and specialized treatments for the most critical pediatric conditions.</p>
+        <h2 class="section-title">Emergency <span class="highlight">Facilities</span></h2>
+        <p class="section-subtitle centered-subtitle">Our emergency department is equipped with state-of-the-art facilities and specialized equipment for comprehensive pediatric emergency care.</p>
       </div>
       <div class="capabilities-grid">
         {capabilities.map((cap, index) => (
@@ -312,11 +312,11 @@ const benefits = [
     <div class="container">
       <div class="section-header">
         <div class="section-title-block">
-          <p class="section-overline">CONDITIONS WE TREAT</p>
-          <h2 class="section-title">Critical <span class="highlight">Conditions</span></h2>
+          <p class="section-overline">EMERGENCIES WE HANDLE</p>
+          <h2 class="section-title">Pediatric <span class="highlight">Emergencies</span></h2>
         </div>
         <div class="section-subtitle-block">
-          <p class="section-subtitle">Our PICU team is experienced in managing a wide range of life-threatening pediatric conditions requiring intensive care support.</p>
+          <p class="section-subtitle">Our team is experienced in managing a wide range of pediatric emergencies requiring immediate medical attention.</p>
         </div>
       </div>
       <div class="conditions-grid">
@@ -339,7 +339,7 @@ const benefits = [
           <h2 class="testimonials-main-title">What families say about <br><span class="testimonials-highlight">Dr. Sanjay D Swamy</span></h2>
         </div>
         <div class="testimonials-statement">
-          <p>When your child needs critical care, you want the best. Our families trust Dr. Swamy's expertise and compassionate approach during their most challenging times.</p>
+          <p>When your child faces a medical emergency, you need the best care immediately. Our families trust Dr. Swamy's expertise and rapid response during their most critical moments.</p>
         </div>
       </div>
 
@@ -357,38 +357,38 @@ const benefits = [
         <div class="testimonials-cards-grid" id="testimonialsSlider">
           <div class="testimonial-card">
             <div class="testimonial-stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
-            <p class="testimonial-quote">"He saved our daughter's life"</p>
-            <p class="testimonial-text">Our daughter was admitted with severe respiratory failure. Dr. Swamy's quick decision to start advanced ventilation and his constant monitoring saved her life.</p>
+            <p class="testimonial-quote">"Saved my son's life at 2 AM"</p>
+            <p class="testimonial-text">When my son had a severe asthma attack at 2 AM, the emergency team responded instantly. Their quick action and expertise saved his life. Forever grateful to Dr. Sanjay.</p>
             <div class="testimonial-author">
-              <div class="author-avatar">M</div>
-              <span class="author-name">Meera S.</span>
+              <div class="author-avatar">P</div>
+              <span class="author-name">Priya S.</span>
             </div>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
-            <p class="testimonial-quote">"Expert care during crisis"</p>
-            <p class="testimonial-text">When our son went into septic shock, Dr. Swamy was there within minutes. His expertise and calm demeanor gave us hope during the darkest hours.</p>
+            <p class="testimonial-quote">"Calm during crisis"</p>
+            <p class="testimonial-text">My daughter accidentally swallowed medication. The poison control response was immediate. The team's calm demeanor helped us stay calm too during a terrifying situation.</p>
             <div class="testimonial-author">
-              <div class="author-avatar">K</div>
-              <span class="author-name">Karthik R.</span>
+              <div class="author-avatar">R</div>
+              <span class="author-name">Rajesh K.</span>
             </div>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
-            <p class="testimonial-quote">"World-class PICU care"</p>
-            <p class="testimonial-text">Dr. Swamy's UK training really shows. The level of care, attention to detail, and communication is exceptional. Our baby recovered fully.</p>
+            <p class="testimonial-quote">"Thorough and caring"</p>
+            <p class="testimonial-text">After my son's head injury from a fall, the emergency team's thorough evaluation and monitoring gave us peace of mind. They explained everything clearly and followed up.</p>
             <div class="testimonial-author">
-              <div class="author-avatar">N</div>
-              <span class="author-name">Neha P.</span>
+              <div class="author-avatar">A</div>
+              <span class="author-name">Anjali P.</span>
             </div>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
-            <p class="testimonial-quote">"Compassionate intensivist"</p>
-            <p class="testimonial-text">What sets Dr. Swamy apart is his compassion. He took time to explain everything and treated our child like his own. Highly recommend.</p>
+            <p class="testimonial-quote">"Best emergency care"</p>
+            <p class="testimonial-text">Dr. Swamy's team handled my daughter's febrile seizure with such expertise. From the moment we arrived, they took control and kept us informed throughout.</p>
             <div class="testimonial-author">
               <div class="author-avatar">V</div>
               <span class="author-name">Vijay M.</span>
@@ -405,7 +405,7 @@ const benefits = [
       <div class="faq-layout">
         <div class="faq-content">
           <p class="section-overline">FREQUENTLY ASKED QUESTIONS</p>
-          <h2 class="faq-title">Questions About <span class="highlight">PICU Care</span></h2>
+          <h2 class="faq-title">Questions About <span class="highlight">Emergency Care</span></h2>
           <div class="faq-accordion">
             {faqs.map((faq, index) => (
               <details class="faq-item">
@@ -426,22 +426,31 @@ const benefits = [
           </div>
         </div>
         <div class="faq-image">
-          <img src={picuImg.src} alt="PICU Care at Cloud Nine Hospital" />
+          <img src={emergencyImg.src} alt="Emergency Care at Cloud Nine Hospital" />
         </div>
       </div>
     </div>
   </section>
 
   <!-- Appointment Form Section -->
-  <section class="section appointment-section">
+  <section class="section appointment-section" id="appointment">
     <div class="container">
       <div class="appointment-grid">
         <div class="appointment-info">
-          <p class="section-overline">BOOK APPOINTMENT</p>
-          <h2 class="section-title">Schedule Your <span class="title-highlight">Consultation</span></h2>
-          <p class="section-desc">Fill out the form and our team will confirm your appointment slot via phone or WhatsApp.</p>
+          <p class="section-overline">EMERGENCY CONTACT</p>
+          <h2 class="section-title">Get <span class="title-highlight">Immediate Help</span></h2>
+          <p class="section-desc">For emergencies, call our helpline immediately. For non-urgent queries, fill out the form and our team will respond promptly.</p>
 
           <div class="contact-info-list">
+            <div class="contact-info-item emergency-highlight">
+              <div class="info-icon emergency-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="info-text">
+                <h4>Emergency Helpline</h4>
+                <p><a href="tel:+919999999999">+91 99999 99999</a> (24/7)</p>
+              </div>
+            </div>
             <div class="contact-info-item">
               <div class="info-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -453,20 +462,11 @@ const benefits = [
             </div>
             <div class="contact-info-item">
               <div class="info-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              </div>
-              <div class="info-text">
-                <h4>Emergency</h4>
-                <p><a href="tel:+919999999999">+91 99999 99999</a> (24/7)</p>
-              </div>
-            </div>
-            <div class="contact-info-item">
-              <div class="info-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </div>
               <div class="info-text">
-                <h4>PICU Hours</h4>
-                <p>24/7 Emergency Care Available</p>
+                <h4>Emergency Hours</h4>
+                <p>24/7 - Always Open</p>
               </div>
             </div>
           </div>
@@ -495,15 +495,15 @@ const benefits = [
   <section class="cta-section">
     <div class="container">
       <div class="cta-content">
-        <p class="cta-overline">NEED CRITICAL CARE?</p>
-        <h2 class="cta-title">Expert pediatric intensive care when your child needs it most</h2>
-        <p class="cta-description">For emergency PICU consultations or to discuss your child's critical care needs, contact Dr. Sanjay D Swamy's team immediately.</p>
+        <p class="cta-overline">PEDIATRIC EMERGENCY?</p>
+        <h2 class="cta-title">Don't wait - get expert care when your child needs it most</h2>
+        <p class="cta-description">For any pediatric emergency, our team is ready 24/7. Save our number and know that expert care is just a call away.</p>
         <div class="cta-buttons">
-          <a href="/appointment" class="btn btn-cta-primary">Book Consultation</a>
-          <a href="tel:+919999999999" class="btn btn-cta-secondary">
+          <a href="tel:+919999999999" class="btn btn-cta-primary">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Emergency: +91 99999 99999
           </a>
+          <a href="/appointment" class="btn btn-cta-secondary">Book Consultation</a>
         </div>
       </div>
     </div>
@@ -545,8 +545,8 @@ const benefits = [
   .stat-num { font-size: 1.75rem; font-weight: 700; color: #333; }
   .stat-label { font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-hero-primary { background-color: #0A97B0; color: white; padding: 1rem 2rem; font-weight: 600; border-radius: 6px; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
-  .btn-hero-primary:hover { background-color: #088a9f; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  .btn-hero-primary { background-color: #dc2626; color: white; padding: 1rem 2rem; font-weight: 600; border-radius: 6px; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
+  .btn-hero-primary:hover { background-color: #b91c1c; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
   .btn-hero-outline { border: 2px solid #0A97B0; color: #0A97B0; padding: 1rem 2rem; font-weight: 600; border-radius: 6px; text-decoration: none; display: inline-block; transition: all 0.3s ease; background: transparent; }
   .btn-hero-outline:hover { border-color: #0A97B0; background: #0A97B0; color: white; }
   .hero-image { position: relative; display: flex; justify-content: center; }
@@ -617,7 +617,7 @@ const benefits = [
   .faq-answer p { font-size: 0.95rem; color: #666; line-height: 1.7; margin: 0; }
   .faq-image { position: sticky; top: 2rem; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
   .faq-image img { width: 100%; height: auto; display: block; object-fit: cover; }
-  .cta-section { background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%); padding: 5rem 0; position: relative; overflow: hidden; }
+  .cta-section { background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); padding: 5rem 0; position: relative; overflow: hidden; }
   .cta-section::before, .cta-section::after { content: ''; position: absolute; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; pointer-events: none; }
   .cta-section::before { width: 400px; height: 400px; left: -150px; top: -150px; }
   .cta-section::after { width: 300px; height: 300px; right: -100px; bottom: -100px; }
@@ -626,7 +626,7 @@ const benefits = [
   .cta-title { font-size: 2.5rem; color: white; margin: 0 0 1rem 0; line-height: 1.3; font-weight: 600; }
   .cta-description { font-size: 1.1rem; color: rgba(255,255,255,0.9); line-height: 1.7; margin: 0 0 2rem 0; }
   .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn-cta-primary { background-color: white; color: #0A5EB0; padding: 1rem 2.5rem; font-weight: 600; border-radius: 6px; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
+  .btn-cta-primary { background-color: white; color: #dc2626; padding: 1rem 2.5rem; font-weight: 600; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; }
   .btn-cta-primary:hover { background-color: #f0f0f0; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
   .btn-cta-secondary { background-color: transparent; border: 2px solid white; color: white; padding: 1rem 2rem; font-weight: 600; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; }
   .btn-cta-secondary:hover { background-color: rgba(255,255,255,0.1); transform: translateY(-2px); }
@@ -678,11 +678,14 @@ const benefits = [
   .contact-info-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
   .contact-info-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: #f8fafc; border-radius: 10px; border: 1px solid #e5e7eb; transition: all 0.3s ease; }
   .contact-info-item:hover { border-color: #0A5EB0; background: white; }
+  .contact-info-item.emergency-highlight { background: #fef2f2; border-color: #fecaca; }
+  .contact-info-item.emergency-highlight:hover { border-color: #dc2626; }
   .info-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; }
+  .info-icon.emergency-icon { background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); }
   .info-text h4 { font-size: 0.85rem; color: #0A97B0; margin: 0 0 0.25rem 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
   .info-text p { font-size: 0.95rem; color: #333; margin: 0; line-height: 1.4; }
-  .info-text a { color: #0A5EB0; text-decoration: none; font-weight: 500; }
-  .info-text a:hover { color: #0A97B0; }
+  .info-text a { color: #dc2626; text-decoration: none; font-weight: 600; }
+  .info-text a:hover { color: #b91c1c; }
   .form-wrapper { position: sticky; top: 2rem; }
   .map-container { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e5e7eb; }
   .map-container iframe { display: block; }
