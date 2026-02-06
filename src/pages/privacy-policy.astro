@@ -1,44 +1,113 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import heroBgImage from '../assets/backgrounds/background-sanjay.jpeg';
 ---
 
 <Layout 
-  title="Privacy Policy" 
-  description="Privacy Policy for Dr. Sanjay Swamy's Clinic."
+  title="Privacy Policy | Dr. Sanjay D Swamy" 
+  description="Privacy Policy for Dr. Sanjay Swamy's Clinic. Understanding how we protect and use your personal health information."
 >
-  <div class="page-header">
+  <section class="hero" style={`background-image: linear-gradient(rgba(10, 94, 176, 0.3), rgba(10, 94, 176, 0.25)), url('${heroBgImage.src}'); background-position: center; background-size: cover;`}>
     <div class="container">
-      <h1>Privacy Policy</h1>
-      <p>Last Updated: {new Date().toLocaleDateString()}</p>
+      <div class="hero-content">
+        <p class="overline">TRANSPARENCY & TRUST</p>
+        <h1>Privacy <span style="color: white;">Policy</span></h1>
+        <p class="hero-desc">We are committed to protecting your privacy and ensuring the security of your personal and medical information.</p>
+        <p class="last-updated">Last Updated: {new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      </div>
     </div>
-  </div>
+  </section>
 
   <section class="section">
     <div class="container content">
-      <h2>Information We Collect</h2>
-      <p>We strictly collect only the information necessary for medical treatment and appointment scheduling. This includes your name, contact details, and the child's medical history.</p>
+      <div class="policy-block">
+        <h2 class="section-title">Information We <span class="highlight">Collect</span></h2>
+        <p>At Dr. Sanjay Swamy's clinic, we prioritize the confidentiality of your data. We strictly collect only the information necessary for providing comprehensive medical care and managing appointments efficiently. This includes:</p>
+        <ul class="custom-list">
+          <li><strong>Patient Information:</strong> Name, age, gender, and date of birth of the child.</li>
+          <li><strong>Contact Details:</strong> Parent/Guardian names, phone numbers, email addresses, and residential address.</li>
+          <li><strong>Medical History:</strong> Previous immunization records, past illnesses, current medications, allergies, and birth history.</li>
+        </ul>
+      </div>
 
-      <h2>How We Use Your Information</h2>
-      <p>Your data is used solely for:</p>
-      <ul>
-        <li>Scheduling appointments</li>
-        <li>Maintaining medical records</li>
-        <li>Communicating test results and health updates</li>
-      </ul>
+      <div class="policy-block">
+        <h2 class="section-title">How We Use <span class="highlight">Your Information</span></h2>
+        <p>Your data is utilized solely for the purpose of facilitating healthcare services:</p>
+        <ul class="custom-list">
+          <li><strong>Appointment Scheduling:</strong> To book, confirm, and remind you of upcoming visits.</li>
+          <li><strong>Medical Care:</strong> To maintain accurate health records for diagnosis, treatment planning, and monitoring growth milestones.</li>
+          <li><strong>Communication:</strong> To send vaccination reminders, share test results, and provide health education relevant to your child.</li>
+          <li><strong>Legal Compliance:</strong> To comply with local healthcare regulations and reporting requirements.</li>
+        </ul>
+      </div>
 
-      <h2>Data Security</h2>
-      <p>We implement strict security measures to protect your personal health information. We do not sell or share your data with third parties unless required by law or for medical referral purposes (with your consent).</p>
+      <div class="policy-block">
+        <h2 class="section-title">Data <span class="highlight">Security</span></h2>
+        <p>We implement robust security measures to safeguard your personal health information against unauthorized access, alteration, disclosure, or destruction. We utilize secure digital record-keeping systems and restrict access to authorized medical staff only.</p>
+        <p>We <strong>do not</strong> sell, trade, or rent your personal identification information to third parties. We may share generic aggregated demographic information not linked to any personal identification information regarding visitors and users with our business partners and trusted affiliates for the purposes outlined above.</p>
+      </div>
+      
+      <div class="policy-block">
+        <h2 class="section-title">Information <span class="highlight">Sharing</span></h2>
+        <p>Your information is never shared externally, except in the following circumstances:</p>
+         <ul class="custom-list">
+          <li><strong>Referrals:</strong> When referring your child to another specialist or hospital, relevant medical details are shared with your consent to ensure continuity of care.</li>
+          <li><strong>Legal Requirements:</strong> If required by law, such as for reporting certain infectious diseases as mandated by public health authorities.</li>
+        </ul>
+      </div>
 
-      <h2>Contact Us</h2>
-      <p>If you have any questions about our privacy practices, please contact us at privacy@drsanjayswamy.com.</p>
+      <div class="policy-block contact-block">
+        <h2 class="section-title">Contact <span class="highlight">Us</span></h2>
+        <p>If you have any questions or concerns about our privacy practices or wish to review your information, please contact us.</p>
+        <div class="contact-details">
+           <p><strong>Email:</strong> <a href="mailto:privacy@drsanjayswamy.com">privacy@drsanjayswamy.com</a></p>
+           <p><strong>Phone:</strong> <a href="tel:+919999999999">+91 99999 99999</a></p>
+        </div>
+      </div>
     </div>
   </section>
 
 </Layout>
 
 <style>
-  .page-header { background-color: var(--color-background); padding: 3rem 0; text-align: center; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  
+  /* Hero Styles */
+  .hero { padding: 6rem 0; color: white; position: relative; text-align: center; }
+  .hero-content { max-width: 800px; margin: 0 auto; }
+  .overline { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.15em; color: #7DD3FC; font-weight: 600; margin-bottom: 1rem; }
+  .hero h1 { font-size: 3rem; color: #333; margin: 0 0 1.5rem 0; font-weight: 700; line-height: 1.2; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+  .hero-desc { font-size: 1.15rem; line-height: 1.6; color: rgba(255,255,255,0.95); margin: 0 0 1rem 0; }
+  .last-updated { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 1rem; font-style: italic; }
+
+  /* Content Styles */
+  .section { padding: 4rem 0; background: white; }
   .content { max-width: 800px; margin: 0 auto; }
-  h2 { margin-top: 2rem; margin-bottom: 1rem; color: var(--color-primary-dark); }
-  ul { margin-left: 2rem; margin-bottom: 1.5rem; }
+  
+  .policy-block { margin-bottom: 3.5rem; }
+  .policy-block:last-child { margin-bottom: 0; }
+  
+  .section-title { font-size: 1.75rem; color: #333; margin: 0 0 1.5rem 0; line-height: 1.3; font-weight: 600; position: relative; padding-bottom: 0.75rem; }
+  .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: #0A97B0; border-radius: 2px; }
+  .highlight { color: #0A97B0; }
+  
+  p { font-size: 1.05rem; color: #555; line-height: 1.8; margin: 0 0 1.5rem 0; }
+  
+  .custom-list { list-style: none; padding: 0; margin: 0 0 1.5rem 0; }
+  .custom-list li { position: relative; padding-left: 1.75rem; margin-bottom: 1rem; color: #555; line-height: 1.6; font-size: 1.05rem; }
+  .custom-list li::before { content: '•'; position: absolute; left: 0; color: #0A97B0; font-size: 1.5rem; line-height: 1.2; font-weight: bold; }
+  .custom-list li strong { color: #333; font-weight: 600; }
+
+  .contact-block { background: #f8fafc; padding: 2.5rem; border-radius: 12px; border-left: 4px solid #0A97B0; }
+  .contact-block .section-title::after { display: none; }
+  .contact-details p { margin-bottom: 0.5rem; }
+  .contact-details a { color: #0A5EB0; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .contact-details a:hover { color: #0A97B0; text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 5rem 0 3rem; }
+    .hero h1 { font-size: 2.25rem; }
+    .section-title { font-size: 1.5rem; }
+    .contact-block { padding: 1.5rem; }
+  }
 </style>
