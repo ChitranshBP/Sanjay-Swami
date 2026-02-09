@@ -12,7 +12,16 @@ import whiteLogo from '../assets/logo/sanjay-swami-logo-white-ok.png';
     <nav class="nav-desktop">
       <a href="/">Home</a>
       <a href="/about">About</a>
-      <a href="/services">Services</a>
+      <div class="dropdown-container">
+        <a href="/services">Services <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="dropdown-icon"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="dropdown-menu">
+          <a href="/services/general-pediatrics">General Pediatrics</a>
+          <a href="/services/nicu">Neonatal Care (NICU)</a>
+          <a href="/services/picu">Pediatric Intensive Care</a>
+          <a href="/services/vaccinations">Vaccinations</a>
+          <a href="/services/emergency">Emergency Care</a>
+        </div>
+      </div>
       <a href="/blog">Blog</a>
       <a href="/contact">Contact</a>
       <a href="/appointment" class="btn-nav">Book Appointment</a>
@@ -28,7 +37,21 @@ import whiteLogo from '../assets/logo/sanjay-swami-logo-white-ok.png';
   <nav class="nav-mobile" id="mobileNav">
     <a href="/">Home</a>
     <a href="/about">About</a>
-    <a href="/services">Services</a>
+    <div class="mobile-services-group">
+      <div class="mobile-services-header">
+        <a href="/services">Services</a>
+        <button class="mobile-dropdown-toggle" aria-label="Toggle Services">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+      </div>
+      <div class="mobile-services-links">
+        <a href="/services/general-pediatrics">General Pediatrics</a>
+        <a href="/services/nicu">Neonatal Care (NICU)</a>
+        <a href="/services/picu">Pediatric Intensive Care</a>
+        <a href="/services/vaccinations">Vaccinations</a>
+        <a href="/services/emergency">Emergency Care</a>
+      </div>
+    </div>
     <a href="/blog">Blog</a>
     <a href="/contact">Contact</a>
     <a href="/appointment" class="btn btn-primary">Book Appointment</a>
@@ -45,6 +68,19 @@ import whiteLogo from '../assets/logo/sanjay-swami-logo-white-ok.png';
     menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('active');
       mobileNav.classList.toggle('active');
+    });
+  }
+
+  // Mobile services dropdown toggle
+  const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle');
+  const mobileServicesLinks = document.querySelector('.mobile-services-links');
+  
+  if (mobileDropdownToggle && mobileServicesLinks) {
+    mobileDropdownToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation(); // Prevent bubbling if needed
+      mobileDropdownToggle.classList.toggle('active');
+      mobileServicesLinks.classList.toggle('active');
     });
   }
 
@@ -131,6 +167,75 @@ import whiteLogo from '../assets/logo/sanjay-swami-logo-white-ok.png';
     align-items: center;
     gap: 2.5rem;
   }
+  
+  /* Dropdown Styles */
+  .dropdown-container {
+    position: relative;
+    padding: 1rem 0; /* Add padding to increase hover area */
+  }
+
+  .dropdown-icon {
+    margin-left: 4px;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown-container:hover .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: white;
+    min-width: 240px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1100;
+  }
+
+  .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: white;
+  }
+
+  .dropdown-container:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .nav-desktop .dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: #1a1a2e;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #f5f5f5;
+    white-space: nowrap;
+  }
+
+  .nav-desktop .dropdown-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .nav-desktop .dropdown-menu a:hover {
+    background-color: #f8f9fa;
+    color: #0A97B0;
+    padding-left: 1.75rem;
+  }
 
   .nav-desktop a:not(.btn-nav) {
     color: rgba(255, 255, 255, 0.9);
@@ -140,6 +245,12 @@ import whiteLogo from '../assets/logo/sanjay-swami-logo-white-ok.png';
     position: relative;
     padding: 0.5rem 0;
     transition: color 0.3s ease;
+  }
+  
+  /* Specific style for dropdown trigger link inside container */
+  .dropdown-container > a {
+    display: flex;
+    align-items: center;
   }
 
   .nav-desktop a:not(.btn-nav)::after {
@@ -159,6 +270,11 @@ import whiteLogo from '../assets/logo/sanjay-swami-logo-white-ok.png';
 
   .header.scrolled .nav-desktop a:not(.btn-nav) {
     color: #1a1a2e;
+  }
+  
+  /* Ensure dropdown links don't inherit the underlining from desktop nav */
+  .nav-desktop .dropdown-menu a::after {
+    display: none !important;
   }
 
   .header.scrolled .nav-desktop a:not(.btn-nav):hover {
@@ -239,6 +355,8 @@ import whiteLogo from '../assets/logo/sanjay-swami-logo-white-ok.png';
     opacity: 0;
     transition: all 0.3s ease;
     z-index: 999;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
   }
 
   .nav-mobile.active {
@@ -246,7 +364,7 @@ import whiteLogo from '../assets/logo/sanjay-swami-logo-white-ok.png';
     opacity: 1;
   }
 
-  .nav-mobile a {
+  .nav-mobile > a, .mobile-services-header {
     color: #1a1a2e;
     font-weight: 500;
     font-size: 1rem;
@@ -255,8 +373,51 @@ import whiteLogo from '../assets/logo/sanjay-swami-logo-white-ok.png';
     border-bottom: 1px solid #f0f0f0;
     transition: color 0.3s ease;
   }
+  
+  .mobile-services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .mobile-dropdown-toggle {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #1a1a2e;
+    transition: transform 0.3s ease;
+  }
+  
+  .mobile-dropdown-toggle.active {
+    transform: rotate(180deg);
+  }
+  
+  .mobile-services-links {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #fcfcfc;
+  }
+  
+  .mobile-services-links.active {
+    max-height: 300px; /* Adjust based on number of items */
+  }
+  
+  .mobile-services-links a {
+    display: block;
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    color: #555;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  
+  .mobile-services-links a:last-child {
+    border-bottom: none;
+  }
 
-  .nav-mobile a:last-child {
+  .nav-mobile > a:last-child {
     border-bottom: none;
     margin-top: 1rem;
   }
