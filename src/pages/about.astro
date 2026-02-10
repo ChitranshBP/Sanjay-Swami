@@ -1,12 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
-import doctorLectureImage from '../assets/doctor/sanjay-swami-lecture-new.jpg';
+import doctorLectureImage from '../assets/about/sanjay-about-hero-image.png';
 import heroBg from '../assets/backgrounds/bg-sanjay-5.jpg';
 import ardsImage from '../assets/about/ards-ventilation-with-doctor.png';
 import transplantImage from '../assets/about/transplant-care.png';
 import cardiacImage from '../assets/about/cardiac-care.png';
 import ecmoImage from '../assets/about/ecmo-support.png';
+import award1 from '../assets/awards/sanjay-award-1.jpeg';
+import award2 from '../assets/awards/sanjay-award-2.jpeg';
+import award3 from '../assets/awards/sanja-award-2.jpeg';
+import award4 from '../assets/awards/sanjay-award-4.jpeg';
+import award5 from '../assets/awards/sanjay-swami-5.jpeg';
+import award6 from '../assets/awards/sanjay-swami-6.jpeg';
+import awardFinal from '../assets/awards/sanjay-swami-award-final.jpeg';
 ---
 
 <Layout
@@ -170,13 +177,13 @@ import ecmoImage from '../assets/about/ecmo-support.png';
     document.addEventListener('DOMContentLoaded', () => {
       const items = document.querySelectorAll('.accordion-item');
       const galleryItems = document.querySelectorAll('.gallery-item');
-      
+
       items.forEach((item, index) => {
         item.addEventListener('click', () => {
           // Remove active class from all items
           items.forEach(i => i.classList.remove('active'));
           galleryItems.forEach(img => img.classList.remove('active'));
-          
+
           // Add active class to clicked item and corresponding image
           item.classList.add('active');
           if (galleryItems[index]) {
@@ -184,6 +191,23 @@ import ecmoImage from '../assets/about/ecmo-support.png';
           }
         });
       });
+
+      // Awards Slider
+      const awardsSlider = document.getElementById('awardsSlider');
+      const awardsPrevBtn = document.querySelector('.awards-nav-prev');
+      const awardsNextBtn = document.querySelector('.awards-nav-next');
+
+      if (awardsSlider && awardsPrevBtn && awardsNextBtn) {
+        awardsPrevBtn.addEventListener('click', () => {
+          const scrollAmount = awardsSlider.clientWidth * 0.6;
+          awardsSlider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        awardsNextBtn.addEventListener('click', () => {
+          const scrollAmount = awardsSlider.clientWidth * 0.6;
+          awardsSlider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+      }
     });
   </script>
 
@@ -315,6 +339,58 @@ import ecmoImage from '../assets/about/ecmo-support.png';
           Every critically ill child deserves the highest standard of care. My training across world-class institutions in India and the UK enables me to provide evidence-based, compassionate critical care to the most vulnerable young patients.
         </blockquote>
         <cite>— Dr. Sanjay D Swamy</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards & Recognition Section -->
+  <section class="awards-section">
+    <div class="container">
+      <div class="awards-header">
+        <div class="awards-title-block">
+          <p class="awards-overline">AWARDS & RECOGNITION</p>
+          <h2 class="awards-title">Honoring Excellence in <span class="awards-highlight">Pediatric Care</span></h2>
+        </div>
+        <div class="awards-subtitle-block">
+          <p class="awards-subtitle">Recognized for outstanding contributions to pediatric intensive care medicine and dedication to improving child healthcare outcomes.</p>
+        </div>
+      </div>
+
+      <div class="awards-slider-wrapper">
+        <button class="awards-nav awards-nav-prev" aria-label="Previous awards">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="awards-nav awards-nav-next" aria-label="Next awards">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="awards-slider" id="awardsSlider">
+          <div class="award-card">
+            <img src={award1.src} alt="Dr. Sanjay Swamy receiving award">
+          </div>
+          <div class="award-card">
+            <img src={award3.src} alt="Dr. Sanjay Swamy recognition">
+          </div>
+          <div class="award-card">
+            <img src={award4.src} alt="Dr. Sanjay Swamy award">
+          </div>
+          <div class="award-card">
+            <img src={award5.src} alt="Dr. Sanjay Swamy achievement">
+          </div>
+          <div class="award-card">
+            <img src={award2.src} alt="Dr. Sanjay Swamy at award ceremony">
+          </div>
+          <div class="award-card">
+            <img src={award6.src} alt="Dr. Sanjay Swamy excellence award">
+          </div>
+          <div class="award-card">
+            <img src={awardFinal.src} alt="Dr. Sanjay Swamy award">
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -992,6 +1068,147 @@ import ecmoImage from '../assets/about/ecmo-support.png';
     font-weight: 500;
   }
 
+  /* Awards Section */
+  .awards-section {
+    background: white;
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .awards-section::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(10, 94, 176, 0.08);
+    border-radius: 50%;
+    top: -100px;
+    left: -100px;
+    pointer-events: none;
+  }
+
+  .awards-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    align-items: start;
+  }
+
+  .awards-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0A97B0;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .awards-title {
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .awards-highlight {
+    color: #0A97B0;
+  }
+
+  .awards-subtitle-block {
+    padding-top: 2rem;
+  }
+
+  .awards-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .awards-slider-wrapper {
+    position: relative;
+    padding: 0 2rem;
+  }
+
+  .awards-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #0A5EB0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(10, 94, 176, 0.3);
+    transition: all 0.3s ease;
+    color: white;
+  }
+
+  .awards-nav:hover {
+    background: #0A97B0;
+    box-shadow: 0 6px 20px rgba(10, 151, 176, 0.4);
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .awards-nav-prev {
+    left: 0;
+  }
+
+  .awards-nav-next {
+    right: 0;
+  }
+
+  .awards-slider {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 1rem 0.5rem 1.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .awards-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .award-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    scroll-snap-align: start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .award-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(10, 94, 176, 0.15);
+  }
+
+  .award-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .award-card:hover img {
+    transform: scale(1.05);
+  }
+
   /* CTA Section */
   .cta-section {
     background: #0A5EB0;
@@ -1174,6 +1391,49 @@ import ecmoImage from '../assets/about/ecmo-support.png';
 
     .timeline-item {
       gap: 1.25rem;
+    }
+
+    .awards-section {
+      padding: 3rem 0;
+    }
+
+    .awards-header {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .awards-subtitle-block {
+      padding-top: 0;
+    }
+
+    .awards-title {
+      font-size: 2rem;
+    }
+
+    .awards-slider-wrapper {
+      padding: 0 1rem;
+    }
+
+    .award-card {
+      flex: 0 0 320px;
+      min-width: 320px;
+    }
+
+    .award-card img {
+      height: 220px;
+    }
+
+    .awards-nav {
+      width: 40px;
+      height: 40px;
+    }
+
+    .awards-nav-prev {
+      left: -5px;
+    }
+
+    .awards-nav-next {
+      right: -5px;
     }
   }
 </style>

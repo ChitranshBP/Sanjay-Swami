@@ -1,56 +1,646 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CTA from '../components/CTA.astro';
+import heroBgImage from '../assets/backgrounds/background-sanjay.jpeg';
+import generalPediatricsImg from '../assets/services/general-pediatrics.png';
 
 const resources = [
-  { title: "New Patient Registration Form", type: "PDF", size: "150 KB" },
-  { title: "Vaccination Schedule Chart", type: "PDF", size: "1.2 MB" },
-  { title: "Diet Chart for Toddlers", type: "PDF", size: "500 KB" },
-  { title: "Fever Management Guidelines", type: "PDF", size: "300 KB" },
+  {
+    title: "New Patient Registration Form",
+    description: "Complete this form before your child's first visit to help us prepare for your appointment.",
+    type: "PDF",
+    size: "150 KB",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>`
+  },
+  {
+    title: "Vaccination Schedule Chart",
+    description: "Complete IAP-recommended vaccination schedule from birth to 18 years for your reference.",
+    type: "PDF",
+    size: "1.2 MB",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`
+  },
+  {
+    title: "Diet Chart for Toddlers",
+    description: "Age-appropriate nutrition guidelines and meal plans for toddlers aged 1-3 years.",
+    type: "PDF",
+    size: "500 KB",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`
+  },
+  {
+    title: "Fever Management Guidelines",
+    description: "Step-by-step guide for parents on managing fever at home and when to seek medical attention.",
+    type: "PDF",
+    size: "300 KB",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>`
+  },
+  {
+    title: "Growth Milestones Checklist",
+    description: "Track your child's developmental milestones from birth to 5 years with this comprehensive checklist.",
+    type: "PDF",
+    size: "400 KB",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`
+  },
+  {
+    title: "Emergency Contact Card",
+    description: "Printable card with emergency numbers and first-aid steps to keep handy at all times.",
+    type: "PDF",
+    size: "100 KB",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`
+  }
+];
+
+const guides = [
+  {
+    title: "Newborn Care Essentials",
+    description: "Everything new parents need to know about caring for their newborn in the first 28 days.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`
+  },
+  {
+    title: "Breastfeeding Guide",
+    description: "Practical tips and techniques for successful breastfeeding and common challenges.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`
+  },
+  {
+    title: "Child Safety at Home",
+    description: "Room-by-room childproofing guide to keep your little ones safe at home.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`
+  },
+  {
+    title: "When to Visit the ER",
+    description: "Know the signs and symptoms that require immediate emergency medical attention.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`
+  }
 ];
 ---
 
-<Layout 
-  title="Patient Resources" 
-  description="Downloadable forms and educational resources for parents."
+<Layout
+  title="Patient Resources | Dr. Sanjay D Swamy"
+  description="Download helpful forms, guides, and educational resources for parents. Vaccination schedules, diet charts, fever management guidelines and more."
 >
-  <div class="page-header">
+  <!-- Hero Section -->
+  <section class="hero" style={`background-image: linear-gradient(rgba(10, 94, 176, 0.3), rgba(10, 94, 176, 0.25)), url('${heroBgImage.src}'); background-position: center; background-size: cover;`}>
     <div class="container">
-      <h1>Patient Resources</h1>
-      <p>Helpful information and forms for your visit.</p>
+      <div class="hero-content">
+        <p class="overline">HELPFUL INFORMATION</p>
+        <h1>Patient <span class="highlight">Resources</span></h1>
+        <p class="hero-desc">Download helpful forms, educational guides, and reference materials to support your child's health journey. Everything you need, right at your fingertips.</p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn-primary">Contact Us</a>
+          <a href="/appointment" class="btn btn-outline">Book Appointment</a>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <section class="section">
+  <!-- Downloads Section -->
+  <section class="section downloads-section">
     <div class="container">
-      <div class="resources-list">
+      <div class="section-header">
+        <div class="section-title-block">
+          <p class="section-overline">DOWNLOADABLE FORMS</p>
+          <h2 class="section-title">Forms & <span class="highlight">Documents</span></h2>
+        </div>
+        <div class="section-subtitle-block">
+          <p class="section-subtitle">Download and fill out these forms before your visit to save time. All documents are in PDF format and can be printed at home.</p>
+        </div>
+      </div>
+
+      <div class="resources-grid">
         {resources.map(res => (
-          <div class="resource-item">
-            <div class="icon">📄</div>
-            <div class="details">
+          <div class="resource-card">
+            <div class="resource-icon" set:html={res.icon}></div>
+            <div class="resource-content">
               <h3>{res.title}</h3>
-              <span class="meta">{res.type} • {res.size}</span>
+              <p>{res.description}</p>
+              <div class="resource-meta">
+                <span class="badge">{res.type}</span>
+                <span class="size">{res.size}</span>
+              </div>
             </div>
-            <button class="btn btn-outline btn-sm">Download</button>
+            <button class="download-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download
+            </button>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <CTA />
-  </div>
+  <!-- Parent Guides Section -->
+  <section class="section guides-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-block">
+          <p class="section-overline">EDUCATIONAL CONTENT</p>
+          <h2 class="section-title">Parent <span class="highlight">Guides</span></h2>
+        </div>
+        <div class="section-subtitle-block">
+          <p class="section-subtitle">Expert-curated guides to help you navigate common parenting challenges and make informed decisions about your child's health.</p>
+        </div>
+      </div>
 
+      <div class="guides-grid">
+        {guides.map(guide => (
+          <div class="guide-card">
+            <div class="guide-icon" set:html={guide.icon}></div>
+            <h3>{guide.title}</h3>
+            <p>{guide.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-grid">
+        <div class="cta-content">
+          <p class="cta-overline">NEED MORE HELP?</p>
+          <h2 class="cta-title">Can't find what you're looking for?</h2>
+          <p class="cta-description">Our team is always ready to help. Reach out to us and we'll get back to you as soon as possible.</p>
+          <div class="cta-buttons">
+            <a href="/contact" class="btn btn-cta-primary">Contact Us</a>
+            <a href="/appointment" class="btn btn-cta-secondary">Book Appointment</a>
+          </div>
+        </div>
+        <div class="cta-image">
+          <img src={generalPediatricsImg.src} alt="Contact Dr. Sanjay D Swamy" />
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style>
-  .page-header { background-color: var(--color-primary-dark); color: white; padding: 3rem 0; text-align: center; }
-  .resources-list { max-width: 800px; margin: 0 auto; display: grid; gap: 1.5rem; }
-  .resource-item { display: flex; align-items: center; background: white; padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); gap: 1.5rem; }
-  .icon { font-size: 2rem; }
-  .details { flex-grow: 1; }
-  .details h3 { margin-bottom: 0.25rem; font-size: 1.1rem; }
-  .meta { font-size: 0.875rem; color: var(--color-text-light); }
-  .btn-sm { padding: 0.5rem 1rem; }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 8rem 0 6rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0A97B0;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    color: #333;
+    margin: 0 0 1.5rem 0;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .highlight {
+    color: #0A97B0;
+  }
+
+  .hero-desc {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #555;
+    margin: 0 0 2rem 0;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background-color: #0A97B0;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #088a9f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-outline {
+    border: 2px solid #0A97B0;
+    color: #0A97B0;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+
+  .btn-outline:hover {
+    background: #0A97B0;
+    color: white;
+  }
+
+  /* Section Styles */
+  .section {
+    padding: 5rem 0;
+  }
+
+  .downloads-section {
+    background: #f8fafc;
+  }
+
+  .guides-section {
+    background: white;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    align-items: start;
+  }
+
+  .section-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0A97B0;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin: 0;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .section-subtitle-block {
+    padding-top: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Resources Grid */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .resource-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+  }
+
+  .resource-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #0A97B0;
+  }
+
+  .resource-icon {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .resource-content {
+    flex: 1;
+  }
+
+  .resource-content h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+  }
+
+  .resource-content p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .resource-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .badge {
+    background: #E3F2FD;
+    color: #0A5EB0;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .size {
+    font-size: 0.8rem;
+    color: #999;
+  }
+
+  .download-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    padding: 0.65rem 1.25rem;
+    border-radius: 8px;
+    color: #0A97B0;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    align-self: center;
+  }
+
+  .download-btn:hover {
+    background: #0A97B0;
+    color: white;
+    border-color: #0A97B0;
+  }
+
+  /* Guides Grid */
+  .guides-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .guide-card {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+  }
+
+  .guide-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    border-color: #0A97B0;
+  }
+
+  .guide-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0 auto 1.25rem;
+  }
+
+  .guide-card h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0 0 0.75rem 0;
+    font-weight: 600;
+  }
+
+  .guide-card p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before,
+  .cta-section::after {
+    content: '';
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cta-section::before {
+    width: 400px;
+    height: 400px;
+    left: -150px;
+    top: -150px;
+  }
+
+  .cta-section::after {
+    width: 300px;
+    height: 300px;
+    right: -100px;
+    bottom: -100px;
+  }
+
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-overline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    color: white;
+    margin: 0 0 1rem 0;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .cta-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    margin: 0 0 2rem 0;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-cta-primary {
+    background-color: white;
+    color: #0A5EB0;
+    padding: 1rem 2.5rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-cta-primary:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-cta-secondary {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-cta-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .cta-image {
+    position: relative;
+    z-index: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .cta-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .guides-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .cta-image {
+      order: -1;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 6rem 0 4rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .section-header {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .section-subtitle-block {
+      padding-top: 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .resource-card {
+      flex-wrap: wrap;
+    }
+
+    .download-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .guides-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .cta-content {
+      text-align: center;
+    }
+  }
 </style>
