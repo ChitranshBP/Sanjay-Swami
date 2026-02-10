@@ -195,7 +195,9 @@ import whiteLogo from '../assets/logo/sanjay-swami-logo-white-ok.png';
   const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
 
   mobileDropdownToggles.forEach((toggle) => {
-    const linksContainer = toggle.closest('.mobile-services-group').querySelector('.mobile-services-links');
+    const group = toggle.closest('.mobile-services-group');
+    if (!group) return;
+    const linksContainer = group.querySelector('.mobile-services-links');
     if (toggle && linksContainer) {
       toggle.addEventListener('click', (e) => {
         e.preventDefault();
