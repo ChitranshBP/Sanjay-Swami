@@ -17,6 +17,8 @@ import award5 from '../assets/awards/sanjay-swami-5.jpeg';
 import award6 from '../assets/awards/sanjay-swami-6.jpeg';
 import awardFinal from '../assets/awards/sanjay-swami-award-final.jpeg';
 import heroBgTexture from '../assets/backgrounds/hero-texture.png';
+import heroBg from '../assets/backgrounds/Sanjay_banner_kushal.png';
+import heroMobileImg from '../assets/doctor/sanjay-swami-lecture-new.jpg';
 import ctaImage from '../assets/cta/consultation.png';
 
 const services = [
@@ -32,19 +34,44 @@ const services = [
   description="Dr. Sanjay D Swamy - Chief Paediatric Intensivist at Cloud Nine Hospital, Jayanagar, Bangalore. 18 years specialist experience in PICU and critical care."
 >
   
-  <!-- Hero Section -->
-  <section class="hero" style={`background-image: linear-gradient(rgba(10, 94, 176, 0.3), rgba(10, 94, 176, 0.25)), url('${heroBgTexture.src}'); background-position: center; background-size: cover; background-repeat: no-repeat;`}>
+  <!-- Hero Section (Desktop) -->
+  <section class="hero hero-desktop">
+    <img src={heroBg.src} alt="" class="hero-bg-img" />
+    <div class="hero-overlay"></div>
     <div class="container hero-content">
       <div class="hero-text">
-        <p class="hero-subtitle">- CHIEF PAEDIATRIC INTENSIVIST</p>
-        <h1>A dedicated doctor <br>you can trust</h1>
+        <p class="hero-subtitle">CHIEF PAEDIATRIC INTENSIVIST</p>
+        <h1>Choose to take care of <em>your little ones' health!</em></h1>
         <p class="hero-intro">Expert pediatric intensive care with 18 years of specialist experience, advanced critical care techniques, and international training - all dedicated to your child's health and wellbeing.</p>
         <div class="hero-btns">
-          <a href="/appointment" class="btn btn-hero-primary">Book Appointment</a>
+          <a href="/contact" class="btn btn-hero-primary">Book Appointment</a>
+          <a href="tel:+919999999999" class="btn btn-hero-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Contact Us
+          </a>
         </div>
       </div>
-      <div class="hero-image">
-        <img src={doctorImage.src} alt="Dr. Sanjay Swamy" width="500" height="650">
+      <div class="hero-spacer"></div>
+    </div>
+  </section>
+
+  <!-- Hero Section (Mobile) -->
+  <section class="hero-mobile">
+    <div class="hero-mobile-card">
+      <div class="hero-mobile-img-wrapper">
+        <img src={heroMobileImg.src} alt="Dr. Sanjay Swamy" class="hero-mobile-img" />
+      </div>
+      <div class="hero-mobile-content">
+        <p class="hero-subtitle">CHIEF PAEDIATRIC INTENSIVIST</p>
+        <h1>Choose to take care of <em>your little ones' health!</em></h1>
+        <p class="hero-intro">Expert pediatric intensive care with 18 years of specialist experience, advanced critical care techniques, and international training - all dedicated to your child's health and wellbeing.</p>
+        <div class="hero-btns">
+          <a href="/contact" class="btn btn-hero-primary">Book Appointment</a>
+          <a href="tel:+919999999999" class="btn btn-hero-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Contact Us
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -441,112 +468,140 @@ const services = [
 </script>
 
 <style>
+  /* Mobile hero hidden on desktop, desktop hero hidden on mobile */
+  .hero-mobile {
+    display: none;
+  }
+
   .hero {
-    padding: 8rem 0 4rem;
+    position: relative;
     color: white;
-    position: relative;
     overflow: hidden;
-  }
-
-  /* Decorative background circles */
-  .hero::before,
-  .hero::after {
-    content: '';
-    position: absolute;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-
-  .hero::before {
-    width: 500px;
-    height: 500px;
-    right: -100px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .hero::after {
-    width: 600px;
-    height: 600px;
-    right: -150px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .hero-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    min-height: 600px;
+    display: flex;
     align-items: center;
-    position: relative;
+    background: #0A5EB0;
+  }
+
+  .hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top right;
+    z-index: 0;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(10, 94, 176, 0.85) 0%,
+      rgba(10, 94, 176, 0.6) 35%,
+      rgba(10, 94, 176, 0.15) 55%,
+      transparent 65%
+    );
     z-index: 1;
   }
 
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-text {
+    max-width: 580px;
+  }
+
+  .hero-spacer {
+    /* Empty right column to let background image show through */
+  }
+
   .hero-subtitle {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
-    font-weight: 500;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+    color: #7DD4E1;
+    background: rgba(255, 255, 255, 0.12);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
   }
 
   .hero-text h1 {
-    font-size: 3.5rem;
+    font-size: 2.75rem;
     margin-bottom: 1.5rem;
     color: white;
-    line-height: 1.2;
-    font-weight: 400;
+    line-height: 1.25;
+    font-weight: 700;
     font-family: var(--font-sans);
   }
 
+  .hero-text h1 em {
+    font-style: normal;
+    color: #7DD4E1;
+  }
+
   .hero-intro {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.9);
-    margin-bottom: 2.5rem;
-    max-width: 550px;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2rem;
+    max-width: 500px;
     line-height: 1.7;
   }
 
   .hero-btns {
     display: flex;
-    gap: 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
   }
 
   .btn-hero-primary {
     background-color: #0A97B0;
     color: white;
-    padding: 1rem 2rem;
+    padding: 0.85rem 2rem;
     font-weight: 600;
-    border-radius: 4px;
+    border-radius: 6px;
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease;
+    font-size: 0.95rem;
   }
 
   .btn-hero-primary:hover {
-    background-color: #0A5EB0;
+    background-color: #088a9f;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 20px rgba(10, 151, 176, 0.4);
   }
 
-  .hero-image {
-    display: flex;
-    justify-content: center;
+  .btn-hero-secondary {
+    background: rgba(255,255,255,0.12);
+    color: white;
+    padding: 0.85rem 2rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-flex;
     align-items: center;
-    position: relative;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255,255,255,0.25);
   }
 
-  .hero-image img {
-    border-radius: var(--radius-md);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    max-height: 650px;
-    object-fit: cover;
-    object-position: top center;
+  .btn-hero-secondary:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
   }
 
   .bg-light {
@@ -1531,47 +1586,112 @@ const services = [
   .mt-4 { margin-top: 2rem; }
   .text-center { text-align: center; }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
+    .hero {
+      min-height: 650px;
+    }
+
     .hero-content {
-      grid-template-columns: 1fr 1fr;
+      padding-top: 9rem;
+      padding-bottom: 6rem;
     }
 
     .hero-text h1 {
-      font-size: 4rem;
+      font-size: 3.25rem;
     }
   }
 
   @media (max-width: 767px) {
-    .hero {
-      text-align: center;
-      padding: 4rem 0;
-    }
-    
-    .hero-content {
-      grid-template-columns: 1fr;
-      justify-items: center;
-    }
-
-    .hero-subtitle {
-      text-align: center;
-    }
-
-    .hero-intro {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-btns {
-      justify-content: center;
-    }
-
-    .hero-text h1 {
-      font-size: 2.5rem;
-    }
-
-    .hero::before,
-    .hero::after {
+    .hero-desktop {
       display: none;
+    }
+
+    .hero-mobile {
+      display: block;
+      background: linear-gradient(135deg, #0A5EB0 0%, #0A97B0 100%);
+      padding: 5.5rem 1.25rem 1.5rem;
+    }
+
+    .hero-mobile-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-mobile-img-wrapper {
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e8f4fd 0%, #d1ecf9 100%);
+    }
+
+    .hero-mobile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .hero-mobile-content {
+      padding: 1.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .hero-mobile-content .hero-subtitle {
+      color: #0A97B0;
+      background: rgba(10, 151, 176, 0.1);
+      font-size: 0.7rem;
+      padding: 0.3rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-mobile-content h1 {
+      font-size: 1.6rem;
+      color: #1a1a2e;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .hero-mobile-content h1 em {
+      font-style: normal;
+      color: #0A5EB0;
+    }
+
+    .hero-mobile-content .hero-intro {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      max-width: 100%;
+    }
+
+    .hero-mobile-content .hero-btns {
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .hero-mobile-content .btn-hero-primary {
+      width: 100%;
+      text-align: center;
+      padding: 0.9rem 1.5rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+
+    .hero-mobile-content .btn-hero-secondary {
+      width: 100%;
+      justify-content: center;
+      padding: 0.9rem 1.5rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      background: rgba(10, 94, 176, 0.08);
+      color: #0A5EB0;
+      border: 1px solid rgba(10, 94, 176, 0.2);
+    }
+
+    .hero-mobile-content .btn-hero-secondary svg {
+      stroke: #0A5EB0;
     }
   }
 
