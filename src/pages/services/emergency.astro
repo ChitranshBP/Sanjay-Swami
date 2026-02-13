@@ -713,7 +713,7 @@ const benefits = [
   .btn-cta-strip:hover { background: #f0f4ff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
   .btn-cta-strip-outline { border: 2px solid rgba(255,255,255,0.6); color: white; padding: 0.75rem 1.75rem; font-weight: 600; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; font-size: 0.95rem; white-space: nowrap; background: transparent; }
   .btn-cta-strip-outline:hover { border-color: white; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-  @media (max-width: 768px) { .cta-strip-content { flex-direction: column; text-align: center; gap: 1.25rem; } .cta-strip-actions { flex-direction: column; width: 100%; align-items: center; } .btn-cta-strip, .btn-cta-strip-outline { width: 100%; max-width: 250px; text-align: center; justify-content: center; } }
+  @media (max-width: 768px) { .cta-strip-content { flex-direction: column; text-align: center; gap: 1.25rem; } .cta-strip-actions { flex-direction: row; justify-content: center; } .btn-cta-strip, .btn-cta-strip-outline { text-align: center; justify-content: center; } }
   .testimonials-section { background: white; padding: 4rem 0; }
   .testimonials-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 2rem; align-items: center; }
   .testimonials-overline { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.15em; color: #0A97B0; font-weight: 600; margin-bottom: 1rem; }
@@ -788,7 +788,7 @@ const benefits = [
     .faq-image { position: static; order: -1; max-height: 350px; }
     .faq-image img { height: 350px; object-fit: cover; }
     .cta-title { font-size: 2rem; }
-    .cta-buttons { flex-direction: column; align-items: center; }
+    .cta-buttons { flex-direction: row; justify-content: center; }
     .testimonial-card { flex: 0 0 300px; }
     .testimonials-header { grid-template-columns: 1fr; gap: 1.5rem; }
     .contact-info-item { flex-direction: column; align-items: center; text-align: center; }
