@@ -1,11 +1,11 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import TestimonialsSlider from '../components/TestimonialsSlider.astro';
 import CTA from '../components/CTA.astro';
 import doctorImage from '../assets/doctor/sanjay-swami-hero.png';
 import generalPediatricsImg from '../assets/services/general-pediatrics.png';
-import nicuImg from '../assets/services/nicu.png';
+import growthImg from '../assets/services/growth-monitoring.png';
 import picuImg from '../assets/services/picu.png';
 import vaccinationsImg from '../assets/services/vaccinations.png';
 import emergencyImg from '../assets/services/emergency-care.png';
@@ -23,7 +23,7 @@ import ctaImage from '../assets/cta/consultation.png';
 
 const services = [
   { title: "General Pediatrics", description: "Comprehensive care for your child's health and development from birth to adolescence.", href: "/services/general-pediatrics", image: generalPediatricsImg.src },
-  { title: "Neonatal Care (NICU)", description: "Specialized care for newborns requiring intensive medical attention.", href: "/services/nicu", image: nicuImg.src },
+  { title: "Growth & Development", description: "Comprehensive tracking of your child's physical growth and developmental milestones.", href: "/services/growth-and-development", image: growthImg.src },
   { title: "Pediatric Intensive Care", description: "Advanced critical care for children with severe illnesses or injuries.", href: "/services/picu", image: picuImg.src },
   { title: "Vaccinations", description: "Safe and timely immunizations to protect your child from preventable diseases.", href: "/services/vaccinations", image: vaccinationsImg.src }
 ];
@@ -45,7 +45,7 @@ const services = [
         <p class="hero-intro">Expert pediatric intensive care with 18 years of specialist experience, advanced critical care techniques, and international training - all dedicated to your child's health and wellbeing.</p>
         <div class="hero-btns">
           <a href="/contact" class="btn btn-hero-primary">Book Appointment</a>
-          <a href="tel:+919999999999" class="btn btn-hero-secondary">
+          <a href="tel:+919108091744" class="btn btn-hero-secondary">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Contact Us
           </a>
@@ -67,7 +67,7 @@ const services = [
         <p class="hero-intro">Expert pediatric intensive care with 18 years of specialist experience, advanced critical care techniques, and international training - all dedicated to your child's health and wellbeing.</p>
         <div class="hero-btns">
           <a href="/contact" class="btn btn-hero-primary">Book Appointment</a>
-          <a href="tel:+919999999999" class="btn btn-hero-secondary">
+          <a href="tel:+919108091744" class="btn btn-hero-secondary">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Contact Us
           </a>
@@ -158,12 +158,12 @@ const services = [
           </div>
         </a>
 
-        <a href="/services/nicu" class="service-item-card">
-          <img src={nicuImg.src} alt="Neonatal Care">
+        <a href="/services/growth-and-development" class="service-item-card">
+          <img src={growthImg.src} alt="Growth & Development">
           <div class="service-overlay">
-            <h3>Neonatal Care (NICU)</h3>
+            <h3>Growth & Development</h3>
             <div class="service-hover-content">
-              <p>Specialized care for newborns requiring intensive medical attention, with expertise in treating premature babies and critical neonatal conditions.</p>
+              <p>Comprehensive tracking of your child's physical growth and developmental milestones from infancy to adolescence.</p>
               <span class="service-link">Read more →</span>
             </div>
           </div>
@@ -215,7 +215,7 @@ const services = [
         </div>
         <div class="cta-strip-actions">
           <a href="/contact" class="btn btn-cta-strip">Book Appointment</a>
-          <a href="tel:+919999999999" class="btn btn-cta-strip-outline">Call Now</a>
+          <a href="tel:+919108091744" class="btn btn-cta-strip-outline">Call Now</a>
         </div>
       </div>
     </div>
@@ -326,7 +326,7 @@ const services = [
         </div>
         <div class="cta-strip-actions">
           <a href="/contact" class="btn btn-cta-strip">Book Now</a>
-          <a href="tel:+919999999999" class="btn btn-cta-strip-outline">
+          <a href="tel:+919108091744" class="btn btn-cta-strip-outline">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Call Now
           </a>

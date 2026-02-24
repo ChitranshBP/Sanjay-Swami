@@ -1,66 +1,65 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
 import heroBgImage from '../../assets/backgrounds/sanjay-hero-bg.jpg';
-import nicuImg from '../../assets/services/nicu.png';
 import award2 from '../../assets/awards/sanjay-award-2.jpeg';
 import AppointmentForm from '../../components/AppointmentForm.astro';
 
-import nicuPrematureImg from '../../assets/services/nicu-premature-care.png';
-import nicuRespiratoryImg from '../../assets/services/nicu-respiratory-support.png';
-import nicuMonitoringImg from '../../assets/services/nicu-monitoring.png';
-import nicuJaundiceImg from '../../assets/services/nicu-jaundice-treatment.png';
-import nicuInfectionImg from '../../assets/services/nicu-infection-management.png';
-import nicuFeedingImg from '../../assets/services/nicu-feeding-support.png';
+import growthImg from '../../assets/services/growth-monitoring.png';
+import devScreeningImg from '../../assets/services/developmental-screening.png';
+import wellChildImg from '../../assets/services/well-child-visit.png';
+import nutritionImg from '../../assets/services/nutrition-counseling.png';
+import pediatricsImg from '../../assets/services/general-pediatrics.png';
+import acuteIllnessImg from '../../assets/services/acute-illness.png';
 
 const services = [
-  { image: nicuPrematureImg.src, title: "Premature Baby Care", description: "Specialized care for preterm infants with advanced incubators, temperature regulation, and developmental support." },
-  { image: nicuRespiratoryImg.src, title: "Respiratory Support", description: "Advanced respiratory care including CPAP, high-flow oxygen, and mechanical ventilation for breathing difficulties." },
-  { image: nicuMonitoringImg.src, title: "24/7 Monitoring", description: "Continuous monitoring of vital signs, oxygen levels, and cardiac function with state-of-the-art equipment." },
-  { image: nicuJaundiceImg.src, title: "Jaundice Treatment", description: "Phototherapy and exchange transfusion for treating severe jaundice with careful bilirubin monitoring." },
-  { image: nicuInfectionImg.src, title: "Infection Management", description: "Expert diagnosis and treatment of neonatal sepsis, meningitis, and other infections." },
-  { image: nicuFeedingImg.src, title: "Feeding Support", description: "Specialized feeding including IV nutrition, tube feeding, and breastfeeding assistance." }
+  { image: growthImg.src, title: "Physical Growth Tracking", description: "Regular measurement of height, weight, and head circumference plotted on standardized growth charts." },
+  { image: devScreeningImg.src, title: "Developmental Screening", description: "Comprehensive assessment of motor, language, cognitive, and social-emotional milestones." },
+  { image: wellChildImg.src, title: "Routine Checkups", description: "Scheduled well-child visits to monitor overall health and address parental concerns." },
+  { image: nutritionImg.src, title: "Nutritional Guidance", description: "Expert advice on feeding practices, age-appropriate diets, and managing nutritional deficiencies." },
+  { image: pediatricsImg.src, title: "Behavioral Assessment", description: "Evaluation and support for behavioral challenges, sleep issues, and school readiness." },
+  { image: acuteIllnessImg.src, title: "Early Intervention", description: "Prompt identification and intervention strategies for any detected developmental delays." }
 ];
 
 const capabilities = [
-  { title: "Level III NICU", description: "Highest level of neonatal care for critically ill newborns.", color: "#0A5EB0" },
-  { title: "Surfactant Therapy", description: "Life-saving treatment for respiratory distress syndrome.", color: "#0A97B0" },
-  { title: "Phototherapy Units", description: "Advanced bilirubin lights for jaundice treatment.", color: "#0A5EB0" },
-  { title: "Kangaroo Care", description: "Skin-to-skin contact promoting bonding and outcomes.", color: "#0A97B0" }
+  { title: "Standardized Tools", description: "Using globally recognized growth charts and developmental screening questionnaires.", color: "#0A5EB0" },
+  { title: "Expert Evaluation", description: "Thorough physical and developmental examinations by an experienced pediatrician.", color: "#0A97B0" },
+  { title: "Personalized Plans", description: "Tailored guidance and intervention strategies based on your child's unique needs.", color: "#0A5EB0" },
+  { title: "Long-term Tracking", description: "Continuous monitoring of progress from infancy through adolescence.", color: "#0A97B0" }
 ];
 
-const conditions = ["Premature Birth", "Low Birth Weight", "Respiratory Distress", "Neonatal Jaundice", "Neonatal Sepsis", "Birth Asphyxia", "Meconium Aspiration", "Congenital Heart Defects", "Feeding Difficulties", "Hypoglycemia", "Neonatal Seizures", "Congenital Infections", "Apnea of Prematurity", "Anemia", "Intraventricular Hemorrhage", "Necrotizing Enterocolitis"];
+const conditions = ["Growth Delay", "Failure to Thrive", "Speech & Language Delays", "Motor Skill Delays", "Autism Spectrum Concerns", "ADHD Monitoring", "Underweight", "Childhood Obesity", "Nutritional Deficiencies", "Behavioral Issues", "Sleep Problems", "Learning Difficulties"];
 
 const faqs = [
-  { question: "When does a newborn need NICU admission?", answer: "Newborns may need NICU care if born prematurely, have low birth weight, breathing difficulties, infections, severe jaundice, birth complications, or congenital conditions." },
-  { question: "Can parents visit their baby in the NICU?", answer: "Yes, we encourage parent involvement. Parents can visit, participate in kangaroo care, and be involved in feeding when possible." },
-  { question: "How long will my baby stay in the NICU?", answer: "Stay depends on the baby's condition and gestational age. Premature babies often stay until close to their original due date." },
-  { question: "What is kangaroo care?", answer: "Kangaroo care involves holding your baby skin-to-skin. It helps regulate temperature, heart rate, breathing, and promotes bonding." },
-  { question: "Can I breastfeed in the NICU?", answer: "Yes! If your baby cannot feed directly, you can pump breast milk. Our lactation consultants help establish breastfeeding." },
-  { question: "What is Dr. Swamy's NICU experience?", answer: "Dr. Sanjay D Swamy has 18+ years experience including neonatal care training at Birmingham Children's Hospital, UK." }
+  { question: "How often should my child's growth be checked?", answer: "Frequent checkups are recommended in the first year (e.g., at 1, 2, 4, 6, 9, and 12 months), followed by regular visits at 15, 18, 24, 30 months, and then annually." },
+  { question: "What happens during a developmental screening?", answer: "We use standardized questionnaires and observation to assess your child's gross and fine motor skills, language, cognitive abilities, and social interaction." },
+  { question: "What if my child is not meeting milestones?", answer: "Every child develops at their own pace. If a delay is identified, we will discuss early intervention strategies, additional testing, or specialist referrals as needed." },
+  { question: "Are growth charts different for boys and girls?", answer: "Yes, we use gender-specific growth charts, typically from the WHO for children under 2 and the CDC or IAP for older children." },
+  { question: "What should I bring to a well-child visit?", answer: "Please bring your child's health records, vaccination card, and any questions or concerns you have about their growth, behavior, or nutrition." },
+  { question: "Can you help with my child's picky eating?", answer: "Absolutely. We provide tailored nutritional counseling to address picky eating and ensure your child receives adequate nutrients for healthy growth." }
 ];
 
-const benefits = ["Level III NICU facility", "18+ years experience", "UK-trained specialist", "24/7 coverage", "Family-centered care", "Advanced equipment"];
+const benefits = ["Comprehensive assessment", "Early detection of issues", "Expert nutritional advice", "Long-term health tracking", "Parental support and guidance", "Tailored intervention plans"];
 ---
 
-<Layout title="Neonatal Care (NICU) in Bangalore | Dr. Sanjay D Swamy" description="Expert NICU services in Bangalore. Specialized care for premature babies and critically ill newborns. 24/7 neonatal intensive care.">
+<Layout title="Growth & Development Monitoring | Dr. Sanjay D Swamy" description="Expert growth and development monitoring in Bangalore. Regular checkups, milestone tracking, and nutritional guidance for children from infancy to adolescence.">
   <section class="hero" style={`background-image: linear-gradient(rgba(10, 94, 176, 0.3), rgba(10, 94, 176, 0.25)), url('${heroBgImage.src}'); background-position: center; background-size: cover;`}>
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
-          <p class="overline">SPECIALIZED NEWBORN CARE</p>
-          <h1>Neonatal <span style="color: white;">Intensive Care</span></h1>
-          <p class="hero-desc">Expert neonatal care for premature and critically ill newborns. Our Level III NICU provides advanced life support, specialized monitoring, and family-centered care.</p>
+          <p class="overline">PEDIATRIC CARE</p>
+          <h1>Growth & <span style="color: white;">Development</span> Monitoring</h1>
+          <p class="hero-desc">Comprehensive tracking of your child's physical growth and developmental milestones from infancy through adolescence, ensuring a healthy foundation for life.</p>
           <div class="hero-stats">
-            <div class="stat"><span class="stat-num">Level III</span><span class="stat-label">NICU Facility</span></div>
-            <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Neonatal Care</span></div>
+            <div class="stat"><span class="stat-num">Regular</span><span class="stat-label">Milestone Checks</span></div>
+            <div class="stat"><span class="stat-num">Personalized</span><span class="stat-label">Health Plans</span></div>
             <div class="stat"><span class="stat-num">18+</span><span class="stat-label">Years Experience</span></div>
           </div>
           <div class="hero-actions">
             <a href="/appointment" class="btn btn-hero-primary">Book Consultation</a>
-            <a href="tel:+919999999999" class="btn btn-hero-outline">Emergency: Call Now</a>
+            <a href="tel:+919108091744" class="btn btn-hero-outline">Call Clinic</a>
           </div>
         </div>
-        <div class="hero-image"><div class="image-frame"></div><img src={nicuImg.src} alt="NICU in Bangalore" loading="eager"></div>
+        <div class="hero-image"><div class="image-frame"></div><img src={growthImg.src} alt="Growth and Development Monitoring" loading="eager"></div>
       </div>
     </div>
   </section>
@@ -68,9 +67,9 @@ const benefits = ["Level III NICU facility", "18+ years experience", "UK-trained
   <section class="quick-stats-section">
     <div class="container">
       <div class="quick-stats-grid">
-        <div class="quick-stat-card"><div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div><div class="stat-content"><h3>Premature Baby Care</h3><p>Specialized care from 24 weeks</p></div></div>
-        <div class="quick-stat-card"><div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="stat-content"><h3>Advanced Monitoring</h3><p>Continuous vital signs tracking</p></div></div>
-        <div class="quick-stat-card"><div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div><div class="stat-content"><h3>Family-Centered Care</h3><p>Parents involved in care</p></div></div>
+        <div class="quick-stat-card"><div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16h16v-8"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="8" y1="18" x2="8" y2="16"/><line x1="16" y1="18" x2="16" y2="14"/></svg></div><div class="stat-content"><h3>Growth Charts</h3><p>Accurate height & weight tracking</p></div></div>
+        <div class="quick-stat-card"><div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="stat-content"><h3>Milestone Checks</h3><p>Timely developmental screening</p></div></div>
+        <div class="quick-stat-card"><div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="stat-content"><h3>Early Intervention</h3><p>Prompt support for delays</p></div></div>
       </div>
     </div>
   </section>
@@ -78,16 +77,16 @@ const benefits = ["Level III NICU facility", "18+ years experience", "UK-trained
   <section class="section about-section">
     <div class="container">
       <div class="section-header">
-        <div class="section-title-block"><p class="section-overline">ABOUT NICU</p><h2 class="section-title">Expert Care for <span class="highlight">Precious Newborns</span></h2></div>
-        <div class="section-subtitle-block"><p class="section-subtitle">Our NICU provides the highest level of care for newborns who need extra medical attention.</p></div>
+        <div class="section-title-block"><p class="section-overline">WHY MONITORING MATTERS</p><h2 class="section-title">Nurturing Healthy <span class="highlight">Development</span></h2></div>
+        <div class="section-subtitle-block"><p class="section-subtitle">Consistent tracking ensures your child is reaching their full potential physically, mentally, and socially.</p></div>
       </div>
       <div class="about-content">
         <div class="about-text">
-          <p>The NICU at Cloud Nine Hospital is a Level III facility equipped to care for the most vulnerable patients. Under Dr. Sanjay D Swamy's guidance, our team provides comprehensive neonatal intensive care.</p>
-          <p>We specialize in caring for premature infants, babies with respiratory distress, severe jaundice, infections, and congenital conditions.</p>
-          <p>We believe parents are essential partners in their baby's care, encouraging kangaroo care and supporting breastfeeding.</p>
+          <p>The early years of a child's life are marked by rapid physical growth and significant developmental changes. Regular monitoring by an experienced pediatrician like Dr. Sanjay D Swamy is crucial to ensure these processes are on track.</p>
+          <p>We use standardized growth charts to track height, weight, and BMI, allowing us to identify patterns and potential issues like growth faltering or excessive weight gain early on.</p>
+          <p>Beyond physical growth, we conduct comprehensive developmental screenings to assess motor skills, language acquisition, and social-emotional behavior, enabling timely intervention if any delays are detected.</p>
         </div>
-        <div class="benefits-card"><h3>Why Choose Our NICU</h3><ul class="benefits-list">{benefits.map(b => (<li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>{b}</span></li>))}</ul></div>
+        <div class="benefits-card"><h3>Benefits of Regular Checks</h3><ul class="benefits-list">{benefits.map(b => (<li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>{b}</span></li>))}</ul></div>
       </div>
     </div>
   </section>
@@ -95,8 +94,8 @@ const benefits = ["Level III NICU facility", "18+ years experience", "UK-trained
   <section class="section services-section">
     <div class="container">
       <div class="section-header">
-        <div class="section-title-block"><p class="section-overline">OUR SERVICES</p><h2 class="section-title">Comprehensive Neonatal <span class="highlight">Care</span></h2></div>
-        <div class="section-subtitle-block"><p class="section-subtitle">Full range of services to support newborns through their critical early days.</p></div>
+        <div class="section-title-block"><p class="section-overline">WHAT WE DO</p><h2 class="section-title">Our Monitoring <span class="highlight">Services</span></h2></div>
+        <div class="section-subtitle-block"><p class="section-subtitle">A comprehensive approach to tracking and supporting your child's well-being.</p></div>
       </div>
       <div class="services-grid">
         {services.map(service => (
@@ -122,12 +121,12 @@ const benefits = ["Level III NICU facility", "18+ years experience", "UK-trained
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </div>
         <div class="cta-strip-text">
-          <h3>Need Expert Neonatal Care?</h3>
-          <p>Schedule a consultation with Dr. Sanjay D Swamy today.</p>
+          <h3>Time for a well-child visit?</h3>
+          <p>Schedule a routine checkup to ensure your child's milestones are on track.</p>
         </div>
         <div class="cta-strip-actions">
-          <a href="/contact" class="btn btn-cta-strip">Book Consultation</a>
-          <a href="tel:+919999999999" class="btn btn-cta-strip-outline">Call Now</a>
+          <a href="/contact" class="btn btn-cta-strip">Book Appointment</a>
+          <a href="tel:+919108091744" class="btn btn-cta-strip-outline">Call Clinic</a>
         </div>
       </div>
     </div>
@@ -138,12 +137,12 @@ const benefits = ["Level III NICU facility", "18+ years experience", "UK-trained
       <div class="about-doctor-grid">
         <div class="about-doctor-image-wrapper"><div class="about-image-frame"></div><div class="about-doctor-image"><img src={award2.src} alt="Dr. Sanjay D Swamy" width="500" height="600"></div></div>
         <div class="about-doctor-content">
-          <p class="about-overline">YOUR BABY'S NEONATOLOGIST</p>
+          <p class="about-overline">YOUR CHILD'S PEDIATRICIAN</p>
           <h2 class="about-title">Dr. Sanjay D <span class="about-highlight">Swamy</span></h2>
-          <p class="about-desc">As Chief Paediatric Intensivist with extensive neonatal care experience, Dr. Swamy leads our NICU team with international training from Birmingham Children's Hospital, UK.</p>
+          <p class="about-desc">With over 18 years of experience in pediatrics, Dr. Swamy is dedicated to providing thorough and compassionate care, guiding parents through the crucial stages of their child's development.</p>
           <div class="about-stats">
-            <div class="stat-box"><div class="stat-number">18+</div><div class="stat-label">Years Experience</div><div class="stat-desc">Caring for critically ill newborns and premature babies.</div></div>
-            <div class="stat-box"><div class="stat-number">UK</div><div class="stat-label">Advanced Training</div><div class="stat-desc">International training at Birmingham Children's Hospital.</div></div>
+            <div class="stat-box"><div class="stat-number">18+</div><div class="stat-label">Years Experience</div><div class="stat-desc">Expertise in child health and development.</div></div>
+            <div class="stat-box"><div class="stat-number">UK</div><div class="stat-label">Advanced Training</div><div class="stat-desc">International training and clinical experience.</div></div>
           </div>
           <div class="about-actions"><a href="/appointment" class="btn btn-primary">Book Consultation</a><a href="/about" class="btn btn-outline">Full Profile</a></div>
         </div>
@@ -153,7 +152,7 @@ const benefits = ["Level III NICU facility", "18+ years experience", "UK-trained
 
   <section class="section capabilities-section">
     <div class="container">
-      <div class="section-header centered"><p class="section-overline">NICU CAPABILITIES</p><h2 class="section-title">Advanced <span class="highlight">Neonatal Care</span></h2><p class="section-subtitle centered-subtitle">Latest technology and international protocols for optimal outcomes.</p></div>
+      <div class="section-header centered"><p class="section-overline">HOW WE MONITOR</p><h2 class="section-title">Evaluation <span class="highlight">Methods</span></h2><p class="section-subtitle centered-subtitle">Employing evidence-based practices for accurate assessment of your child's progress.</p></div>
       <div class="capabilities-grid">{capabilities.map((c, i) => (<div class="capability-card"><div class="capability-number" style={`background-color: ${c.color}`}>{String(i + 1).padStart(2, '0')}</div><h3>{c.title}</h3><p>{c.description}</p></div>))}</div>
     </div>
   </section>
@@ -161,8 +160,8 @@ const benefits = ["Level III NICU facility", "18+ years experience", "UK-trained
   <section class="section conditions-section">
     <div class="container">
       <div class="section-header">
-        <div class="section-title-block"><p class="section-overline">CONDITIONS WE TREAT</p><h2 class="section-title">Neonatal <span class="highlight">Conditions</span></h2></div>
-        <div class="section-subtitle-block"><p class="section-subtitle">Experienced in managing a wide range of newborn conditions.</p></div>
+        <div class="section-title-block"><p class="section-overline">AREAS OF FOCUS</p><h2 class="section-title">Concerns We <span class="highlight">Address</span></h2></div>
+        <div class="section-subtitle-block"><p class="section-subtitle">We help identify and manage various issues related to physical and cognitive development.</p></div>
       </div>
       <div class="conditions-grid">{conditions.map(c => (<div class="condition-tag"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>{c}</span></div>))}</div>
     </div>
@@ -176,12 +175,12 @@ const benefits = ["Level III NICU facility", "18+ years experience", "UK-trained
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <div class="cta-strip-text">
-          <h3>24/7 Neonatal Emergency Support</h3>
-          <p>Expert NICU care available round the clock for your newborn.</p>
+          <h3>Concerned about a milestone?</h3>
+          <p>Don't wait. Early evaluation is key to successful intervention.</p>
         </div>
         <div class="cta-strip-actions">
-          <a href="/contact" class="btn btn-cta-strip">Book Now</a>
-          <a href="tel:+919999999999" class="btn btn-cta-strip-outline">
+          <a href="/contact" class="btn btn-cta-strip">Schedule Assessment</a>
+          <a href="tel:+919108091744" class="btn btn-cta-strip-outline">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Call Now
           </a>
@@ -195,10 +194,10 @@ const benefits = ["Level III NICU facility", "18+ years experience", "UK-trained
       <div class="faq-layout">
         <div class="faq-content">
           <p class="section-overline">FAQ</p>
-          <h2 class="faq-title">Questions About <span class="highlight">NICU Care</span></h2>
+          <h2 class="faq-title">Common Questions About <span class="highlight">Development</span></h2>
           <div class="faq-accordion">{faqs.map(f => (<details class="faq-item"><summary class="faq-question"><span>{f.question}</span><span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></summary><div class="faq-answer"><p>{f.answer}</p></div></details>))}</div>
         </div>
-        <div class="faq-image"><img src={nicuImg.src} alt="NICU Care" /></div>
+        <div class="faq-image"><img src={devScreeningImg.src} alt="Developmental Screening" /></div>
       </div>
     </div>
   </section>
@@ -209,10 +208,10 @@ const benefits = ["Level III NICU facility", "18+ years experience", "UK-trained
         <div class="appointment-info">
           <p class="section-overline">BOOK APPOINTMENT</p>
           <h2 class="section-title">Schedule Your <span class="title-highlight">Consultation</span></h2>
-          <p class="section-desc">For NICU consultations or prenatal counseling, contact our team.</p>
+          <p class="section-desc">To discuss your child's growth or behavior, contact our team to arrange a checkup.</p>
           <div class="contact-info-list">
             <div class="contact-info-item"><div class="info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="info-text"><h4>Location</h4><p>Cloud Nine Hospital, Jayanagar, Bangalore</p></div></div>
-            <div class="contact-info-item"><div class="info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="info-text"><h4>Emergency</h4><p><a href="tel:+919999999999">+91 99999 99999</a> (24/7)</p></div></div>
+            <div class="contact-info-item"><div class="info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="info-text"><h4>Contact</h4><p><a href="tel:+919108091744">+91 91080 91744</a></p></div></div>
           </div>
           <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.5896477543146!2d77.58131731482185!3d12.930177990880745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15b277a93807%3A0x88518f37b6c8e50d!2sCloud%20Nine%20Hospital%20-%20Jayanagar!5e0!3m2!1sen!2sin!4v1633000000000!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" title="Location"></iframe></div>
         </div>
@@ -224,12 +223,12 @@ const benefits = ["Level III NICU facility", "18+ years experience", "UK-trained
   <section class="cta-section">
     <div class="container">
       <div class="cta-content">
-        <p class="cta-overline">NEED NEONATAL CARE?</p>
-        <h2 class="cta-title">Expert care for your precious newborn</h2>
-        <p class="cta-description">For emergency neonatal consultations, contact our NICU team immediately.</p>
+        <p class="cta-overline">READY FOR A CHECKUP?</p>
+        <h2 class="cta-title">Ensure optimal health for your child</h2>
+        <p class="cta-description">Regular monitoring is the best way to support your child's well-being. Schedule a visit today.</p>
         <div class="cta-buttons">
           <a href="/appointment" class="btn btn-cta-primary">Book Consultation</a>
-          <a href="tel:+919999999999" class="btn btn-cta-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Emergency: +91 99999 99999</a>
+          <a href="tel:+919108091744" class="btn btn-cta-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Clinic</a>
         </div>
       </div>
     </div>
