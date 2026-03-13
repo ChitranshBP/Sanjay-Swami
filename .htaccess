@@ -1,7 +1,6 @@
 RewriteEngine On
-RewriteBase /
 
-RewriteRule ^$ dist/ [L]
+RewriteRule ^dist/(.*)$ /$1 [R=301,L]
 
 RewriteCond %{REQUEST_URI} !^/dist/
 RewriteCond %{REQUEST_FILENAME} !-f
