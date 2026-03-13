@@ -1,13 +1,14 @@
 RewriteEngine On
 RewriteBase /
 
-# Load homepage from dist
+# Redirect dist URLs to clean URLs
+RewriteRule ^dist/(.*)$ /$1 [R=301,L]
+
+# Homepage
 RewriteRule ^$ dist/index.html [L]
 
-# Allow direct access to dist files
+# Load files from dist internally
 RewriteCond %{REQUEST_URI} !^/dist/
-
-# If file or folder doesn't exist, load from dist
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ dist/$1 [L]
