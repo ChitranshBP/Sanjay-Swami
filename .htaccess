@@ -1,13 +1,17 @@
 RewriteEngine On
 RewriteBase /
 
-# Redirect dist URLs to clean URLs
+# 1. Redirect index.html to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ / [R=301,L]
+
+# 2. Redirect dist URLs to clean URLs
 RewriteRule ^dist/(.*)$ /$1 [R=301,L]
 
-# Homepage
+# 3. Homepage
 RewriteRule ^$ dist/index.html [L]
 
-# Load files from dist internally
+# 4. Load files from dist internally
 RewriteCond %{REQUEST_URI} !^/dist/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
