@@ -5,6 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://drsanjayswamy.com',
+  site: 'https://drsanjayswamy.co.in',
   integrations: [sitemap()],
 });

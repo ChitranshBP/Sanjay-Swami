@@ -32,5 +32,5 @@ jobs:
           SOURCE: "dist/"
           REMOTE_HOST: ${{ secrets.VPS_SSH_HOST }}
           REMOTE_USER: "root"
-          TARGET: "/home/drsanjayswamy.com/public_html/"
+          TARGET: "/home/drsanjayswamy.co.in/public_html/"
           EXCLUDE: "/dist/, /node_modules/"
